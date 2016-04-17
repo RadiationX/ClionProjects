@@ -12,6 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e08af5b3-9ef7-431f-84df-e7984d40171c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tech_prog_lab_1/main.cpp" afterPath="$PROJECT_DIR$/../tech_prog_lab_1/main.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
     </list>
     <ignored path="tech_prog_lab_2.iws" />
@@ -46,18 +47,18 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2513">
-              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+            <state relative-caret-position="162">
+              <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#351#363#0" expanded="true" />
                 <element signature="e#411#423#0" expanded="true" />
                 <element signature="e#470#494#0" expanded="true" />
                 <element signature="e#550#574#0" expanded="true" />
-                <element signature="e#4695#4707#0" expanded="true" />
-                <element signature="e#5014#5026#0" expanded="true" />
-                <element signature="e#5438#5462#0" expanded="true" />
-                <element signature="e#6024#6048#0" expanded="true" />
+                <element signature="e#4799#4811#0" expanded="true" />
+                <element signature="e#5118#5130#0" expanded="true" />
+                <element signature="e#5542#5566#0" expanded="true" />
+                <element signature="e#6128#6152#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -387,10 +388,10 @@
             <element signature="e#411#423#0" expanded="true" />
             <element signature="e#470#494#0" expanded="true" />
             <element signature="e#550#574#0" expanded="true" />
-            <element signature="e#4695#4707#0" expanded="true" />
-            <element signature="e#5014#5026#0" expanded="true" />
-            <element signature="e#5438#5462#0" expanded="true" />
-            <element signature="e#6024#6048#0" expanded="true" />
+            <element signature="e#4799#4811#0" expanded="true" />
+            <element signature="e#5118#5130#0" expanded="true" />
+            <element signature="e#5542#5566#0" expanded="true" />
+            <element signature="e#6128#6152#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -405,18 +406,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2513">
-          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+        <state relative-caret-position="162">
+          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#351#363#0" expanded="true" />
             <element signature="e#411#423#0" expanded="true" />
             <element signature="e#470#494#0" expanded="true" />
             <element signature="e#550#574#0" expanded="true" />
-            <element signature="e#4695#4707#0" expanded="true" />
-            <element signature="e#5014#5026#0" expanded="true" />
-            <element signature="e#5438#5462#0" expanded="true" />
-            <element signature="e#6024#6048#0" expanded="true" />
+            <element signature="e#4799#4811#0" expanded="true" />
+            <element signature="e#5118#5130#0" expanded="true" />
+            <element signature="e#5542#5566#0" expanded="true" />
+            <element signature="e#6128#6152#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -70,8 +70,9 @@ int main() {
             cout << general[i].keyChar[j] << (j == L - 1 ? "" : " ");
         cout << "]}" << endl;
     }
-    cout<<endl;
+    cout << endl;
 
+    //Заполнение справочников
     for (int i = 0; i < N; i++) {
         catFloat[i].key = general[i].key;
         for (int j = 0; j < L; j++) {
@@ -81,10 +82,12 @@ int main() {
         catFloat[i].index = catArrFloat[i].index = catArrChar[i].index = i;
     }
 
+    //Сортировка справочников
     sortSimple(catFloat, N);
     sortArray(catArrFloat, N);
     sortArray(catArrChar, N);
 
+    //Основной массив теперь "отсортирован"
     for (int i = 0; i < N; i++) {
         general[i].key = catFloat[i].key;
         for (int j = 0; j < L; j++) {
@@ -116,7 +119,6 @@ int main() {
         n++;
     }
 
-
     cout << endl;
     float arg2[L];
     cout << "Поиск по int[" << L << "]: " << endl;
@@ -146,8 +148,8 @@ int main() {
             n++;
         }
     }
-
     cout << endl;
+
     //cout<<resultFloat<<" : "<< resultFloatArray<<" : "<<resultCharArray<<endl;
     if (n == 0)
         cout << "Нет совпадений." << endl;
@@ -163,7 +165,6 @@ int main() {
             cout << "]}" << endl;
         }
     }
-
     return 0;
 }
 

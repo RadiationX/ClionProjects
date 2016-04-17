@@ -107,10 +107,8 @@ int main() {
 void printMainArray(Element *array) {
     for (int i = 0; i < mainSize; i++) {
         cout << "{";
-        for (int j = 0; j < 3; ++j) {
-            cout << array[i].numbers[j];
-            if (j != 2) cout << " ";
-        }
+        for (int j = 0; j < 3; ++j)
+            cout << array[i].numbers[j] << (j != 2 ? " " : "");
         cout << "}" << endl;
     }
 }
@@ -119,10 +117,8 @@ void printTapeArray(Element **array) {
     for (int i = 0; i < tapeSize; i++) {
         for (int j = 0; j < tapeSize; ++j) {
             cout << "{";
-            for (int k = 0; k < 3; k++) {
-                cout << array[i][j].numbers[k];
-                if (k != 2) cout << " ";
-            }
+            for (int k = 0; k < 3; k++)
+                cout << array[i][j].numbers[k] << (j != 2 ? " " : "");
             cout << "} ";
         }
         cout << endl;
