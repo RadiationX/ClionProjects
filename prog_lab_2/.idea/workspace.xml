@@ -13,8 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="41cd7f18-1d8f-4888-9746-3a8f22261e10" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out.txt" afterPath="$PROJECT_DIR$/out.txt" />
     </list>
     <ignored path="prog_lab_2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -319,6 +317,14 @@
       <option name="presentableId" value="Default" />
       <updated>1461069945842</updated>
     </task>
+    <task id="LOCAL-00001" summary="upd lab2">
+      <created>1461133066796</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1461133066796</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -355,6 +361,12 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="upd lab2" />
+    <option name="LAST_COMMIT_MESSAGE" value="upd lab2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
