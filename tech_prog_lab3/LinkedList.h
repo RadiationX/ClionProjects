@@ -14,25 +14,48 @@ template<class T>
 class ListItem:T{
 private:
     T data;
+    bool empty = true;
 public:
     ListItem *nextItem;
     ListItem *prevItem;
     ListItem(){}
+    ListItem(T element){
+        data = element;
+    }
     T getData(){
         return data;
     }
     void setData(T element){
         data = element;
+        empty = false;
     }
+    bool isEmpty(){
+        return empty;
+    }
+
 };
 
-template<class P, int size>
+template<class T, int size>
 class Block{
 public:
-    ListItem<P> *items = new ListItem<P>[size];
+    int length = 0;
+    ListItem<T> *items = new ListItem<T>[size];
     Block *nextBlock;
     Block *prevBlock;
     Block(){};
+    ListItem<T> get(int position){
+        return items[position];
+    }
+    Block getLast(){
+        return items[length];
+    }
+    int getSize(){
+        return length;
+    }
+    void add(T element){
+        items[length].setData(element);
+        length++;
+    }
 };
 
 template<class T, int blockSize>
@@ -49,12 +72,25 @@ public:
     LinkedList(){
         array =  new Block<T, blockSize>[allocSize];
     }
+
     void addFirst(T element) {
+        if(array[0].getSize()==blockSize)
+            blocksNumber++;
+        size++;
+        if(array[0].get(0).isEmpty()){
+            add(element);
+        } else{
+            array[0].items[0] = {element};
+        }
 
     }
 
-    void add(T element) {
-        array[0].items[0].setData(element);
+    void add(T element){
+        if(array[blocksNumber].getSize()==blockSize)
+            blocksNumber++;
+
+        array[blocksNumber].add(element);
+        size++;
     }
 
     void add(T element, int position) {
@@ -68,18 +104,26 @@ public:
     void clear() {
 
     }
+    void shiftItems(){
+
+    }
 
     string toString() {
-        return "";
+        string res = "";
+
+        return res;
     }
 
 
     T get(int position) {
         return array[position%blockSize].items[position].getData();
     }
+    Block<T, blockSize> getBlock(int position){
+        return array[position];
+    };
 
     int getSize() {
-        return size;
+        return blocksNumber;
     }
 
 private:
