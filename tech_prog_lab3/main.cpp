@@ -1,6 +1,6 @@
 #include <iostream>
 #include "LinkedList.h"
-
+#define blockSize 5
 using namespace std;
 
 
@@ -14,15 +14,24 @@ public:
         return key;
     }
 };
-LinkedList<Item, 5> linkedList;
+LinkedList<Item, blockSize> linkedList;
 Item item;
 void print(){
-    for(int i = 0; i<=linkedList.getSize(); i++){
+    int block;
+    int item;
+    int size = linkedList.getSize();
+    cout<<"SIZE "<<size<<endl;
+    for(int i = 0; i<size; i++){
+        block = i/blockSize;
+        item = i%blockSize;
+        cout<<"Block["<<block<<"] Item["<<item<<"]:\t"<<linkedList.getBlock(block).get(item).getData().key<<endl;
+    }
+    /*for(int i = 0; i<=linkedList.getSize(); i++){
         for(int j = 0; j<linkedList.getBlock(i).getSize(); j++){
             cout<<"Block["<<i<<"] Item["<<j<<"]:\t"<<linkedList.getBlock(i).get(j).getData().key<<endl;
         }
         cout<<endl;
-    }
+    }*/
 }
 int main() {
     item.key=1337.111;
@@ -37,8 +46,8 @@ int main() {
 
     cout<<endl<<endl;
 
-    item.key +=100;
-    linkedList.addFirst(item);
+    item.key = 228;
+    linkedList.add(item, 12);
     print();
 
     return 0;

@@ -80,6 +80,7 @@ public:
         if(array[0].get(0).isEmpty()){
             add(element);
         } else{
+            shiftItems(0,0);
             array[0].items[0] = {element};
         }
 
@@ -94,7 +95,18 @@ public:
     }
 
     void add(T element, int position) {
+        position--;
+        int block = position/blockSize;
+        int item = position%blockSize;
+        cout<<"kuks "<<position-size<<endl;
 
+        if(position-size>0){
+            size+=position-size;
+        }
+        size++;
+        cout<<"add "<<block<<" : "<<item<<" : "<<position<<" : "<<size<<endl;
+        shiftItems(block,item);
+        array[block].items[item] = {element};
     }
 
     void remove(int position) {
@@ -104,8 +116,17 @@ public:
     void clear() {
 
     }
-    void shiftItems(){
-
+    void shiftItems(int fromBlock, int fromItem){
+        ListItem<T> temp, temp1;
+        for(int i = size-1, block, item; i>0; i--){
+            block = i/blockSize;
+            item = i%blockSize;
+            if(item-1==-1){
+                array[block].items[item] = array[block-1].items[blockSize-1];
+            } else{
+                array[block].items[item] = array[block].items[item-1];
+            }
+        }
     }
 
     string toString() {
@@ -123,6 +144,9 @@ public:
     };
 
     int getSize() {
+        return size;
+    }
+    int getBlocks(){
         return blocksNumber;
     }
 
