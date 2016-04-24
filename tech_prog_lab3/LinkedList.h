@@ -10,37 +10,51 @@
 using namespace std;
 
 
+template<class T>
+class ListItem:T{
+private:
+    T data;
+public:
+    ListItem *nextItem;
+    ListItem *prevItem;
+    ListItem(){}
+    T getData(){
+        return data;
+    }
+    void setData(T element){
+        data = element;
+    }
+};
 
+template<class P, int size>
+class Block{
+public:
+    ListItem<P> *items = new ListItem<P>[size];
+    Block *nextBlock;
+    Block *prevBlock;
+    Block(){};
+};
 
 template<class T, int blockSize>
 class LinkedList {
-    class ListItem:T{
-        ListItem *nextItem;
-        ListItem *prevItem;
-    };
-    class Block{
-        ListItem items[blockSize];
-        Block *nextBlock;
-        Block *prevBlock;
-    };
+
 private:
     int allocSize = 16;
-    int length = 0;
+    int size = 0;
     int blocksNumber = 0;
-    T *array = new T[allocSize];
+    Block<T, blockSize> *array;
+
 
 public:
+    LinkedList(){
+        array =  new Block<T, blockSize>[allocSize];
+    }
     void addFirst(T element) {
-        if (length == allocSize)
-            reAlloc();
+
     }
 
     void add(T element) {
-        if (length == allocSize)
-            reAlloc();
-
-        array[length] = element;
-        length++;
+        array[0].items[0].setData(element);
     }
 
     void add(T element, int position) {
@@ -61,18 +75,18 @@ public:
 
 
     T get(int position) {
-        return array[position];
+        return array[position%blockSize].items[position].getData();
     }
 
     int getSize() {
-        return length;
+        return size;
     }
 
 private:
     void reAlloc() {
         allocSize += allocSize;
         T *temp = new T[allocSize];
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < size; i++) {
             temp[i] = array[i];
         }
         array = temp;
