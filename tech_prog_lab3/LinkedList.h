@@ -95,17 +95,21 @@ public:
     }
 
     void add(T element, int position) {
-        position--;
         int block = position/blockSize;
         int item = position%blockSize;
         cout<<"kuks "<<position-size<<endl;
 
-        if(position-size>0){
+        bool needShift = position-size>0;
+
+        if(needShift){
             size+=position-size;
+        } else{
+            size++;
         }
-        size++;
+
         cout<<"add "<<block<<" : "<<item<<" : "<<position<<" : "<<size<<endl;
-        shiftItems(block,item);
+        if(!needShift)
+            shiftItems(block,item);
         array[block].items[item] = {element};
     }
 

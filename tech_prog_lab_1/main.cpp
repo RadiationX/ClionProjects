@@ -18,7 +18,7 @@ void printMainArray(Element *array);
 void printTapeArray(Element **array);
 
 int main() {
-    srand(time(NULL));
+    //srand(time(NULL));
 
     cout << "Введите количество элементов: ";
     cin >> mainSize;
@@ -87,15 +87,20 @@ int main() {
     for (int k = 0; k < mainSize; k++) {
         minNumber = maxNumber + 10;
         for (int i = 0; i < tapeSize; i++) {
+            cout<<"compare(i = "<<i<<"): "<<index[i]<<" < "<<tapeSize<<" && "<<minNumber<<" > "<<tapeArray[i][index[i]].numbers[selectIndex]<<" : "<<((index[i] < tapeSize && minNumber > tapeArray[i][index[i]].numbers[selectIndex])?"true":"false")<<endl;
             if (index[i] < tapeSize && minNumber > tapeArray[i][index[i]].numbers[selectIndex]) {
                 minIndex = i;
                 minNumber = tapeArray[i][index[i]].numbers[selectIndex];
             }
         }
+
         if (tapeArray[minIndex][index[minIndex]].numbers[selectIndex] == NULL_ELEMENT)
             k--;
+        else{
+            cout<<"move to "<<k<<" : "<<tapeArray[minIndex][index[minIndex]].numbers[selectIndex]<<endl<<endl;
+            mainArray[k] = tapeArray[minIndex][index[minIndex]];
+        }
 
-        mainArray[k] = tapeArray[minIndex][index[minIndex]];
         index[minIndex]++;
     }
 
@@ -118,7 +123,7 @@ void printTapeArray(Element **array) {
         for (int j = 0; j < tapeSize; ++j) {
             cout << "{";
             for (int k = 0; k < 3; k++)
-                cout << array[i][j].numbers[k] << (j != 2 ? " " : "");
+                cout << array[i][j].numbers[k] << (k != 2 ? " " : "");
             cout << "} ";
         }
         cout << endl;

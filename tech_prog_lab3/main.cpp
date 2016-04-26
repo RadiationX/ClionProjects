@@ -47,7 +47,7 @@ int main() {
     cout<<endl<<endl;
 
     item.key = 228;
-    linkedList.add(item, 12);
+    linkedList.add(item, 2);
     print();
 
     return 0;
