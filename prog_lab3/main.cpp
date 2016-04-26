@@ -13,7 +13,7 @@ int main() {
     cout.imbue(loc);
     int choice = 0;
     while (1) {
-        cout << "Сгенерировать файл - 1" << endl << "Прочитать файл - 2" << endl << "Выйти - any key" << endl <<
+        cout << "Сгенерировать файл - 1" << endl << "Прочитать файл - 2" << endl <<
         "Действие: ";
         cin >> choice;
         switch (choice) {
