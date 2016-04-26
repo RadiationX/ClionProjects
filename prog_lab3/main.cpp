@@ -1,8 +1,8 @@
 #include <iostream>
-#include <string>
+#include <fstream>
 
 using namespace std;
-struct data{
+struct data {
     string fio;
     int points[5];
     string phone;
@@ -19,51 +19,66 @@ int main() {
 }
 
 void one() {
-    FILE *file = fopen("/home/radiationx/ClionProjects.git/prog_lab3/text.txt", "rt");
-    string text;
-    while (!feof(file)) {
-        text+=(char) fgetc(file);
-    }
-    int n = 1;
-    for(int i = 0; i<text.size(); i++)
-        if(text[i]=='\n')
-            n++;
-
-    data *datas = new data[n];
-
-    cout<<n<<endl;
-
+    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab3/text.txt", ios::in);
+    ofstream fout("/home/radiationx/ClionProjects.git/prog_lab3/out.txt", ios::out);
+    string text, outText, temp;
+    char buff;
+    int dataSize = 0, colon = 0;
+    data *datas;
     string::size_type sz;
-    n=0;
-    int colon = 0;
-    string temp = "";
-    for (int i = 0; i < text.size()-1; i++) {
-        if(text[i]==':'){
+    string line;
+    while (fin.get(buff)) {
+        text += buff;
+        if (buff=='\n')
+            dataSize++;
+    }
+
+    datas = new data[dataSize+1];
+    dataSize = 0;
+
+    for (int i = 0; i < text.size(); i++) {
+        if (text[i] == ':') {
             colon++;
-            temp="";
+            temp = "";
             continue;
         }
-        if(text[i]=='\n'){
-            n++;
+        if (text[i] == '\n') {
+            dataSize++;
             colon = 0;
             continue;
         }
-        if(text[i+3]=='\0'){
-            break;
-        }
-        if(colon==0){
-            datas[n].fio+=text[i];
-        } else if(colon>0&&colon<6){
-            temp+=text[i];
-            datas[n].points[colon-1] = stoi(temp, &sz);
-        } else{
-            datas[n].phone+=text[i];
+
+        if (colon == 0) {
+            datas[dataSize].fio += text[i];
+        } else if (colon > 0 && colon < 6) {
+            temp += text[i];
+            datas[dataSize].points[colon - 1] = stoi(temp, &sz);
+        } else {
+            datas[dataSize].phone += text[i];
         }
     }
 
+    int middle = 0;
+    for(int i=0; i<dataSize+1;i++){
+        for(int j = 0; j<5;j++){
+            middle+=datas[i].points[j];
+        }
+        middle/=5;
+        cout<<middle<<endl;
+        if(middle<20){
+            if(i!=0)
+                outText.append("\n");
+            outText.append(datas[i].fio).append(":");
+            for(int j = 0; j<5;j++)
+                outText.append(to_string(datas[i].points[j])).append(":");
+            outText.append(datas[i].phone);
 
-    for(int i = 0; i<n+1;i++){
-        cout<<datas[i].fio<<" : "<<datas[i].points[0]<<" : "<<datas[i].points[1]<<" : "<<datas[i].points[2]<<" : "<<datas[i].points[3]<<" : "<<datas[i].points[4]<<" : "<<datas[i].phone<<endl;
+        }
+        middle=0;
     }
-    fclose(file);
+    cout<<endl<<outText;
+
+    fout<<outText;
+    fout.close();
+    fin.close();
 }
