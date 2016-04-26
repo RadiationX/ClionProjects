@@ -12,11 +12,42 @@ void one();
 
 void two();
 
+void generateFile() {
+    ofstream fout("/home/radiationx/ClionProjects.git/prog_lab3/file.bin", ios::out | ios::binary);
+    int size = 2;
+    double array[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    fout.write((char *) &size, sizeof(size));
+    fout.write((char *) &array, sizeof(array));
+    fout.close();
+}
+
+void readFile() {
+    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab3/file.bin", ios::in | ios::binary);
+    int size;
+    fin.read((char *) &size, sizeof(size));
+    double *array = new double[size];
+    for (int i = 0; i < size; i++) {
+        fin.read((char *) &array[i], sizeof(array));
+    }
+    fin.close();
+    if (size < 3) {
+        cout << "Ошибка: количество компонент < 3";
+        return;
+    }
+    double sumArray[2] = {0, 0};
+    for (int i = 0; i < 3; i++)
+        sumArray[0] += array[i];
+    for (int i = size - 1; i > size - 4; i--)
+        sumArray[1] += array[i];
+    cout << "Разность сумм: " << sumArray[0] - sumArray[1];
+}
+
 int main() {
     locale::global(locale(""));
     locale loc("");
     cout.imbue(loc);
-    two();
+    generateFile();
+    readFile();
     return 0;
 }
 
