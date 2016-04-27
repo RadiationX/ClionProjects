@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "access.h"
 
 using namespace std;
 
@@ -11,7 +12,8 @@ int main() {
     locale::global(locale(""));
     locale loc("");
     cout.imbue(loc);
-    int choice = 0;
+    two();
+    /*int choice = 0;
     while (1) {
         cout << "Сгенерировать файл - 1" << endl << "Прочитать файл - 2" << endl <<
         "Действие: ";
@@ -26,7 +28,8 @@ int main() {
             default:
                 return 0;
         }
-    }
+    }*/
+    return 0;
 }
 
 void generateFile() {
