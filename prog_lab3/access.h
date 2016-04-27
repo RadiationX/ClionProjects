@@ -59,7 +59,7 @@ void one() {
 
 void two() {
     //Generate file
-    char initText[] = "jkdfh h  kjdfh j jf.";
+    char initText[] = "jkdfh h kjdfh j jf.";
     int initSize;
     ofstream fout("/home/radiationx/ClionProjects.git/prog_lab3/text2.bin", ios::out | ios::binary);
     initSize = sizeof(initText);
@@ -74,27 +74,28 @@ void two() {
     int size = -1;
     fin.read((char*)&size, sizeof(size));
 
-    char *text = new char[size];
+    char *preText = new char[size];
     char *result = new char[size];
 
     for(int i = 0; i<size; i++)
-        fin.read(&text[i], sizeof(char));
+        fin.read(&preText[i], sizeof(char));
+
+    string text = preText;
 
 //    fin.read((char *) &text1, sizeof(string)*text.initSize());
 //    fin.close();
 
     cout << endl << ": " << text<<endl;
-    for (int i = 0, j = 0; i < size; i++) {
+    for (int i = 0, j = 0; i < text.size(); i++) {
         if (text[i] != '\n' && text[i] != ' ' && text[i - 1] == ' ' && text[i + 1] == ' ') {
-            //text.erase(i, 1);
-            j--;
+            text.erase(i, 1);
         } else if (!(text[i] == ' ' && (text[i + 1] == ' ' | text[i - 1] == ' '))) {
             result[j] = text[i];
             j++;
         }
     }
     cout << endl << ": " << result;
-    fout.write((char *) &text, sizeof(text));
+    fout.write((char *) &result, sizeof(result));
     fout.close();
 }
 
