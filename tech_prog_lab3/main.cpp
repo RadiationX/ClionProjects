@@ -1,6 +1,6 @@
 #include <iostream>
 #include "LinkedList.h"
-#define blockSize 5
+#define blockSize 10
 using namespace std;
 
 
@@ -48,6 +48,9 @@ int main() {
 
     item.key = 228;
     linkedList.add(item, 2);
+    item.key = 322;
+    linkedList.addFirst(item);
+    linkedList.add(item, 15);
     print();
 
     return 0;

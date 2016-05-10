@@ -87,9 +87,10 @@ public:
     }
 
     void add(T element){
+        cout<<blocksNumber<<endl;
         if(array[blocksNumber].getSize()==blockSize)
             blocksNumber++;
-
+        cout<<blocksNumber<<endl;
         array[blocksNumber].add(element);
         size++;
     }
@@ -108,8 +109,9 @@ public:
         }
 
         cout<<"add "<<block<<" : "<<item<<" : "<<position<<" : "<<size<<endl;
-        if(!needShift)
+        if(needShift)
             shiftItems(block,item);
+
         array[block].items[item] = {element};
     }
 

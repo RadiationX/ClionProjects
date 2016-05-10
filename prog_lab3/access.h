@@ -85,7 +85,7 @@ void two() {
 //    fin.read((char *) &text1, sizeof(string)*text.initSize());
 //    fin.close();
 
-    cout << endl << ": " << text<<endl;
+    cout << endl << "Начальная строка: " << text<<endl;
     for (int i = 0, j = 0; i < text.size(); i++) {
         if (text[i] != '\n' && text[i] != ' ' && text[i - 1] == ' ' && text[i + 1] == ' ') {
             text.erase(i, 1);
@@ -94,7 +94,7 @@ void two() {
             j++;
         }
     }
-    cout << endl << ": " << result;
+    cout << endl << "Результат: " << result;
     fout.write((char *) &result, sizeof(result));
     fout.close();
 }
