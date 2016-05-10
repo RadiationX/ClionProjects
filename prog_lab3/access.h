@@ -25,11 +25,11 @@ void one() {
     fout1.write((char *) &size, sizeof(int));
     data temp1[] =
             {
-                    {"Familiya Imya Otchestvo1", {5, 10, 15, 20, 13}, "88005553535"},
-                    {"Familiya Imya Otchestvo2", {100,100,100,100,100},   "88043535"},
-                    {"Familiya Imya Otchestvo3", {100,100,100,100,100},   "43255553535"},
-                    {"Familiya Imya Otchestvo4", {100,100,100,100,100},   "43255553535"},
-                    {"Familiya Imya Otchestvo5", {5, 10, 15, 20, 13},   "43255553535"},
+                    {"Шашков Софрон Тимурович", {5,   10,  15,  20,  13},  "8 (800) 555-35-35"},
+                    {"Дмитриева Мира Олеговна ", {53, 25, 10, 4, 60}, "8 (953) 807-89-37"},
+                    {"Константинова Ираида Егоровна ", {1, 34, 67, 12, 97}, "8 (942) 514-32-69"},
+                    {"Орлова Инга Анатольевна ", {110, 45, 76, 67, 84}, "8 (927) 213-78-34"},
+                    {"Вихирева Анжела Георгиевна ", {50,   11,  90,  20,  13},  "8 (966) 618-45-84"},
             };
     for (int i = 0; i < size; i++)
         fout1.write((char *) &temp1[i], sizeof(data));
@@ -59,11 +59,11 @@ void one() {
 
 void two() {
     //Generate file
-    char initText[] = "jkdfh h kjdfh j jf.";
+    char initText[] = "this  text is a  very awesome.";
     int initSize;
     ofstream fout("/home/radiationx/ClionProjects.git/prog_lab3/text2.bin", ios::out | ios::binary);
     initSize = sizeof(initText);
-    fout.write((char*)&initSize, sizeof(initSize));
+    fout.write((char *) &initSize, sizeof(initSize));
     fout.write((char *) &initText, initSize);
     fout.close();
 
@@ -72,30 +72,29 @@ void two() {
     fout.open("/home/radiationx/ClionProjects.git/prog_lab3/out2.bin", ios::out | ios::binary);
 
     int size = -1;
-    fin.read((char*)&size, sizeof(size));
+    fin.read((char *) &size, sizeof(size));
 
-    char *preText = new char[size];
+    char *text = new char[size];
     char *result = new char[size];
 
-    for(int i = 0; i<size; i++)
-        fin.read(&preText[i], sizeof(char));
+    for (int i = 0; i < size; i++)
+        fin.read(&text[i], sizeof(char));
+    fin.close();
 
-    string text = preText;
+    cout << endl << "Начальная строка: " << text << endl;
+    for (int i = 0; i < size; i++)
+        if (text[i] != ' ' && text[i + 1] == ' ' && (i > 1 && text[i - 1] == ' '))
+            text[i] = ' ';
 
-//    fin.read((char *) &text1, sizeof(string)*text.initSize());
-//    fin.close();
-
-    cout << endl << "Начальная строка: " << text<<endl;
-    for (int i = 0, j = 0; i < text.size(); i++) {
-        if (text[i] != '\n' && text[i] != ' ' && text[i - 1] == ' ' && text[i + 1] == ' ') {
-            text.erase(i, 1);
-        } else if (!(text[i] == ' ' && (text[i + 1] == ' ' | text[i - 1] == ' '))) {
+    for (int i = 0, j = 0; i < size; i++) {
+        if (!(text[i] == ' ' && text[i + 1] == ' ')) {
             result[j] = text[i];
             j++;
         }
     }
+
     cout << endl << "Результат: " << result;
-    fout.write((char *) &result, sizeof(result));
+    fout.write((char *) &text, sizeof(text));
     fout.close();
 }
 
