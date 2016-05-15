@@ -41,11 +41,16 @@ template<class T, int size>
 class Block {
 public:
     int length = 0;
-    ListItem<T> *items = new ListItem<T>[size];
+    ListItem<T> *items;
     Block *nextBlock;
     Block *prevBlock;
 
-    Block() { };
+    Block() {
+        cout<<"CONSTRUCT MY PUSSY"<<endl;
+        items  = new ListItem<T>[size];
+    };
+
+
 
     ListItem<T> get(int position) {
         return items[position];
@@ -63,6 +68,10 @@ public:
         items[position].setData(element);
         length++;
     }
+    ~Block(){
+        //delete items[1];
+        //cout<<"DESTRUCT MY PUSSY"<<endl;
+    }
 };
 
 template<class T, int blockSize>
@@ -72,10 +81,11 @@ private:
     int allocSize = 16;
     int size = 0;
     int blocksNumber = 0;
-    Block<T, blockSize> *array;
+
 
 
 public:
+    Block<T, blockSize> *array;
     LinkedList() {
         array = new Block<T, blockSize>[allocSize];
     }
@@ -89,26 +99,32 @@ public:
     }
 
     void add(T element, int position) {
-
+        if(size>=allocSize||position>=allocSize){
+            cout<<"CALL REALLOC "<<size<<" : "<<allocSize<<endl;
+            int increment = allocSize*(position/allocSize);
+            reAlloc(increment);
+        }
         int block = position / blockSize;
         int item = position % blockSize;
-        bool needShift = (position<size||position>allocSize)&&!array[block].items[item].isEmpty();
-        cout << "[begin add] to position [" << position << "] in [" << block << ", " << item << "]; size [" << size <<"]; needShift {"<<(needShift?"true":"false")<<"}";
-        cout << "  ("<<position<<"<"<<size<<" || "<<position<<">"<<allocSize<<")&&"<<(!array[block].items[item].isEmpty()?"true":"false")<<endl;
+        bool needShift = (position < size | position > allocSize) & !array[block].items[item].isEmpty();
+        cout << "[begin add] to position [" << position << "] in [" << block << ", " << item << "]; size [" << size << "]; needShift {" << (needShift ? "true" : "false") << "}";
+        cout << "  (" << position << "<" << size << " || " << position << ">" << allocSize << ")&&" <<(!array[block].items[item].isEmpty() ? "true" : "false") << endl;
 
 
         if (needShift) {
             size++;
         } else {
-            if(size<=position)
-                size=position+1;
+            if (size <= position)
+                size = position + 1;
         }
+
 
         if (needShift)
             shiftItems(block, item);
 
         array[block].add(element, item);
-        cout << "[begin add] to position [" << position << "] in [" << block << ", " << item << "]; size [" << size <<"]"<<endl<<endl;
+        cout << "[end   add] to position [" << position << "] in [" << block << ", " << item << "]; size [" << size <<
+        "]" << endl << endl;
     }
 
     void remove(int position) {
@@ -120,14 +136,13 @@ public:
     }
 
     void shiftItems(int fromBlock, int fromItem) {
-        cout<<"call shift"<<endl;
-        ListItem<T> temp, temp1;
+        cout << "call shift" << endl;
         for (int i = size - 1, block, item; i > 0; i--) {
             block = i / blockSize;
             item = i % blockSize;
-            //cout<<"shift "<<block<<" : "<<item<<endl;
-            if(item<fromItem) continue;
-            if (item - 1 == -1) {
+            cout<<"shift "<<block<<" : "<<item<<endl;
+            if (item < fromItem) continue;
+            if (item == 0) {
                 array[block].items[item] = array[block - 1].items[blockSize - 1];
             } else {
                 array[block].items[item] = array[block].items[item - 1];
@@ -153,21 +168,36 @@ public:
     int getSize() {
         return size;
     }
+    int getAllocSize(){
+        return allocSize;
+    }
 
     int getBlocks() {
         return blocksNumber;
     }
+    void reAlloc(int increment) {
+        cout<<"INCREMENT "<<increment<<endl;
+        int tempAllocSize = allocSize+increment;
+        Block<T, blockSize> *temp = new Block<T, blockSize>[tempAllocSize];
 
-private:
-    void reAlloc() {
-        allocSize += allocSize;
-        T *temp = new T[allocSize];
-        for (int i = 0; i < size; i++) {
-            temp[i] = array[i];
+        cout<<"INFO "<<size<<" : "<<allocSize<<" : "<<tempAllocSize<<endl;
+        for (int i = 0; i < allocSize; i++) {
+            cout<<"ITERATION "<<i<<endl;
+            for(int j = 0; j<blockSize;j++){
+                temp[i].items[j] = array[i].items[j];
+            }
+
         }
         array = temp;
-        delete[](temp);
+        allocSize = tempAllocSize;
+        /*for (int i = 0; i < allocSize; i++) {
+            delete temp[i];
+        }*/
+        //delete[](temp);
+        cout << "SIZE " << size <<" : AllocSize "<<allocSize<< endl;
     }
+
+
 
 };
 
