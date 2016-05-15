@@ -11,49 +11,56 @@ using namespace std;
 
 
 template<class T>
-class ListItem:T{
+class ListItem : T {
 private:
     T data;
     bool empty = true;
 public:
-    ListItem *nextItem;
-    ListItem *prevItem;
-    ListItem(){}
-    ListItem(T element){
+    ListItem() { }
+
+    ListItem(T element) {
         data = element;
     }
-    T getData(){
+
+    T getData() {
         return data;
     }
-    void setData(T element){
+
+    void setData(T element) {
         data = element;
         empty = false;
     }
-    bool isEmpty(){
+
+    bool isEmpty() {
         return empty;
     }
 
 };
 
 template<class T, int size>
-class Block{
+class Block {
 public:
     int length = 0;
     ListItem<T> *items = new ListItem<T>[size];
     Block *nextBlock;
     Block *prevBlock;
-    Block(){};
-    ListItem<T> get(int position){
+
+    Block() { };
+
+    ListItem<T> get(int position) {
         return items[position];
     }
-    Block getLast(){
+
+    Block getLast() {
         return items[length];
     }
-    int getSize(){
+
+    int getSize() {
         return length;
     }
-    void add(T element){
-        items[length].setData(element);
+
+    void add(T element, int position) {
+        items[position].setData(element);
         length++;
     }
 };
@@ -69,50 +76,39 @@ private:
 
 
 public:
-    LinkedList(){
-        array =  new Block<T, blockSize>[allocSize];
+    LinkedList() {
+        array = new Block<T, blockSize>[allocSize];
     }
 
-    void addFirst(T element) {
-        if(array[0].getSize()==blockSize)
-            blocksNumber++;
-        size++;
-        if(array[0].get(0).isEmpty()){
-            add(element);
-        } else{
-            shiftItems(0,0);
-            array[0].items[0] = {element};
-        }
-
+    void addBegin(T element) {
+        add(element, 0);
     }
 
-    void add(T element){
-        cout<<blocksNumber<<endl;
-        if(array[blocksNumber].getSize()==blockSize)
-            blocksNumber++;
-        cout<<blocksNumber<<endl;
-        array[blocksNumber].add(element);
-        size++;
+    void add(T element) {
+        add(element, size);
     }
 
     void add(T element, int position) {
-        int block = position/blockSize;
-        int item = position%blockSize;
-        cout<<"kuks "<<position-size<<endl;
 
-        bool needShift = position-size>0;
+        int block = position / blockSize;
+        int item = position % blockSize;
+        bool needShift = (position<size||position>allocSize)&&!array[block].items[item].isEmpty();
+        cout << "[begin add] to position [" << position << "] in [" << block << ", " << item << "]; size [" << size <<"]; needShift {"<<(needShift?"true":"false")<<"}";
+        cout << "  ("<<position<<"<"<<size<<" || "<<position<<">"<<allocSize<<")&&"<<(!array[block].items[item].isEmpty()?"true":"false")<<endl;
 
-        if(needShift){
-            size+=position-size;
-        } else{
+
+        if (needShift) {
             size++;
+        } else {
+            if(size<=position)
+                size=position+1;
         }
 
-        cout<<"add "<<block<<" : "<<item<<" : "<<position<<" : "<<size<<endl;
-        if(needShift)
-            shiftItems(block,item);
+        if (needShift)
+            shiftItems(block, item);
 
-        array[block].items[item] = {element};
+        array[block].add(element, item);
+        cout << "[begin add] to position [" << position << "] in [" << block << ", " << item << "]; size [" << size <<"]"<<endl<<endl;
     }
 
     void remove(int position) {
@@ -122,15 +118,19 @@ public:
     void clear() {
 
     }
-    void shiftItems(int fromBlock, int fromItem){
+
+    void shiftItems(int fromBlock, int fromItem) {
+        cout<<"call shift"<<endl;
         ListItem<T> temp, temp1;
-        for(int i = size-1, block, item; i>0; i--){
-            block = i/blockSize;
-            item = i%blockSize;
-            if(item-1==-1){
-                array[block].items[item] = array[block-1].items[blockSize-1];
-            } else{
-                array[block].items[item] = array[block].items[item-1];
+        for (int i = size - 1, block, item; i > 0; i--) {
+            block = i / blockSize;
+            item = i % blockSize;
+            //cout<<"shift "<<block<<" : "<<item<<endl;
+            if(item<fromItem) continue;
+            if (item - 1 == -1) {
+                array[block].items[item] = array[block - 1].items[blockSize - 1];
+            } else {
+                array[block].items[item] = array[block].items[item - 1];
             }
         }
     }
@@ -143,16 +143,18 @@ public:
 
 
     T get(int position) {
-        return array[position%blockSize].items[position].getData();
+        return array[position % blockSize].items[position].getData();
     }
-    Block<T, blockSize> getBlock(int position){
+
+    Block<T, blockSize> getBlock(int position) {
         return array[position];
     };
 
     int getSize() {
         return size;
     }
-    int getBlocks(){
+
+    int getBlocks() {
         return blocksNumber;
     }
 

@@ -24,7 +24,7 @@ void print(){
     for(int i = 0; i<size; i++){
         block = i/blockSize;
         item = i%blockSize;
-        cout<<"Block["<<block<<"] Item["<<item<<"]:\t"<<linkedList.getBlock(block).get(item).getData().key<<endl;
+        cout<<i<<": Block["<<block<<"] Item["<<item<<"]:\t"<<linkedList.getBlock(block).get(item).getData().key<<endl;
     }
     /*for(int i = 0; i<=linkedList.getSize(); i++){
         for(int j = 0; j<linkedList.getBlock(i).getSize(); j++){
@@ -34,8 +34,8 @@ void print(){
     }*/
 }
 int main() {
-    item.key=1337.111;
-    item.fieldFloat = 1337;
+    item.key=0;
+    item.fieldFloat = 10;
     item.fieldChar = 'l';
 
     for(int i=0; i<7;i++){
@@ -47,10 +47,12 @@ int main() {
     cout<<endl<<endl;
 
     item.key = 228;
-    linkedList.add(item, 2);
-    item.key = 322;
-    linkedList.addFirst(item);
-    linkedList.add(item, 15);
+    linkedList.add(item, 9);
+    linkedList.add(item, 9);
+    item.key = 332;
+    linkedList.addBegin(item);
+    linkedList.add(item, 14);
+
     print();
 
     return 0;

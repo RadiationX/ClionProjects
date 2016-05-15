@@ -13,8 +13,7 @@ int main() {
     locale::global(locale(""));
     locale loc("");
     cout.imbue(loc);
-    one();
-    /*int choice = 0;
+    int choice = 0;
     while (1) {
         cout << "Сгенерировать файл - 0" << endl << "Задание 1 - 1" << endl<< "Задание 2 - 2" <<endl << "Действие: ";
         cin >> choice;
@@ -31,7 +30,7 @@ int main() {
             default:
                 return 0;
         }
-    }*/
+    }
     return 0;
 }
 

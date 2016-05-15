@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -6,13 +7,16 @@ void one();
 
 void two();
 
+void three();
+
 int main() {
-    int position = 0;
+    /*int position = 0;
     printf("Номер задания: ");
     scanf("%d", &position);
     if (position == 1) one();
     else two();
-    system("pause");
+    system("pause");*/
+    three();
     return 0;
 }
 
@@ -93,4 +97,28 @@ void two() {
     fprintf(output_text, "%s\n", text);
     fclose(file);
     fclose(output_text);
+}
+
+void three() {
+    ifstream fin("text_3.txt", ios::in);
+    ofstream fout("out_3.txt", ios::out);
+    string text = "";
+    string temp;
+    string result;
+    int i = 0;
+    while(!fin.eof()){
+        fin>>temp;
+        if (i!=0) text+=" ";
+        text+=temp;
+        i++;
+    }
+
+    for (int i = 0; i < text.size(); i++){
+        if ((text[i] != ' ' && text[i + 1] != ' ' && (text[i - 1] == '\0' || text[i - 1] == ' ')) | text[i] == ' '){
+            result += text[i];
+        }
+    }
+    fout<<result;
+    fin.close();
+    fout.close();
 }
