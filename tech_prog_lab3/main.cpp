@@ -1,7 +1,7 @@
 #include <iostream>
 #include "LinkedList.h"
 
-#define blockSize 10
+
 using namespace std;
 
 
@@ -12,10 +12,22 @@ public:
     char fieldChar;
 };
 
-LinkedList<Item, blockSize> linkedList;
+LinkedList<Item> linkedList;
 
 
 int main() {
+    Item item;
+    item.key = 0;
+
+    for(int i = 0; i<64;i++){
+        item.key+=10;
+        linkedList.addBegin(item);
+        //linkedList.add(item);
+    }
+
+    cout<<endl<<"FINISH"<<endl;
+    linkedList.PrintData();
+
 
 
 

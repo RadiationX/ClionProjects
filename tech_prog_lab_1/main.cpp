@@ -89,6 +89,7 @@ int main() {
         for (int i = 0; i < tapeSize; i++) {
             cout<<"compare(i = "<<i<<"): "<<index[i]<<" < "<<tapeSize<<" && "<<minNumber<<" > "<<tapeArray[i][index[i]].numbers[selectIndex]<<" : "<<((index[i] < tapeSize && minNumber > tapeArray[i][index[i]].numbers[selectIndex])?"true":"false")<<endl;
             if (index[i] < tapeSize && minNumber > tapeArray[i][index[i]].numbers[selectIndex]) {
+                cout<<"MAYBE MIN? WAT? : "<<i<<" : "<<index[i]<<endl;
                 minIndex = i;
                 minNumber = tapeArray[i][index[i]].numbers[selectIndex];
             }
@@ -97,10 +98,11 @@ int main() {
         if (tapeArray[minIndex][index[minIndex]].numbers[selectIndex] == NULL_ELEMENT)
             k--;
         else{
-            cout<<"move to "<<k<<" : "<<tapeArray[minIndex][index[minIndex]].numbers[selectIndex]<<endl<<endl;
+            //cout<<"move to "<<k<<" : "<<tapeArray[minIndex][index[minIndex]].numbers[selectIndex]<<endl;
             mainArray[k] = tapeArray[minIndex][index[minIndex]];
         }
 
+        cout<<"SUKA INDEX ["<<index[minIndex]<<", "<<minIndex<<"]"<<endl<<endl;
         index[minIndex]++;
     }
 
