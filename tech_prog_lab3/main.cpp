@@ -19,10 +19,15 @@ int main() {
     Item item;
     item.key = 0;
 
-    for(int i = 0; i<64;i++){
+    for(int i = 0; i<9;i++){
         item.key+=10;
         linkedList.addBegin(item);
         //linkedList.add(item);
+    }
+    for(int i = 0; i<9;i++){
+        item.key+=10;
+        //linkedList.addBegin(item);
+        linkedList.add(item);
     }
 
     cout<<endl<<"FINISH"<<endl;
