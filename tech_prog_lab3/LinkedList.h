@@ -62,6 +62,14 @@ public:
 
     }
 
+
+    void addItem(T element, int position) {
+        items[position].setData(element);
+        if (length != size)
+            length++;
+
+    }
+
     void addBegin(ListItem<T> item) {
         for (int i = size - 1; i > 0; i--) {
             items[i] = items[i - 1];
@@ -136,6 +144,7 @@ public:
     }
 
     void add(T element, int position) {
+        cout << "---------------" << endl;
         int currentPosition = 0;
         int needBlockPos = position / blockSize;
         int needItemPos = position % blockSize;
@@ -186,7 +195,8 @@ public:
             }
             //PrintData();
             cout<<"Need Block: "<<needBlock<<"; Current Block: "<<endl;
-            shiftItems(needBlock, needItemPos);
+            if(position != listSize)
+                shiftItems(needBlock, needItemPos);
             /*if (needBlock->length == blockSize) {
 //PrintData();
 
@@ -194,7 +204,7 @@ public:
 
             }*/
 
-            //PrintData();
+            PrintData();
 
             cout<<"need block size "<<needBlock->length<<endl;
             cout<<"need block size "<<lastBlock->length<<endl;
@@ -204,25 +214,22 @@ public:
                 needBlock->addBegin(element);
                 firstBlock = needBlock;
             } else {
-                needBlock->addItem(element);
+                needBlock->addItem(element, needItemPos);
             }
-            if (position == listSize) {
-                //lastBlock = currentBlock;
-            }
-
         }
         listSize++;
+        cout << "---------------" << endl<<endl;
     }
 
     Block<T, blockSize> *getNeedBlock(Block<T, blockSize> *needBlock, int needBlockPosition){
         for(int i = 0; i<needBlockPosition; i++){
-            cout<<"need while"<<endl;
-            if(needBlock->next==NULL) break;
+            if(needBlock->next==NULL)
+                break;
             needBlock = needBlock->next;
-            cout<<"NEED BLOCK SUKA "<<(needBlock==NULL)<<endl;
         }
         return needBlock;
-    };
+    }
+    
     bool isEmpty() {
         return firstBlock == NULL && lastBlock == NULL;
     }
@@ -235,34 +242,21 @@ public:
 
     }
 
+    //Сдвиг элементов к концу
     void shiftItems(Block<T, blockSize> *fromBlock, int fromItem) {
-        cout << "call shift" << endl;
-        /*for (int i = listSize - 1, block, item; i > 0; i--) {
-            block = i / blockSize;
-            item = i % blockSize;
-            cout<<"shift "<<block<<" : "<<item<<endl;
-            if (item < fromItem) continue;
-            if (item == 0) {
-                array[block].items[item] = array[block - 1].items[blockSize - 1];
-            } else {
-                array[block].items[item] = array[block].items[item - 1];
-            }
-        }*/
         Block<T, blockSize> *block = lastBlock;
+        fromBlock = fromBlock==firstBlock?fromBlock:fromBlock->prev;
         while (block != fromBlock) {
-            cout << "while run" << endl;
             for (int i = blockSize - 1; i > -1; i--) {
-                cout << "item " << i << endl;
                 if (i == 0) {
-                    //if(block->prev==NULL) break;
+                    if(block->prev==NULL)
+                        break;
                     block->add(block->prev->items[blockSize - 1], i);
                 } else {
                     block->add(block->items[i - 1], i);
                 }
             }
-            cout << endl;
             block = block->prev;
-            if (block == NULL) break;
         }
     }
 
