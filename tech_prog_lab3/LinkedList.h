@@ -50,8 +50,8 @@ public:
     };
 
 
-    void addItem(T element, int position) {
-        items[position].setData(element);
+    void addItem(T element, int index) {
+        items[index].setData(element);
         if (length != size)
             length++;
 
@@ -66,18 +66,31 @@ public:
         items[0].setData(element);
     }
 
-    void add(ListItem<T> item, int position) {
-        if (items[position].isEmpty() && !item.isEmpty())
+    void move(ListItem<T> item, int index) {
+        if (items[index].isEmpty() && !item.isEmpty())
             length++;
-        items[position] = item;
+        items[index] = item;
     }
 
     int getSize() {
         return length;
     }
 
-    ListItem<T> get(int position) {
-        return items[position];
+    bool isEmpty() {
+        if (length == 0)
+            return true;
+
+        for (int i = 0; i < size; i++)
+            if (!items[i].isEmpty())
+                return false;
+
+        return true;
+    }
+
+
+    void remove(int index) {
+        ListItem<T> suka;
+        items[index] = suka;
     }
 };
 
@@ -101,16 +114,14 @@ public:
         add(element, listSize);
     }
 
-    void add(T element, int position) {
-        int currentPosition = 0;
-        int needBlockPos = position / blockSize;
-        int needItemPos = position % blockSize;
+    void add(T element, int index) {
+        int currentIndex = 0;
+        int needBlockPos = index / blockSize;
+        int needItemPos = index % blockSize;
         Block<T, blockSize> *needBlock;
 
-        if (position > listSize) {
-            cout << "NE VOTKNESH!!!" << endl;
+        if (indexOutOfRange(index))
             return;
-        }
 
         if (isEmpty()) {
             Block<T, blockSize> *newBlock = new Block<T, blockSize>;
@@ -132,10 +143,10 @@ public:
                     needBlock = getNeedBlock(firstBlock, needBlockPos);
                 }
             }
-            if (position != listSize)
-                shiftItems(needBlock, needItemPos);
+            if (index != listSize)
+                shiftItemsToEnd(needBlock, needItemPos);
 
-            if (position == 0) {
+            if (index == 0) {
                 needBlock->addBegin(element);
                 firstBlock = needBlock;
             } else {
@@ -149,22 +160,37 @@ public:
         return firstBlock == NULL && lastBlock == NULL;
     }
 
-    void remove(int position) {
-
+    void remove(int index) {
+        if (indexOutOfRange(index))
+            return;
+        getNeedBlock(firstBlock, index / blockSize)->remove(index % blockSize);
+        shiftItemsToStart(getNeedBlock(firstBlock, index / blockSize), index % blockSize);
+        cout << "EBAL V ROT RABOTAET " << lastBlock->isEmpty() << endl;
+        if (lastBlock->isEmpty()) {
+            lastBlock->prev->next = NULL;
+            Block<T, blockSize> *prev = lastBlock->prev;
+            delete (lastBlock->prev);
+            lastBlock = prev;
+        }
+        listSize--;
     }
 
     void clear() {
 
     }
 
-    int size(){
+    int size() {
         return listSize;
     }
 
-    T get(int position){
-        return getNeedBlock(firstBlock, position/blockSize)->items[position%blockSize].getData();
+    T get(int index) {
+        if (indexOutOfRange(index)) {
+            cout << "RETURN NEW EMPTY ELEMENT" << endl;
+            T empty;
+            return empty;
+        } else
+            return getNeedBlock(firstBlock, index / blockSize)->items[index % blockSize].getData();
     }
-
 
 
     //only for my item class
@@ -175,9 +201,12 @@ public:
         else {
             cout << "Begin block " << firstBlock << endl;
             Block<T, blockSize> *tmp = firstBlock;
+            int count = 0;
             while (tmp != NULL) {
                 for (int i = 0; i < blockSize; i++) {
-                    cout << "block[" << block << ", " << i << "] " << tmp->items[i].getData().key << endl;
+                    cout << count << "\t'" << tmp << "'-[" << block << ", " << i << "] " <<
+                    tmp->items[i].getData().key << endl;
+                    count++;
                 }
                 tmp = tmp->next;
                 block++;
@@ -185,6 +214,7 @@ public:
             cout << "End block " << lastBlock << endl;
         }
     }
+
     void printHex() {
 
         if (isEmpty())
@@ -208,10 +238,17 @@ public:
     }
 
 
-
 private:
-    Block<T, blockSize> *getNeedBlock(Block<T, blockSize> *needBlock, int needBlockPosition) {
-        for (int i = 0; i < needBlockPosition; i++) {
+    bool indexOutOfRange(int index) {
+        if (index < 0 || index > listSize) {
+            cout << "INDEX [" << index << "] OUT OF RANGE" << endl;
+            return true;
+        }
+        return false;
+    }
+
+    Block<T, blockSize> *getNeedBlock(Block<T, blockSize> *needBlock, int needBlockIndex) {
+        for (int i = 0; i < needBlockIndex; i++) {
             if (needBlock->next == NULL)
                 break;
             needBlock = needBlock->next;
@@ -220,7 +257,7 @@ private:
     }
 
     //Сдвиг элементов к концу
-    void shiftItems(Block<T, blockSize> *fromBlock, int fromItem) {
+    void shiftItemsToEnd(Block<T, blockSize> *fromBlock, int fromItem) {
         Block<T, blockSize> *block = lastBlock;
         fromBlock = fromBlock == firstBlock ? fromBlock : fromBlock->prev;
         while (block != fromBlock) {
@@ -228,12 +265,30 @@ private:
                 if (i == 0) {
                     if (block->prev == NULL)
                         break;
-                    block->add(block->prev->items[blockSize - 1], i);
+                    block->move(block->prev->items[blockSize - 1], i);
                 } else {
-                    block->add(block->items[i - 1], i);
+                    block->move(block->items[i - 1], i);
                 }
             }
             block = block->prev;
+        }
+    }
+
+    void shiftItemsToStart(Block<T, blockSize> *toBlock, int fromItem) {
+        Block<T, blockSize> *block = toBlock;
+        while (block != NULL) {
+            for (int i = 0; i < blockSize; i++) {
+                if (toBlock == block && i < fromItem)
+                    continue;
+                if (i == blockSize - 1) {
+                    if (block->next == NULL)
+                        break;
+                    block->move(block->next->items[0], i);
+                } else {
+                    block->move(block->items[i + 1], i);
+                }
+            }
+            block = block->next;
         }
     }
 };
