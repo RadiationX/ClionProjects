@@ -12,7 +12,7 @@ using namespace std;
 
 
 template<class T>
-class ListItem : T {
+class ListItem {
 private:
     T data;
     bool empty = true;
@@ -49,34 +49,12 @@ public:
         items = new ListItem<T>[size];
     };
 
-    void addItem(ListItem<T> item) {
-        items[length] = item;
-        if (length != size)
-            length++;
-    }
-
-    void addItem(T element) {
-        items[length].setData(element);
-        if (length != size)
-            length++;
-
-    }
-
 
     void addItem(T element, int position) {
         items[position].setData(element);
         if (length != size)
             length++;
 
-    }
-
-    void addBegin(ListItem<T> item) {
-        for (int i = size - 1; i > 0; i--) {
-            items[i] = items[i - 1];
-        }
-        if (length != size)
-            length++;
-        items[0] = item;
     }
 
     void addBegin(T element) {
@@ -89,11 +67,9 @@ public:
     }
 
     void add(ListItem<T> item, int position) {
-        if(items[position].isEmpty()&&!item.isEmpty())
+        if (items[position].isEmpty() && !item.isEmpty())
             length++;
         items[position] = item;
-
-
     }
 
     int getSize() {
@@ -111,13 +87,88 @@ private:
     Block<T, blockSize> *firstBlock = NULL;
     Block<T, blockSize> *lastBlock = NULL;
     int listSize = 0;
-    int blocksSize = 0;
+    int blocksNumber = 0;
 public:
     LinkedList() {
 
     }
 
-    void PrintData() {
+    void addBegin(T element) {
+        add(element, 0);
+    }
+
+    void add(T element) {
+        add(element, listSize);
+    }
+
+    void add(T element, int position) {
+        int currentPosition = 0;
+        int needBlockPos = position / blockSize;
+        int needItemPos = position % blockSize;
+        Block<T, blockSize> *needBlock;
+
+        if (position > listSize) {
+            cout << "NE VOTKNESH!!!" << endl;
+            return;
+        }
+
+        if (isEmpty()) {
+            Block<T, blockSize> *newBlock = new Block<T, blockSize>;
+            blocksNumber++;
+            firstBlock = newBlock;
+            lastBlock = newBlock;
+            newBlock->addItem(element, newBlock->length);
+        } else {
+            needBlock = getNeedBlock(firstBlock, needBlockPos);
+            if (listSize % blockSize == 0) {
+                if (lastBlock->length == blockSize) {
+                    Block<T, blockSize> *newBlock = new Block<T, blockSize>;
+                    blocksNumber++;
+
+                    lastBlock->next = newBlock;
+                    newBlock->prev = lastBlock;
+                    lastBlock = newBlock;
+
+                    needBlock = getNeedBlock(firstBlock, needBlockPos);
+                }
+            }
+            if (position != listSize)
+                shiftItems(needBlock, needItemPos);
+
+            if (position == 0) {
+                needBlock->addBegin(element);
+                firstBlock = needBlock;
+            } else {
+                needBlock->addItem(element, needItemPos);
+            }
+        }
+        listSize++;
+    }
+
+    bool isEmpty() {
+        return firstBlock == NULL && lastBlock == NULL;
+    }
+
+    void remove(int position) {
+
+    }
+
+    void clear() {
+
+    }
+
+    int size(){
+        return listSize;
+    }
+
+    T get(int position){
+        return getNeedBlock(firstBlock, position/blockSize)->items[position%blockSize].getData();
+    }
+
+
+
+    //only for my item class
+    void printData() {
         int block = 0;
         if (firstBlock == NULL)
             cout << "Список пуст.\n";
@@ -133,123 +184,49 @@ public:
             }
             cout << "End block " << lastBlock << endl;
         }
-    };
-
-    void addBegin(T element) {
-        add(element, 0);
     }
+    void printHex() {
 
-    void add(T element) {
-        add(element, listSize);
-    }
-
-    void add(T element, int position) {
-        cout << "---------------" << endl;
-        int currentPosition = 0;
-        int needBlockPos = position / blockSize;
-        int needItemPos = position % blockSize;
-        Block<T, blockSize> *needBlock;
-        cout<<"Block: "<<needBlockPos<<" Item: "<<needItemPos<<endl;
-
-
-        if (position > listSize) {
-            cout << "NE VOTKNESH!!!" << endl;
-            return;
-        }
-        Block<T, blockSize> *currentBlock;
-        if (isEmpty()) {
-            currentBlock = new Block<T, blockSize>;
-            firstBlock = currentBlock;
-            lastBlock = currentBlock;
-            currentBlock->addItem(element);
-            //blocksSize++;
-        } else {
-            int i = 0;
-            //currentBlock = firstBlock;
-            needBlock = firstBlock;
-            needBlock = getNeedBlock(needBlock, needBlockPos);
-
-            //cout << "Last Length: " << lastBlock->length << endl;
-            //cout << "Last BLASD% " << listSize % blockSize << endl;
-
-            if (listSize % blockSize == 0) {
-                if (lastBlock->length == blockSize) {
-                    cout << "Create New Block" << endl;
-                    for (int i = 0; i < 2; i++) {
-
-                    }
-                    Block<T, blockSize> *newBlock = new Block<T, blockSize>;
-
-                    lastBlock->next = newBlock;
-                    newBlock->prev = lastBlock;
-                    lastBlock = newBlock;
-
-                    cout<<"new block "<<newBlock->length<<endl;
-                    cout<<"last block "<<lastBlock->length<<endl;
-                    needBlock = firstBlock;
-                    needBlock = getNeedBlock(needBlock, needBlockPos);
-                } else {
-
+        if (isEmpty())
+            cout << "Список пуст.\n";
+        else {
+            int block = 0;
+            cout << "Begin block " << firstBlock << endl;
+            Block<T, blockSize> *tmp = firstBlock;
+            while (tmp != NULL) {
+                cout << "Block hex [" << tmp << "]" << endl;
+                for (int i = 0; i < blockSize; i++) {
+                    cout << "   Block[" << block << ", " << i << "] Item hex: [" << &tmp->items[i] << "] " <<
+                    (tmp->items[i].isEmpty() ? "empty" : "") << endl;
                 }
-
+                cout << endl;
+                tmp = tmp->next;
+                block++;
             }
-            //PrintData();
-            cout<<"Need Block: "<<needBlock<<"; Current Block: "<<endl;
-            if(position != listSize)
-                shiftItems(needBlock, needItemPos);
-            /*if (needBlock->length == blockSize) {
-//PrintData();
-
-
-
-            }*/
-
-            PrintData();
-
-            cout<<"need block size "<<needBlock->length<<endl;
-            cout<<"need block size "<<lastBlock->length<<endl;
-
-
-            if (position == 0) {
-                needBlock->addBegin(element);
-                firstBlock = needBlock;
-            } else {
-                needBlock->addItem(element, needItemPos);
-            }
+            cout << "End block " << lastBlock << endl;
         }
-        listSize++;
-        cout << "---------------" << endl<<endl;
     }
 
-    Block<T, blockSize> *getNeedBlock(Block<T, blockSize> *needBlock, int needBlockPosition){
-        for(int i = 0; i<needBlockPosition; i++){
-            if(needBlock->next==NULL)
+
+
+private:
+    Block<T, blockSize> *getNeedBlock(Block<T, blockSize> *needBlock, int needBlockPosition) {
+        for (int i = 0; i < needBlockPosition; i++) {
+            if (needBlock->next == NULL)
                 break;
             needBlock = needBlock->next;
         }
         return needBlock;
     }
-    
-    bool isEmpty() {
-        return firstBlock == NULL && lastBlock == NULL;
-    }
-
-    void remove(int position) {
-
-    }
-
-    void clear() {
-
-    }
 
     //Сдвиг элементов к концу
     void shiftItems(Block<T, blockSize> *fromBlock, int fromItem) {
         Block<T, blockSize> *block = lastBlock;
-        fromBlock = fromBlock==firstBlock?fromBlock:fromBlock->prev;
+        fromBlock = fromBlock == firstBlock ? fromBlock : fromBlock->prev;
         while (block != fromBlock) {
             for (int i = blockSize - 1; i > -1; i--) {
                 if (i == 0) {
-                    if(block->prev==NULL)
+                    if (block->prev == NULL)
                         break;
                     block->add(block->prev->items[blockSize - 1], i);
                 } else {
@@ -259,7 +236,6 @@ public:
             block = block->prev;
         }
     }
-
 };
 
 
