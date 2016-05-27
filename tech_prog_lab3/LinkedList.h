@@ -49,16 +49,14 @@ public:
         items = new ListItem<T>[size];
     };
 
-
     void addItem(T element, int index) {
         items[index].setData(element);
         if (length != size)
             length++;
-
     }
 
     void move(ListItem<T> item, int index) {
-        if (items[index].isEmpty() && !item.isEmpty())
+        if (items[index].isEmpty() && !item.isEmpty() && length != size)
             length++;
         items[index] = item;
     }
@@ -78,10 +76,9 @@ public:
         return true;
     }
 
-
     void remove(int index) {
-        ListItem<T> suka;
-        items[index] = suka;
+        ListItem<T> temp;
+        items[index] = temp;
     }
 };
 
@@ -93,9 +90,12 @@ private:
     const ListItem<T> emptyItem;
     int listSize = 0;
     int blocksNumber = 0;
-public:
-    LinkedList() {
 
+    Block<T, blockSize> *lastBlockSeq = NULL;
+    int lastItemIndexSeq = 0;
+public:
+    ~LinkedList() {
+        clear();
     }
 
     void addBegin(T element) {
@@ -139,9 +139,6 @@ public:
                 shiftItemsToEnd(needBlock, needItemPos);
 
             needBlock->addItem(element, needItemPos);
-            //maybe not necessary
-            /*if (index == 0)
-                firstBlock = needBlock;*/
         }
         listSize++;
     }
@@ -166,7 +163,16 @@ public:
     }
 
     void clear() {
-
+        Block<T, blockSize> *block = firstBlock;
+        while (block != NULL) {
+            delete[](block->items);
+            delete (block);
+            block = block->next;
+        }
+        firstBlock = NULL;
+        lastBlock = NULL;
+        listSize = 0;
+        blocksNumber = 0;
     }
 
     int size() {
@@ -178,12 +184,17 @@ public:
             cout << "RETURN NEW EMPTY ELEMENT" << endl;
             T empty;
             return empty;
-        } else
-            return getNeedBlock(firstBlock, index / blockSize)->items[index % blockSize].getData();
+        }
+        return getNeedBlock(firstBlock, index / blockSize)->items[index % blockSize].getData();
     }
 
+    void set(T element, int index) {
+        if (indexOutOfRange(index))
+            return;
+        getNeedBlock(firstBlock, index / blockSize)->items[index % blockSize].setData(element);
+    }
 
-    //only for my item class
+    //only for my "Item" class
     void printData() {
         int block = 0;
         if (firstBlock == NULL)
@@ -228,6 +239,29 @@ public:
     }
 
 
+    //Sequential access
+    void startSeqAccess() {
+        lastBlockSeq = firstBlock;
+        lastItemIndexSeq = 0;
+    }
+
+    bool get(T &element) {
+        if (lastItemIndexSeq >= lastBlockSeq->length) {
+            if (lastBlockSeq->next == NULL)
+                return false;
+            lastBlockSeq = lastBlockSeq->next;
+            lastItemIndexSeq = 0;
+        }
+        element = lastBlockSeq->items[lastItemIndexSeq].getData();
+        lastItemIndexSeq++;
+        return true;
+    }
+
+    void stopSeqAccess() {
+        lastBlockSeq = NULL;
+        lastItemIndexSeq = 0;
+    }
+
 private:
     bool indexOutOfRange(int index) {
         if (index < 0 || index > listSize) {
@@ -238,11 +272,19 @@ private:
     }
 
     Block<T, blockSize> *getNeedBlock(Block<T, blockSize> *needBlock, int needBlockIndex) {
-        for (int i = 0; i < needBlockIndex; i++) {
-            if (needBlock->next == NULL)
-                break;
-            needBlock = needBlock->next;
-        }
+        //По индексу вычисляем откуда "выгоднее" искать элемент
+        if (needBlockIndex <= blocksNumber / 2)
+            for (int i = 0; i < needBlockIndex; i++) {
+                if (needBlock->next == NULL)
+                    break;
+                needBlock = needBlock->next;
+            }
+        else
+            for (int i = needBlockIndex - 1; i >= 0; i--) {
+                if (needBlock->prev == NULL)
+                    break;
+                needBlock = needBlock->prev;
+            }
         return needBlock;
     }
 
