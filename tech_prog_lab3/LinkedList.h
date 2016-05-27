@@ -57,15 +57,6 @@ public:
 
     }
 
-    void addBegin(T element) {
-        for (int i = size - 1; i > 0; i--) {
-            items[i] = items[i - 1];
-        }
-        if (length != size)
-            length++;
-        items[0].setData(element);
-    }
-
     void move(ListItem<T> item, int index) {
         if (items[index].isEmpty() && !item.isEmpty())
             length++;
@@ -99,6 +90,7 @@ class LinkedList {
 private:
     Block<T, blockSize> *firstBlock = NULL;
     Block<T, blockSize> *lastBlock = NULL;
+    const ListItem<T> emptyItem;
     int listSize = 0;
     int blocksNumber = 0;
 public:
@@ -132,7 +124,7 @@ public:
         } else {
             needBlock = getNeedBlock(firstBlock, needBlockPos);
             if (listSize % blockSize == 0) {
-                if (lastBlock->length == blockSize) {
+                if (lastBlock->length >= blockSize) {
                     Block<T, blockSize> *newBlock = new Block<T, blockSize>;
                     blocksNumber++;
 
@@ -146,12 +138,10 @@ public:
             if (index != listSize)
                 shiftItemsToEnd(needBlock, needItemPos);
 
-            if (index == 0) {
-                needBlock->addBegin(element);
-                firstBlock = needBlock;
-            } else {
-                needBlock->addItem(element, needItemPos);
-            }
+            needBlock->addItem(element, needItemPos);
+            //maybe not necessary
+            /*if (index == 0)
+                firstBlock = needBlock;*/
         }
         listSize++;
     }
@@ -165,12 +155,12 @@ public:
             return;
         getNeedBlock(firstBlock, index / blockSize)->remove(index % blockSize);
         shiftItemsToStart(getNeedBlock(firstBlock, index / blockSize), index % blockSize);
-        cout << "EBAL V ROT RABOTAET " << lastBlock->isEmpty() << endl;
         if (lastBlock->isEmpty()) {
             lastBlock->prev->next = NULL;
             Block<T, blockSize> *prev = lastBlock->prev;
             delete (lastBlock->prev);
             lastBlock = prev;
+            blocksNumber--;
         }
         listSize--;
     }
@@ -197,9 +187,9 @@ public:
     void printData() {
         int block = 0;
         if (firstBlock == NULL)
-            cout << "Список пуст.\n";
+            cout << "List is empty" << endl;
         else {
-            cout << "Begin block " << firstBlock << endl;
+            cout << "Begin block {" << firstBlock << "}" << endl;
             Block<T, blockSize> *tmp = firstBlock;
             int count = 0;
             while (tmp != NULL) {
@@ -211,17 +201,17 @@ public:
                 tmp = tmp->next;
                 block++;
             }
-            cout << "End block " << lastBlock << endl;
+            cout << "End block {" << lastBlock << "}" << endl;
         }
     }
 
     void printHex() {
 
         if (isEmpty())
-            cout << "Список пуст.\n";
+            cout << "List is empty" << endl;
         else {
             int block = 0;
-            cout << "Begin block " << firstBlock << endl;
+            cout << "Begin block {" << firstBlock << "}" << endl;
             Block<T, blockSize> *tmp = firstBlock;
             while (tmp != NULL) {
                 cout << "Block hex [" << tmp << "]" << endl;
@@ -233,7 +223,7 @@ public:
                 tmp = tmp->next;
                 block++;
             }
-            cout << "End block " << lastBlock << endl;
+            cout << "End block {" << lastBlock << "}" << endl;
         }
     }
 
@@ -259,9 +249,10 @@ private:
     //Сдвиг элементов к концу
     void shiftItemsToEnd(Block<T, blockSize> *fromBlock, int fromItem) {
         Block<T, blockSize> *block = lastBlock;
-        fromBlock = fromBlock == firstBlock ? fromBlock : fromBlock->prev;
-        while (block != fromBlock) {
-            for (int i = blockSize - 1; i > -1; i--) {
+        while (block != fromBlock->prev) {
+            for (int i = blockSize - 1; i >= 0; i--) {
+                if (fromBlock == block && i < fromItem)
+                    continue;
                 if (i == 0) {
                     if (block->prev == NULL)
                         break;
@@ -274,6 +265,7 @@ private:
         }
     }
 
+    //Сдвиг элементов к началу
     void shiftItemsToStart(Block<T, blockSize> *toBlock, int fromItem) {
         Block<T, blockSize> *block = toBlock;
         while (block != NULL) {
@@ -281,8 +273,10 @@ private:
                 if (toBlock == block && i < fromItem)
                     continue;
                 if (i == blockSize - 1) {
-                    if (block->next == NULL)
+                    if (block->next == NULL) {
+                        block->move(emptyItem, i);
                         break;
+                    }
                     block->move(block->next->items[0], i);
                 } else {
                     block->move(block->items[i + 1], i);

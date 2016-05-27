@@ -7,9 +7,9 @@ using namespace std;
 
 class Item {
 public:
-    float key = NULL;
-    float fieldFloat = NULL;
-    char fieldChar = NULL;
+    float key = 0;
+    float fieldFloat = 0;
+    char fieldChar = '\0';
 };
 
 LinkedList<Item> linkedList;
@@ -18,44 +18,19 @@ LinkedList<Item> linkedList;
 int main() {
     Item item;
     item.key = 0;
+    //linkedList.addBegin(item);
 
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 15; i++) {
         item.key += 10;
         linkedList.addBegin(item);
         //linkedList.add(item);
+        //linkedList.add(item, 1);
+        //linkedList.printData();
     }
-    /*for(int i = 0; i<11;i++){
-        item.key+=10;
-        //linkedList.addBegin(item);
-        linkedList.add(item, i);
-    }*/
-
-    //linkedList.printData();
-    /*item.key = 332;
-    linkedList.add(item, 8);
-    linkedList.addBegin(item);
-    linkedList.addBegin(item);
-    linkedList.addBegin(item);
-    linkedList.addBegin(item);
-    linkedList.addBegin(item);
-    linkedList.addBegin(item);
-    linkedList.addBegin(item);
-    linkedList.addBegin(item);
-    linkedList.addBegin(item);
-    item.key = 1337;
-    linkedList.add(item);*/
-
-
+    linkedList.printData();
+    linkedList.add(item, 7);
 
     cout << endl << "FINISH" << endl;
-    linkedList.printData();
-
-    cout << "LOL" << endl;
-    /*for(int i = 0; i<linkedList.size();i++){
-        cout<<linkedList.get(i).key<<endl;
-    }*/
-    linkedList.remove(0);
-    /*linkedList.get(-1);*/
     linkedList.printData();
 
 
