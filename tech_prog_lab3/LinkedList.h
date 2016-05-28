@@ -56,7 +56,7 @@ public:
     }
 
     void move(ListItem<T> item, int index) {
-        if (items[index].isEmpty() && !item.isEmpty() && length != size)
+        if (items[index].isEmpty() && !item.isEmpty() && index == length && length > size)
             length++;
         items[index] = item;
     }
@@ -179,6 +179,14 @@ public:
         return listSize;
     }
 
+    int blocks() {
+        return blocksNumber;
+    }
+
+    int getBlockSize() {
+        return blockSize;
+    }
+
     T get(int index) {
         if (indexOutOfRange(index)) {
             cout << "RETURN NEW EMPTY ELEMENT" << endl;
@@ -193,51 +201,6 @@ public:
             return;
         getNeedBlock(firstBlock, index / blockSize)->items[index % blockSize].setData(element);
     }
-
-    //only for my "Item" class
-    void printData() {
-        int block = 0;
-        if (firstBlock == NULL)
-            cout << "List is empty" << endl;
-        else {
-            cout << "Begin block {" << firstBlock << "}" << endl;
-            Block<T, blockSize> *tmp = firstBlock;
-            int count = 0;
-            while (tmp != NULL) {
-                for (int i = 0; i < blockSize; i++) {
-                    cout << count << "\t'" << tmp << "'-[" << block << ", " << i << "] " <<
-                    tmp->items[i].getData().key << endl;
-                    count++;
-                }
-                tmp = tmp->next;
-                block++;
-            }
-            cout << "End block {" << lastBlock << "}" << endl;
-        }
-    }
-
-    void printHex() {
-
-        if (isEmpty())
-            cout << "List is empty" << endl;
-        else {
-            int block = 0;
-            cout << "Begin block {" << firstBlock << "}" << endl;
-            Block<T, blockSize> *tmp = firstBlock;
-            while (tmp != NULL) {
-                cout << "Block hex [" << tmp << "]" << endl;
-                for (int i = 0; i < blockSize; i++) {
-                    cout << "   Block[" << block << ", " << i << "] Item hex: [" << &tmp->items[i] << "] " <<
-                    (tmp->items[i].isEmpty() ? "empty" : "") << endl;
-                }
-                cout << endl;
-                tmp = tmp->next;
-                block++;
-            }
-            cout << "End block {" << lastBlock << "}" << endl;
-        }
-    }
-
 
     //Sequential access
     void startSeqAccess() {
