@@ -79,6 +79,7 @@ public:
     void remove(int index) {
         ListItem<T> temp;
         items[index] = temp;
+        length--;
     }
 };
 
@@ -163,6 +164,10 @@ public:
     }
 
     void clear() {
+        if(isEmpty()){
+            cout<<"List already empty"<<endl;
+            return;
+        }
         Block<T, blockSize> *block = firstBlock;
         while (block != NULL) {
             delete[](block->items);
@@ -209,6 +214,10 @@ public:
     }
 
     bool get(T &element) {
+        if(isEmpty()){
+            cout<<"List is empty"<<endl;
+            return false;
+        }
         if (lastItemIndexSeq >= lastBlockSeq->length) {
             if (lastBlockSeq->next == NULL)
                 return false;

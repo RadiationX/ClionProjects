@@ -6,20 +6,20 @@
 using namespace std;
 int N;
 
-struct generalStruct {
+struct generalCat {
     float key;
     float keyArr[L];
     char keyChar[L];
 };
-struct floatStruct {
+struct floatCat {
     float key;
     int index;
 };
-struct floatArrStruct {
+struct floatArrCat {
     float keyArr[L];
     int index;
 };
-struct charArrStruct {
+struct charArrCat {
     char keyArr[L];
     int index;
 };
@@ -27,43 +27,36 @@ struct charArrStruct {
 template<typename T>
 void sortSimple(T *array, int count);
 
-template<typename T>
-void sortArray(T *array, int count);
-
 template<typename T, typename A>
 int *searchArray(const T *array, const A arg, int &resultSize);
 
 template<typename T, typename A>
-int searchSimple(const T *array, const A arg);
-
-template<typename T, typename A>
-void copyArray(const T *from, const A *to);
+int *searchSimple(const T *array, const A arg, int &resultSize);
 
 
 int main() {
     srand(time(NULL));
 
-    cout << "Введите количество элементов: ";
+    cout << "Enter number of elements: ";
     cin >> N;
-    cout << endl;
 
-    generalStruct *general = new generalStruct[N];
-    //Справочники
-    floatStruct *catFloat = new floatStruct[N];
-    floatArrStruct *catArrFloat = new floatArrStruct[N];
-    charArrStruct *catArrChar = new charArrStruct[N];
+    generalCat *general = new generalCat[N];
 
-    int n = 0;
-    int *resultIndexes = new int[N];
+    //Catalogs
+    floatCat *catFloat = new floatCat[N];
+    floatArrCat *catArrFloat = new floatArrCat[N];
+    charArrCat *catArrChar = new charArrCat[N];
 
     for (int i = 0; i < N; i++) {
-        general[i].key = floor(((90) * ((float) rand() / RAND_MAX)) + 10);
+        catFloat[i].key = general[i].key = floor(((90) * ((float) rand() / RAND_MAX)) + 10);
         for (int j = 0; j < L; j++) {
-            general[i].keyArr[j] = floor(((90) * ((float) rand() / RAND_MAX)) + 10);
-            general[i].keyChar[j] = 'a' + (char) (rand() % 26);
+            catArrFloat[i].keyArr[j] = general[i].keyArr[j] = floor(((90) * ((float) rand() / RAND_MAX)) + 10);
+            catArrChar[i].keyArr[j] = general[i].keyChar[j] = 'a' + (char) (rand() % 26);
         }
+        catFloat[i].index = catArrFloat[i].index = catArrChar[i].index = i;
     }
-    cout << "Неотсортированные данные:" << endl;
+
+    cout << endl << "Initial data:" << endl;
     for (int i = 0; i < N; i++) {
         cout << "{" << general[i].key << ", [";
         for (int j = 0; j < L; j++)
@@ -73,136 +66,72 @@ int main() {
             cout << general[i].keyChar[j] << (j == L - 1 ? "" : " ");
         cout << "]}" << endl;
     }
-    cout << endl;
 
-    //Заполнение справочников
-    for (int i = 0; i < N; i++) {
-        catFloat[i].key = general[i].key;
-        for (int j = 0; j < L; j++) {
-            catArrFloat[i].keyArr[j] = general[i].keyArr[j];
-            catArrChar[i].keyArr[j] = general[i].keyChar[j];
-        }
-        catFloat[i].index = catArrFloat[i].index = catArrChar[i].index = i;
-    }
-
-    //Сортировка справочников
     sortSimple(catFloat, N);
-    /*sortArray(catArrFloat, N);
-    sortArray(catArrChar, N);*/
 
-    //Основной массив теперь "отсортирован"
-    for (int i = 0; i < N; i++) {
-        general[i].key = catFloat[i].key;
-        for (int j = 0; j < L; j++) {
-            general[i].keyArr[j] = catArrFloat[i].keyArr[j];
-            general[i].keyChar[j] = catArrChar[i].keyArr[j];
-        }
-        catFloat[i].index = catArrFloat[i].index = catArrChar[i].index = i;
-    }
-
-    cout << "Отсортированные данные:" << endl;
-    for (int i = 0; i < N; i++) {
-        cout << "{" << general[i].key << ", [";
-        for (int j = 0; j < L; j++)
-            cout << general[i].keyArr[j] << (j == L - 1 ? "" : " ");
-        cout << "], [";
-        for (int j = 0; j < L; j++)
-            cout << general[i].keyChar[j] << (j == L - 1 ? "" : " ");
-        cout << "]}" << endl;
-    }
+    //SEARCH
+    float argFloat;
+    cout << endl << "Search by field float: ";
+    cin >> argFloat;
+    int sizeResFloat = 0;
+    int *resFloat = searchSimple(catFloat, argFloat, sizeResFloat);
 
 
-    cout << endl;
-    float arg1;
-    cout << "Поиск по float: ";
-    cin >> arg1;
-
-    int resFloat = searchSimple(catFloat, arg1);
-    if (resFloat != -1) {
-        resultIndexes[n] = resFloat;
-        n++;
-    }
-    cout << "result " << resFloat << endl;
-
-    cout << endl;
-
-    float arg2[L];
-    cout << "Поиск по int[" << L << "]: " << endl;
+    float argFloarArr[L];
+    cout << endl << "Search by field int[" << L << "]: " << endl;
     for (int k = 0; k < L; k++) {
-        cout << "Введите число " << k << ": ";
-        cin >> arg2[k];
+        cout << "Enter number " << k << ": ";
+        cin >> argFloarArr[k];
     }
-
     int sizeResFloatArr = 0;
-    int *resFloatArr = searchArray(catArrFloat, arg2, sizeResFloatArr);
-
-    for (int i = 0; i < sizeResFloatArr; i++) {
-        cout << "result " << resFloatArr[i] << endl;
-    }
+    int *resFloatArr = searchArray(catArrFloat, argFloarArr, sizeResFloatArr);
 
 
-    char arg3[L];
-    cout << "Поиск по char[" << L << "]: " << endl;
+    char argCharArr[L];
+    cout << endl << "Search by field char[" << L << "]: " << endl;
     for (int k = 0; k < L; k++) {
-        cout << "Введите букву " << k << ": ";
-        cin >> arg3[k];
+        cout << "Enter symbol " << k << ": ";
+        cin >> argCharArr[k];
     }
     int sizeResCharArr = 0;
-    int *resCharArr = searchArray(catArrChar, arg3, sizeResCharArr);
+    int *resCharArr = searchArray(catArrChar, argCharArr, sizeResCharArr);
 
-    for (int i = 0; i < sizeResCharArr; i++) {
-        cout << "result " << resCharArr[i] << endl;
-    }
 
-    if (resFloat == -1 | sizeResFloatArr == 0 | sizeResCharArr == 0) {
-        cout << "Нет совпадений." << endl;
+    //Print result
+    cout << endl;
+    if (sizeResFloat == 0 | sizeResFloatArr == 0 | sizeResCharArr == 0) {
+        cout << "Nothing found" << endl;
     } else {
-        bool found = false;
-        for (int i = 0; i < sizeResFloatArr; i++) {
-            if (resFloatArr[i] == resFloat) {
-                found = true;
-                break;
-            }
-        }
-        if (found) {
-            for (int i = 0; i < sizeResCharArr; i++) {
-                if (resCharArr[i] == resFloat) {
-                    found = true;
-                    break;
+        int n = 0;
+        int *resultIndexes = new int[N];
+
+        for (int i = 0; i < sizeResFloat; i++) {
+            for (int j = 0; j < sizeResFloatArr; j++) {
+                for (int k = 0; k < sizeResCharArr; k++) {
+                    if (resFloat[i] == resFloatArr[j] && resFloat[i] == resCharArr[k]) {
+                        resultIndexes[n] = resFloat[i];
+                        n++;
+                    }
                 }
             }
         }
 
-        if (found) {
-            cout << "Совпадение: " << resFloat << endl;
+        if (n != 0) {
+            cout << "Founded elements ("<<n<<"):" << endl;
+            for (int i = 0; i < n; i++) {
+                cout << "{" << general[resultIndexes[i]].key << ", [";
+                for (int j = 0; j < L; j++)
+                    cout << general[resultIndexes[i]].keyArr[j] << (j == L - 1 ? "" : " ");
+                cout << "], [";
+                for (int j = 0; j < L; j++)
+                    cout << general[resultIndexes[i]].keyChar[j] << (j == L - 1 ? "" : " ");
+                cout << "]}" << endl;
+            }
         } else {
-            cout << "Нет совпадений" << endl;
+            cout << "Nothing found" << endl;
         }
     }
-
-    /*cout << endl;
-
-    //cout<<resFloat<<" : "<< resFloatArr<<" : "<<resultCharArray<<endl;
-    if (n == 0)
-        cout << "Нет совпадений." << endl;
-    else {
-        cout << "Совпадения (" << n << "): " << endl;
-        for (int i = 0; i < n; i++) {
-            cout << "{" << general[resultIndexes[i]].key << ", [";
-            for (int j = 0; j < L; j++)
-                cout << general[resultIndexes[i]].keyArr[j] << (j == L - 1 ? "" : " ");
-            cout << "], [";
-            for (int j = 0; j < L; j++)
-                cout << general[resultIndexes[i]].keyChar[j] << (j == L - 1 ? "" : " ");
-            cout << "]}" << endl;
-        }
-    }*/
     return 0;
-}
-
-template<typename T, typename A>
-void copyArray(const T *from, const A *to) {
-    for (int i = 0; i < N; to[i] = from[i], i++);
 }
 
 template<typename T>
@@ -217,30 +146,21 @@ void sortSimple(T *array, int count) {
             }
 }
 
-template<typename T>
-void sortArray(T *array) {
-    int temp;
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < L; j++)
-            for (int k = 0; k < L; k++)
-                if (array[i].keyArr[j] < array[i].keyArr[k]) {
-                    temp = array[i].keyArr[j];
-                    array[i].keyArr[j] = array[i].keyArr[k];
-                    array[i].keyArr[k] = temp;
-                }
-}
-
 template<typename T, typename A>
-int searchSimple(const T *array, const A arg) {
+int *searchSimple(const T *array, const A arg, int &resultSize) {
     int resIndex = -1,
             left = 0,
             right = N,
             middle;
 
+    resultSize = 0;
+    int *result = new int[N];
     while (left != right) {
         middle = (left + right) / 2;
         if (arg == array[middle].key) {
-            resIndex = middle;
+            resIndex = array[middle].index;
+            result[resultSize] = resIndex;
+            resultSize++;
             break;
         }
         if (arg > array[middle].key)
@@ -248,11 +168,28 @@ int searchSimple(const T *array, const A arg) {
         else
             right = middle;
     }
-    if (arg == array[right].key)
-        resIndex = right;
-    if (arg == array[left].key)
-        resIndex = left;
-    return resIndex;
+    if (resIndex != -1) {
+        //Find nearest
+        while (arg == array[resIndex + 1].key && resIndex < right) {
+            result[resultSize] = array[resIndex + 1].index;
+            resultSize++;
+            resIndex++;
+        }
+        resIndex = result[0];
+        while (arg == array[resIndex - 1].key && resIndex >= left) {
+            result[resultSize] = array[resIndex - 1].index;
+            resultSize++;
+            resIndex--;
+        }
+    } else {
+        if (arg == array[right].key)
+            resIndex = array[right].index;
+        if (arg == array[left].key)
+            resIndex = array[left].index;
+        result[resultSize] = resIndex;
+        resultSize++;
+    }
+    return result;
 }
 
 template<typename T, typename A>

@@ -88,7 +88,6 @@ int main() {
                 return 0;
             default:
                 cout << error << endl;
-                choose = -1;
                 break;
         }
     }
@@ -130,6 +129,10 @@ void addPos() {
 }
 
 void remove() {
+    if(list.isEmpty()){
+        cout<<"\nList is empty\n"<<endl;
+        return;
+    }
     int index = 0;
     cout << "\nREMOVE\n";
     cout << "Position: ";
@@ -138,6 +141,10 @@ void remove() {
 }
 
 void change() {
+    if(list.isEmpty()){
+        cout<<"\nList is empty\n"<<endl;
+        return;
+    }
     int index = 0;
     cout << "\nCHANGE\n";
     cout << "Position: ";
@@ -146,6 +153,10 @@ void change() {
 }
 
 void clear() {
+    if(list.isEmpty()){
+        cout<<"\nList already empty\n"<<endl;
+        return;
+    }
     list.clear();
 }
 
@@ -155,6 +166,10 @@ void printItem(Item item, int i) {
 }
 
 void search() {
+    if(list.isEmpty()){
+        cout<<"\nList is empty\n"<<endl;
+        return;
+    }
     Item item, temp;
     item = newItem("SEARCH");
     int i = 0;
@@ -173,6 +188,10 @@ void search() {
 }
 
 void print() {
+    if(list.isEmpty()){
+        cout<<"\nList is empty\n"<<endl;
+        return;
+    }
     int i = 0;
     list.startSeqAccess();
     Item item;
