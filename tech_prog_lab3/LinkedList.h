@@ -1,7 +1,3 @@
-//
-// Created by radiationx on 21.04.16.
-//
-
 #ifndef TECH_PROG_LAB3_LINKEDLIST_H
 #define TECH_PROG_LAB3_LINKEDLIST_H
 #define blockSize 4
@@ -19,16 +15,16 @@ private:
 public:
     ListItem() { }
 
-    ListItem(T element) {
-        data = element;
+    ListItem(T item) {
+        data = item;
     }
 
     T getData() {
         return data;
     }
 
-    void setData(T element) {
-        data = element;
+    void setData(T item) {
+        data = item;
         empty = false;
     }
 
@@ -49,14 +45,14 @@ public:
         items = new ListItem<T>[size];
     };
 
-    void addItem(T element, int index) {
-        items[index].setData(element);
+    void addItem(T item, int index) {
+        items[index].setData(item);
         if (length != size)
             length++;
     }
 
     void move(ListItem<T> item, int index) {
-        if (items[index].isEmpty() && !item.isEmpty() && index == length && length > size)
+        if (items[index].isEmpty() && !item.isEmpty() && size > length)
             length++;
         items[index] = item;
     }
@@ -66,8 +62,8 @@ public:
     }
 
     bool isEmpty() {
-        if (length == 0)
-            return true;
+        if (length > 0)
+            return false;
 
         for (int i = 0; i < size; i++)
             if (!items[i].isEmpty())
@@ -99,15 +95,15 @@ public:
         clear();
     }
 
-    void addBegin(T element) {
-        add(element, 0);
+    void addBegin(T item) {
+        add(item, 0);
     }
 
-    void add(T element) {
-        add(element, listSize);
+    void add(T item) {
+        add(item, listSize);
     }
 
-    void add(T element, int index) {
+    void add(T item, int index) {
         int currentIndex = 0;
         int needBlockPos = index / blockSize;
         int needItemPos = index % blockSize;
@@ -121,11 +117,11 @@ public:
             blocksNumber++;
             firstBlock = newBlock;
             lastBlock = newBlock;
-            newBlock->addItem(element, newBlock->length);
+            newBlock->addItem(item, newBlock->getSize());
         } else {
             needBlock = getNeedBlock(firstBlock, needBlockPos);
             if (listSize % blockSize == 0) {
-                if (lastBlock->length >= blockSize) {
+                if (lastBlock->getSize() >= blockSize) {
                     Block<T, blockSize> *newBlock = new Block<T, blockSize>;
                     blocksNumber++;
 
@@ -139,7 +135,10 @@ public:
             if (index != listSize)
                 shiftItemsToEnd(needBlock, needItemPos);
 
-            needBlock->addItem(element, needItemPos);
+            if (index == listSize)
+                needBlock = lastBlock;
+
+            needBlock->addItem(item, needItemPos);
         }
         listSize++;
     }
@@ -151,21 +150,24 @@ public:
     void remove(int index) {
         if (indexOutOfRange(index))
             return;
-        getNeedBlock(firstBlock, index / blockSize)->remove(index % blockSize);
-        shiftItemsToStart(getNeedBlock(firstBlock, index / blockSize), index % blockSize);
+
+        Block<T, blockSize> *needBlock = getNeedBlock(firstBlock, index / blockSize);
+        needBlock->remove(index % blockSize);
+        shiftItemsToStart(needBlock, index % blockSize);
+        lastBlock->length--;
         if (lastBlock->isEmpty()) {
-            lastBlock->prev->next = NULL;
             Block<T, blockSize> *prev = lastBlock->prev;
-            delete (lastBlock->prev);
+            delete (lastBlock);
             lastBlock = prev;
+            lastBlock->next = NULL;
             blocksNumber--;
         }
         listSize--;
     }
 
     void clear() {
-        if(isEmpty()){
-            cout<<"List already empty"<<endl;
+        if (isEmpty()) {
+            cout << "List already empty" << endl;
             return;
         }
         Block<T, blockSize> *block = firstBlock;
@@ -201,10 +203,10 @@ public:
         return getNeedBlock(firstBlock, index / blockSize)->items[index % blockSize].getData();
     }
 
-    void set(T element, int index) {
+    void set(T item, int index) {
         if (indexOutOfRange(index))
             return;
-        getNeedBlock(firstBlock, index / blockSize)->items[index % blockSize].setData(element);
+        getNeedBlock(firstBlock, index / blockSize)->items[index % blockSize].setData(item);
     }
 
     //Sequential access
@@ -213,18 +215,31 @@ public:
         lastItemIndexSeq = 0;
     }
 
-    bool get(T &element) {
-        if(isEmpty()){
-            cout<<"List is empty"<<endl;
+    bool get(T &item) {
+        return get(item, false);
+    }
+
+    bool get(T &item, bool printBlock) {
+
+        if (isEmpty()) {
+            cout << "List is empty" << endl;
             return false;
         }
-        if (lastItemIndexSeq >= lastBlockSeq->length) {
+        if (lastItemIndexSeq > lastBlockSeq->getSize() - 1) {
             if (lastBlockSeq->next == NULL)
                 return false;
             lastBlockSeq = lastBlockSeq->next;
             lastItemIndexSeq = 0;
         }
-        element = lastBlockSeq->items[lastItemIndexSeq].getData();
+        if (printBlock) {
+            if (lastItemIndexSeq == 0) {
+                cout << "Block '" << lastBlockSeq << "' size " << lastBlockSeq->getSize() << "\t";
+            } else {
+                cout << "\t\t\t\t\t\t";
+            }
+        }
+
+        item = lastBlockSeq->items[lastItemIndexSeq].getData();
         lastItemIndexSeq++;
         return true;
     }
@@ -244,19 +259,11 @@ private:
     }
 
     Block<T, blockSize> *getNeedBlock(Block<T, blockSize> *needBlock, int needBlockIndex) {
-        //По индексу вычисляем откуда "выгоднее" искать элемент
-        if (needBlockIndex <= blocksNumber / 2)
-            for (int i = 0; i < needBlockIndex; i++) {
-                if (needBlock->next == NULL)
-                    break;
-                needBlock = needBlock->next;
-            }
-        else
-            for (int i = needBlockIndex - 1; i >= 0; i--) {
-                if (needBlock->prev == NULL)
-                    break;
-                needBlock = needBlock->prev;
-            }
+        for (int i = 0; i < needBlockIndex; i++) {
+            if (needBlock->next == NULL)
+                break;
+            needBlock = needBlock->next;
+        }
         return needBlock;
     }
 

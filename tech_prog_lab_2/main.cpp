@@ -48,10 +48,21 @@ int main() {
     charArrCat *catArrChar = new charArrCat[N];
 
     for (int i = 0; i < N; i++) {
-        catFloat[i].key = general[i].key = floor(((90) * ((float) rand() / RAND_MAX)) + 10);
+
+        if (i % 2 == 0) {
+            catFloat[i].key = general[i].key = 80;
+        } else {
+            catFloat[i].key = general[i].key = floor(((90) * ((float) rand() / RAND_MAX)) + 10);
+        }
         for (int j = 0; j < L; j++) {
-            catArrFloat[i].keyArr[j] = general[i].keyArr[j] = floor(((90) * ((float) rand() / RAND_MAX)) + 10);
-            catArrChar[i].keyArr[j] = general[i].keyChar[j] = 'a' + (char) (rand() % 26);
+            if (i % 2 == 0) {
+                catArrFloat[i].keyArr[j] = general[i].keyArr[j] = 4;
+                catArrChar[i].keyArr[j] = general[i].keyChar[j] = 's';
+            } else {
+                catArrFloat[i].keyArr[j] = general[i].keyArr[j] = floor(((90) * ((float) rand() / RAND_MAX)) + 10);
+                catArrChar[i].keyArr[j] = general[i].keyChar[j] = 'a' + (char) (rand() % 26);
+            }
+
         }
         catFloat[i].index = catArrFloat[i].index = catArrChar[i].index = i;
     }
@@ -117,7 +128,7 @@ int main() {
         }
 
         if (n != 0) {
-            cout << "Founded elements ("<<n<<"):" << endl;
+            cout << "Founded elements (" << n << "):" << endl;
             for (int i = 0; i < n; i++) {
                 cout << "{" << general[resultIndexes[i]].key << ", [";
                 for (int j = 0; j < L; j++)

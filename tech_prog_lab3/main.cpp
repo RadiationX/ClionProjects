@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 #include "LinkedList.h"
 
 #define fieldSize 2
@@ -11,8 +11,8 @@ using namespace std;
 class Item {
 public:
     float key = 0;
-    float fieldFloat[fieldSize];
-    char fieldChar[fieldSize];
+    float fieldFloat[fieldSize] = {0, 0};
+    char fieldChar[fieldSize] = {'a', 'a'};
 };
 
 LinkedList<Item> list;
@@ -55,7 +55,11 @@ int main() {
     for (; ;) {
         cout << title;
         cin >> choose;
-        choose = (int) choose;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10, '\n');
+            continue;
+        }
         switch (choose) {
             case (1):
                 addBegin();
@@ -99,7 +103,7 @@ Item newItem(string title) {
     Item item;
     cout << "Key field: ";
     cin >> item.key;
-    cout<<"Key float["<<fieldSize<<"]"<<endl;
+    /*cout<<"Key float["<<fieldSize<<"]"<<endl;
     for(int i = 0; i< fieldSize; i++){
         cout<<"\tfloat["<<i<<"]:";
         cin>>item.fieldFloat[i];
@@ -108,7 +112,7 @@ Item newItem(string title) {
     for(int i = 0; i< fieldSize; i++){
         cout<<"\tchar["<<i<<"]:";
         cin>>item.fieldChar[i];
-    }
+    }*/
     return item;
 }
 
@@ -129,8 +133,8 @@ void addPos() {
 }
 
 void remove() {
-    if(list.isEmpty()){
-        cout<<"\nList is empty\n"<<endl;
+    if (list.isEmpty()) {
+        cout << "\nList is empty\n" << endl;
         return;
     }
     int index = 0;
@@ -141,8 +145,8 @@ void remove() {
 }
 
 void change() {
-    if(list.isEmpty()){
-        cout<<"\nList is empty\n"<<endl;
+    if (list.isEmpty()) {
+        cout << "\nList is empty\n" << endl;
         return;
     }
     int index = 0;
@@ -153,21 +157,21 @@ void change() {
 }
 
 void clear() {
-    if(list.isEmpty()){
-        cout<<"\nList already empty\n"<<endl;
+    if (list.isEmpty()) {
+        cout << "\nList already empty\n" << endl;
         return;
     }
     list.clear();
 }
 
 void printItem(Item item, int i) {
-    cout << "Item " << i << " {" << item.key << ", {" << item.fieldFloat[0] << ", " << item.fieldFloat[1] << "}, {" <<
+    cout << "Item " << i << "\t{" << item.key << ", {" << item.fieldFloat[0] << ", " << item.fieldFloat[1] << "}, {" <<
     item.fieldChar[0] << ", " << item.fieldChar[1] << "}" << endl;
 }
 
 void search() {
-    if(list.isEmpty()){
-        cout<<"\nList is empty\n"<<endl;
+    if (list.isEmpty()) {
+        cout << "\nList is empty\n" << endl;
         return;
     }
     Item item, temp;
@@ -188,8 +192,8 @@ void search() {
 }
 
 void print() {
-    if(list.isEmpty()){
-        cout<<"\nList is empty\n"<<endl;
+    if (list.isEmpty()) {
+        cout << "\nList is empty\n" << endl;
         return;
     }
     int i = 0;
@@ -207,4 +211,17 @@ void printService() {
     cout << "List size: " << list.size() << endl;
     cout << "Blocks number: " << list.blocks() << endl;
     cout << "Block size: " << list.getBlockSize() << endl;
+
+    if (list.isEmpty()) {
+        cout << "\nList is empty\n" << endl;
+        return;
+    }
+    int i = 0;
+    list.startSeqAccess();
+    Item item;
+    while (list.get(item, true)) {
+        printItem(item, i);
+        i++;
+    }
+    list.stopSeqAccess();
 }
