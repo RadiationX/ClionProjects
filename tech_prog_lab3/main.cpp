@@ -10,9 +10,9 @@ using namespace std;
 
 class Item {
 public:
-    float key = 0;
-    float fieldFloat[fieldSize] = {0, 0};
-    char fieldChar[fieldSize] = {'a', 'a'};
+    float key = -1;
+    float fieldFloat[fieldSize];
+    char fieldChar[fieldSize];
 };
 
 LinkedList<Item> list;
@@ -103,7 +103,7 @@ Item newItem(string title) {
     Item item;
     cout << "Key field: ";
     cin >> item.key;
-    /*cout<<"Key float["<<fieldSize<<"]"<<endl;
+    cout<<"Key float["<<fieldSize<<"]"<<endl;
     for(int i = 0; i< fieldSize; i++){
         cout<<"\tfloat["<<i<<"]:";
         cin>>item.fieldFloat[i];
@@ -112,7 +112,7 @@ Item newItem(string title) {
     for(int i = 0; i< fieldSize; i++){
         cout<<"\tchar["<<i<<"]:";
         cin>>item.fieldChar[i];
-    }*/
+    }
     return item;
 }
 

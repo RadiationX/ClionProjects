@@ -1,6 +1,6 @@
 #ifndef TECH_PROG_LAB3_LINKEDLIST_H
 #define TECH_PROG_LAB3_LINKEDLIST_H
-#define blockSize 4
+#define blockSize 10
 
 #include <iostream>
 
@@ -84,16 +84,15 @@ class LinkedList {
 private:
     Block<T, blockSize> *firstBlock = NULL;
     Block<T, blockSize> *lastBlock = NULL;
-    const ListItem<T> emptyItem;
     int listSize = 0;
     int blocksNumber = 0;
 
     Block<T, blockSize> *lastBlockSeq = NULL;
     int lastItemIndexSeq = 0;
 public:
-    ~LinkedList() {
-        clear();
-    }
+    LinkedList() { }
+
+    ~LinkedList() { }
 
     void addBegin(T item) {
         add(item, 0);
@@ -148,13 +147,14 @@ public:
     }
 
     void remove(int index) {
-        if (indexOutOfRange(index))
+        if (indexOutOfRange(index)||index==listSize)
             return;
 
         Block<T, blockSize> *needBlock = getNeedBlock(firstBlock, index / blockSize);
         needBlock->remove(index % blockSize);
-        shiftItemsToStart(needBlock, index % blockSize);
-        lastBlock->length--;
+        if(index%blockSize!=needBlock->getSize())
+            shiftItemsToStart(needBlock, index % blockSize);
+        //lastBlock->length--;
         if (lastBlock->isEmpty()) {
             Block<T, blockSize> *prev = lastBlock->prev;
             delete (lastBlock);
@@ -275,8 +275,10 @@ private:
                 if (fromBlock == block && i < fromItem)
                     continue;
                 if (i == 0) {
-                    if (block->prev == NULL)
+                    if (block->prev == NULL) {
+                        block->length--;
                         break;
+                    }
                     block->move(block->prev->items[blockSize - 1], i);
                 } else {
                     block->move(block->items[i - 1], i);
@@ -295,7 +297,7 @@ private:
                     continue;
                 if (i == blockSize - 1) {
                     if (block->next == NULL) {
-                        block->move(emptyItem, i);
+                        block->length--;
                         break;
                     }
                     block->move(block->next->items[0], i);
