@@ -10,6 +10,27 @@
 
 using namespace std;
 
+template<typename T>
+class BaseItem {
+private:
+    T data;
+    bool nullItem = true;
+public:
+    BaseItem() {}
+
+    bool isNull() {
+        return nullItem;
+    }
+
+    void setData(T data) {
+        this->data = data;
+        nullItem = false;
+    }
+
+    T getData() {
+        return this->data;
+    }
+};
 
 template<class E>
 class BaseSortListener {
@@ -33,8 +54,7 @@ private:
     BaseSortListener<E> *listener;
     bool initialized = false;
     int maxNumber = 90,
-            selectIndex = 0,
-            NULL_ELEMENT = -1;
+            selectIndex = 0;
 
 public:
     MergeSort(BaseSortListener<E> *listener) {
@@ -52,21 +72,18 @@ public:
         //Размерность лент
         int tapeSize = (int) (sqrtMainSize - floor(sqrtMainSize) == 0 ? sqrtMainSize : sqrtMainSize + 1);
         E **tapeArray = new E *[tapeSize];
-
-        //----Преобразование в ленты----//
         for (int i = 0; i < tapeSize; i++)
             tapeArray[i] = new E[tapeSize];
 
+        //----Преобразование в ленты----//
         for (int i = 0, m = 0; i < tapeSize; i++) {
             for (int j = 0; j < tapeSize; j++, m++) {
-                tapeArray[i][j] = mainArray[m];
-                if (m >= mainSize)
-                    for (int k = 0; k < 3; k++)
-                        tapeArray[i][j].numbers[k] = NULL_ELEMENT;
+                if (m >= mainSize) break;
+                tapeArray[j][i] = mainArray[m];
             }
         }
 
-        listener->OnChangeTapeArray(string("Transform to tapes:"), tapeArray, tapeSize);
+        listener->OnChangeTapeArray(string("Transformed to tapes:"), tapeArray, tapeSize);
 
         //----Сортировка----//
         for (int i = 0; i < tapeSize; ++i) {
@@ -88,13 +105,13 @@ public:
         for (int k = 0; k < mainSize; k++) {
             minNumber = maxNumber + 10;
             for (int i = 0; i < tapeSize; i++) {
-                if (index[i] < tapeSize && minNumber > tapeArray[i][index[i]].numbers[selectIndex]) {
+                if (index[i] < tapeSize && minNumber > tapeArray[i][index[i]].getData()) {
                     minIndex = i;
-                    minNumber = tapeArray[i][index[i]].numbers[selectIndex];
+                    minNumber = tapeArray[i][index[i]].getData();
                 }
             }
 
-            if (tapeArray[minIndex][index[minIndex]].numbers[selectIndex] == NULL_ELEMENT)
+            if (tapeArray[minIndex][index[minIndex]].isNull())
                 k--;
             else {
                 mainArray[k] = tapeArray[minIndex][index[minIndex]];

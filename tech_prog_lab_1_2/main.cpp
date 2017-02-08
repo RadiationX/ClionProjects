@@ -11,16 +11,14 @@ int mainSize,
     int numbers[3];
 };*/
 
-class Item {
+
+class Item : BaseItem<int> {
 public:
-    int numbers[3];
+    Item() {}
 
-    Item() {
-    }
-
-    ~Item() {
-
-    }
+    using BaseItem::isNull;
+    using BaseItem::setData;
+    using BaseItem::getData;
 };
 
 void printMainArray(Item *array, int size);
@@ -31,7 +29,7 @@ template<class E>
 class SortListener : public BaseSortListener<E> {  // Prints the length of observed string into std::cout
 public:
     virtual bool OnCompare(E &el1, E &el2, int index) {
-        return el1.numbers[index] < el2.numbers[index];
+        return el1.getData() < el2.getData();
     }
 
     virtual void OnChangeArray(const std::string &title, E *mainArray, int size) {
@@ -60,7 +58,7 @@ public:
 
 
 int main() {
-    //srand(time(NULL));
+    srand(time(NULL));
     MergeSort<Item> mergeSort(new SortListener<Item>());
 
     cout << "Введите количество элементов: ";
@@ -68,7 +66,8 @@ int main() {
     Item *mainArray = new Item[mainSize];
     for (int i = 0; i < mainSize; i++)
         for (int j = 0; j < 3; ++j)
-            mainArray[i].numbers[j] = 10 + rand() % maxNumber;
+            mainArray[i].setData(10 + rand() % maxNumber);
+
 
     mergeSort.sort(mainArray, mainSize);
     return 0;
@@ -76,9 +75,14 @@ int main() {
 
 void printMainArray(Item *array, int size) {
     for (int i = 0; i < size; i++) {
+        if (array[i].isNull()) {
+            cout << "null" << endl;
+            continue;
+        }
         cout << "{";
-        for (int j = 0; j < 3; ++j)
-            cout << array[i].numbers[j] << (j != 2 ? " " : "");
+        /*for (int j = 0; j < 3; ++j)
+            cout << array[i].getData() << (j != 2 ? " " : "");*/
+        cout << array[i].getData();
         cout << "}" << endl;
     }
 }
@@ -86,9 +90,14 @@ void printMainArray(Item *array, int size) {
 void printTapeArray(Item **array, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; ++j) {
+            if (array[i][j].isNull()) {
+                cout << "null ";
+                continue;
+            }
             cout << "{";
-            for (int k = 0; k < 3; k++)
-                cout << array[i][j].numbers[k] << (k != 2 ? " " : "");
+            /*for (int k = 0; k < 3; k++)
+                cout << array[i][j].getData() << (k != 2 ? " " : "");*/
+            cout << array[i][j].getData();
             cout << "} ";
         }
         cout << endl;
