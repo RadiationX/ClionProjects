@@ -21,36 +21,39 @@ public:
     using BaseItem::getData;
 };
 
-void printMainArray(Item *array, int size);
+void printArray(Item *array, int cols);
 
-void printTapeArray(Item **array, int size);
+void printArray(Item **array, int cols, int rows);
 
 template<class E>
 class SortListener : public BaseSortListener<E> {  // Prints the length of observed string into std::cout
 public:
-    virtual bool OnCompare(E &el1, E &el2, int index) {
-        return el1.getData() < el2.getData();
+    virtual bool onMergeCompare(E &el1, E &el2) {
+        return el1.getData() >= el2.getData();
     }
 
-    virtual void OnChangeArray(const std::string &title, E *mainArray, int size) {
+    virtual void onChangeArray(const std::string &title, E *mainArray, int cols) {
         cout << endl << title << endl;
-        printMainArray(mainArray, size);
+        printArray(mainArray, cols);
     }
 
-    virtual void OnChangeTapeArray(const std::string &title, E **tapeArray, int size) {
+    virtual void onChangeTapeArray(const std::string &title, E **tapeArray, int cols, int rows) {
         cout << endl << title << endl;
-        printTapeArray(tapeArray, size);
+        printArray(tapeArray, cols, rows);
     }
 
-    virtual void OnSortTape(E *tape, int size, int index) {
+    virtual void onSortTape(E *tape, int size) {
         E tmp;
-        for (int j = 0; j < size; ++j) {
-            for (int k = 0; k < size; ++k) {
-                if (OnCompare(tape[j], tape[k], index)) {
-                    tmp = tape[j];
-                    tape[j] = tape[k];
-                    tape[k] = tmp;
+        for (int step = size / 2; step > 0; step /= 2) {
+            for (int i = step, j; i < size; i++) {
+                tmp = tape[i];
+                for (j = i; j >= step; j -= step) {
+                    if (tmp.getData() < tape[j - step].getData()) {
+                        tape[j] = tape[j - step];
+                    } else
+                        break;
                 }
+                tape[j] = tmp;
             }
         }
     }
@@ -58,10 +61,10 @@ public:
 
 
 int main() {
-    srand(time(NULL));
+    //srand(time(NULL));
     MergeSort<Item> mergeSort(new SortListener<Item>());
 
-    cout << "Введите количество элементов: ";
+    cout << "Enter the number of elements: ";
     cin >> mainSize;
     Item *mainArray = new Item[mainSize];
     for (int i = 0; i < mainSize; i++)
@@ -70,36 +73,40 @@ int main() {
 
 
     mergeSort.sort(mainArray, mainSize);
+    for (int i = 1; i < mainSize; i++) {
+        if (mainArray[i].getData() < mainArray[i - 1].getData()) {
+            cerr << "Error: Data not sorted (i=" << i << ", el[i]=" << mainArray[i].getData() << ", el[i-1]="
+                 << mainArray[i - 1].getData() << ")" << endl;
+            break;
+        }
+    }
     return 0;
 }
 
-void printMainArray(Item *array, int size) {
-    for (int i = 0; i < size; i++) {
+void printArray(Item *array, int cols) {
+    cout << "[";
+    for (int i = 0; i < cols; i++) {
         if (array[i].isNull()) {
-            cout << "null" << endl;
-            continue;
+            cout << "--";
+        } else {
+            cout << array[i].getData();
         }
-        cout << "{";
-        /*for (int j = 0; j < 3; ++j)
-            cout << array[i].getData() << (j != 2 ? " " : "");*/
-        cout << array[i].getData();
-        cout << "}" << endl;
+        if (i + 1 != cols) cout << ", ";
     }
+    cout << "]" << endl;
 }
 
-void printTapeArray(Item **array, int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; ++j) {
+void printArray(Item **array, int cols, int rows) {
+    for (int i = 0; i < cols; i++) {
+        cout << "[";
+        for (int j = 0; j < rows; ++j) {
             if (array[i][j].isNull()) {
-                cout << "null ";
-                continue;
+                cout << "--";
+            } else {
+                cout << array[i][j].getData();
             }
-            cout << "{";
-            /*for (int k = 0; k < 3; k++)
-                cout << array[i][j].getData() << (k != 2 ? " " : "");*/
-            cout << array[i][j].getData();
-            cout << "} ";
+            if (j + 1 != rows) cout << ", ";
         }
-        cout << endl;
+        cout << "]" << endl;
     }
 }

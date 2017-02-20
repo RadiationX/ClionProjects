@@ -39,13 +39,13 @@ public:
 
     ~BaseSortListener() {}
 
-    virtual bool OnCompare(E &el1, E &el2, int index) = 0;
+    virtual bool onMergeCompare(E &el1, E &el2) = 0;
 
-    virtual void OnChangeArray(const std::string &title, E *mainArray, int size) = 0;
+    virtual void onChangeArray(const std::string &title, E *mainArray, int size) = 0;
 
-    virtual void OnChangeTapeArray(const std::string &title, E **tapeArray, int size) = 0;
+    virtual void onChangeTapeArray(const std::string &title, E **tapeArray, int cols, int rows) = 0;
 
-    virtual void OnSortTape(E *tape, int size, int index) = 0;
+    virtual void onSortTape(E *tape, int size) = 0;
 };
 
 template<class E>
@@ -53,8 +53,6 @@ class MergeSort {
 private:
     BaseSortListener<E> *listener;
     bool initialized = false;
-    int maxNumber = 90,
-            selectIndex = 0;
 
 public:
     MergeSort(BaseSortListener<E> *listener) {
@@ -67,58 +65,64 @@ public:
             cout << "Error: Need initialize listener" << endl;
             return mainArray;
         }
-        listener->OnChangeArray(string("Input data:"), mainArray, mainSize);
+        listener->onChangeArray(string("Input data:"), mainArray, mainSize);
+
+        //---- Calc tape size ----//
         double sqrtMainSize = sqrt(mainSize);
-        //Размерность лент
         int tapeSize = (int) (sqrtMainSize - floor(sqrtMainSize) == 0 ? sqrtMainSize : sqrtMainSize + 1);
+
         E **tapeArray = new E *[tapeSize];
         for (int i = 0; i < tapeSize; i++)
             tapeArray[i] = new E[tapeSize];
 
-        //----Преобразование в ленты----//
+        //---- Transform to tapes ----//
         for (int i = 0, m = 0; i < tapeSize; i++) {
             for (int j = 0; j < tapeSize; j++, m++) {
                 if (m >= mainSize) break;
                 tapeArray[j][i] = mainArray[m];
             }
         }
+        listener->onChangeTapeArray(string("Transformed to tapes:"), tapeArray, tapeSize, tapeSize);
 
-        listener->OnChangeTapeArray(string("Transformed to tapes:"), tapeArray, tapeSize);
+        //---- Sorting ----//
+        for (int i = 0; i < tapeSize; ++i)
+            listener->onSortTape(tapeArray[i], tapeSize);
+        listener->onChangeTapeArray(string("Sorted tapes:"), tapeArray, tapeSize, tapeSize);
 
-        //----Сортировка----//
-        for (int i = 0; i < tapeSize; ++i) {
-            listener->OnSortTape(tapeArray[i], tapeSize, selectIndex);
-        }
-
-        listener->OnChangeTapeArray(string("Sorted tapes:"), tapeArray, tapeSize);
-
-        //----Слияние лент----//
-        int minIndex = 0,
-                *index = new int[tapeSize];
-        int minNumber;
-
+        //---- Merge tapes----//
         delete[](mainArray);
         mainArray = new E[mainSize];
 
-        for (int i = 0; i < tapeSize; index[i] = 0, i++);
+        int *offsets = new int[tapeSize];
+        for (int i = 0; i < tapeSize; offsets[i] = 0, i++);
 
-        for (int k = 0; k < mainSize; k++) {
-            minNumber = maxNumber + 10;
-            for (int i = 0; i < tapeSize; i++) {
-                if (index[i] < tapeSize && minNumber > tapeArray[i][index[i]].getData()) {
-                    minIndex = i;
-                    minNumber = tapeArray[i][index[i]].getData();
-                }
+        int minOffset = 0;
+        for (int i = 0; i < mainSize; i++) {
+            int offset = minOffset;
+            for (int j = 0; j < tapeSize; j++) {
+                if (offsets[j] >= tapeSize)
+                    continue;
+                if (offsets[offset] >= tapeSize)
+                    offset = j;
+                if (listener->onMergeCompare(tapeArray[offset][offsets[offset]], tapeArray[j][offsets[j]]))
+                    offset = j;
             }
 
-            if (tapeArray[minIndex][index[minIndex]].isNull())
-                k--;
-            else {
-                mainArray[k] = tapeArray[minIndex][index[minIndex]];
-            }
-            index[minIndex]++;
+            if (tapeArray[offset][offsets[offset]].isNull())
+                i--;
+            else
+                mainArray[i] = tapeArray[offset][offsets[offset]];
+
+            offsets[offset]++;
+            if (offsets[minOffset] >= tapeSize) minOffset++;
         }
-        listener->OnChangeArray(string("Merged tapes:"), mainArray, mainSize);
+        listener->onChangeArray(string("Merged tapes:"), mainArray, mainSize);
+
+        for (int i = 0; i < tapeSize; i++) {
+            delete[](tapeArray[i]);
+        }
+        delete[](tapeArray);
+
         return mainArray;
     }
 };
