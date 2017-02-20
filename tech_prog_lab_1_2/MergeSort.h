@@ -14,21 +14,23 @@ template<typename T>
 class BaseItem {
 private:
     T data;
-    bool nullItem = true;
+    bool nullItem;
 public:
-    BaseItem() {}
-
-    bool isNull() {
-        return nullItem;
+    BaseItem() {
+        nullItem = true;
     }
 
-    void setData(T data) {
+    void setKey(T data) {
         this->data = data;
         nullItem = false;
     }
 
-    T getData() {
+    T getKey() {
         return this->data;
+    }
+
+    bool isNull() {
+        return nullItem;
     }
 };
 
@@ -39,22 +41,43 @@ public:
 
     ~BaseSortListener() {}
 
-    virtual bool onMergeCompare(E &el1, E &el2) = 0;
+    virtual bool onMergeCompare(E &el1, E &el2) {
+        cerr << "onMergeCompare not overridden" << endl;
+        return false;
+    }
 
-    virtual void onChangeArray(const std::string &title, E *mainArray, int size) = 0;
+    virtual bool onSortCompare(E &el1, E &el2) {
+        cerr << "onSortCompare not overridden" << endl;
+        return false;
+    };
 
-    virtual void onChangeTapeArray(const std::string &title, E **tapeArray, int cols, int rows) = 0;
+    virtual int onChangeArray(const std::string &title, E *mainArray, int size) {
+        cerr << "onChangeArray not overridden" << endl;
+        return 0;
+    };
 
-    virtual void onSortTape(E *tape, int size) = 0;
+    virtual int onChangeTapeArray(const std::string &title, E **tapeArray, int cols, int rows) {
+        cerr << "onChangeTapeArray not overridden" << endl;
+        return 0;
+    };
+
+    virtual int onSortTape(E *tape, int size) {
+        cerr << "onSortTape not overridden" << endl;
+        return 0;
+    };
 };
 
 template<class E>
 class MergeSort {
 private:
     BaseSortListener<E> *listener;
-    bool initialized = false;
+    bool initialized;
 
 public:
+    MergeSort() {
+        initialized = false;
+    }
+
     MergeSort(BaseSortListener<E> *listener) {
         this->listener = listener;
         initialized = true;
@@ -124,6 +147,10 @@ public:
         delete[](tapeArray);
 
         return mainArray;
+    }
+
+    BaseSortListener<E> *getListener() {
+        return listener;
     }
 };
 

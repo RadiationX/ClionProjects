@@ -1,24 +1,19 @@
 #include <iostream>
 #include "MergeSort.h"
+//#include "/sdcard/tech_prog_lab_1_2/MergeSort.h"
 
 using namespace std;
 
 
-int mainSize,
-        maxNumber = 90;
+int mainSize = 0;
 
-/*struct Item {
-    int numbers[3];
-};*/
-
-
-class Item : BaseItem<int> {
+class Item : BaseItem<char *> {
 public:
     Item() {}
 
     using BaseItem::isNull;
-    using BaseItem::setData;
-    using BaseItem::getData;
+    using BaseItem::setKey;
+    using BaseItem::getKey;
 };
 
 void printArray(Item *array, int cols);
@@ -26,29 +21,41 @@ void printArray(Item *array, int cols);
 void printArray(Item **array, int cols, int rows);
 
 template<class E>
-class SortListener : public BaseSortListener<E> {  // Prints the length of observed string into std::cout
+class SortListener : public BaseSortListener<E> {
 public:
     virtual bool onMergeCompare(E &el1, E &el2) {
-        return el1.getData() >= el2.getData();
+        if (!el1.isNull() & !el2.isNull())
+            return strcmp(el1.getKey(), el2.getKey()) >= 0;
+
+        return !el1.isNull() & el2.isNull();
     }
 
-    virtual void onChangeArray(const std::string &title, E *mainArray, int cols) {
+    virtual bool onSortCompare(E &el1, E &el2) {
+        if (!el1.isNull() & !el2.isNull())
+            return strcmp(el1.getKey(), el2.getKey()) < 0;
+
+        return el1.isNull() & !el2.isNull();
+    }
+
+    virtual int onChangeArray(const std::string &title, E *mainArray, int cols) {
         cout << endl << title << endl;
         printArray(mainArray, cols);
+        return 0;
     }
 
-    virtual void onChangeTapeArray(const std::string &title, E **tapeArray, int cols, int rows) {
+    virtual int onChangeTapeArray(const std::string &title, E **tapeArray, int cols, int rows) {
         cout << endl << title << endl;
         printArray(tapeArray, cols, rows);
+        return 0;
     }
 
-    virtual void onSortTape(E *tape, int size) {
+    virtual int onSortTape(E *tape, int size) {
         E tmp;
         for (int step = size / 2; step > 0; step /= 2) {
             for (int i = step, j; i < size; i++) {
                 tmp = tape[i];
                 for (j = i; j >= step; j -= step) {
-                    if (tmp.getData() < tape[j - step].getData()) {
+                    if (onSortCompare(tmp, tape[j - step])) {
                         tape[j] = tape[j - step];
                     } else
                         break;
@@ -56,6 +63,7 @@ public:
                 tape[j] = tmp;
             }
         }
+        return 0;
     }
 };
 
@@ -67,16 +75,20 @@ int main() {
     cout << "Enter the number of elements: ";
     cin >> mainSize;
     Item *mainArray = new Item[mainSize];
-    for (int i = 0; i < mainSize; i++)
-        for (int j = 0; j < 3; ++j)
-            mainArray[i].setData(10 + rand() % maxNumber);
+    for (int i = 0; i < mainSize; i++) {
+        char *chaas = new char[2];
+        for (int j = 0; j < 2; ++j) {
+            chaas[j] = 'Z' - i % 24;
+        }
+        mainArray[i].setKey(chaas);
+    }
 
 
     mergeSort.sort(mainArray, mainSize);
     for (int i = 1; i < mainSize; i++) {
-        if (mainArray[i].getData() < mainArray[i - 1].getData()) {
-            cerr << "Error: Data not sorted (i=" << i << ", el[i]=" << mainArray[i].getData() << ", el[i-1]="
-                 << mainArray[i - 1].getData() << ")" << endl;
+        if (mergeSort.getListener()->onSortCompare(mainArray[i], mainArray[i - 1])) {
+            cerr << "Error: Data not sorted (i=" << i << ", el[i]=" << mainArray[i].getKey() << ", el[i-1]="
+                 << mainArray[i - 1].getKey() << ")" << endl;
             break;
         }
     }
@@ -89,7 +101,7 @@ void printArray(Item *array, int cols) {
         if (array[i].isNull()) {
             cout << "--";
         } else {
-            cout << array[i].getData();
+            cout << array[i].getKey();
         }
         if (i + 1 != cols) cout << ", ";
     }
@@ -103,7 +115,7 @@ void printArray(Item **array, int cols, int rows) {
             if (array[i][j].isNull()) {
                 cout << "--";
             } else {
-                cout << array[i][j].getData();
+                cout << array[i][j].getKey();
             }
             if (j + 1 != rows) cout << ", ";
         }
