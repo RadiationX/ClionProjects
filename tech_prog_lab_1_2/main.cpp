@@ -1,5 +1,6 @@
 #include <iostream>
 #include "MergeSort.h"
+#include <unistd.h>
 //#include "/sdcard/tech_prog_lab_1_2/MergeSort.h"
 
 using namespace std;
@@ -7,7 +8,7 @@ using namespace std;
 
 int mainSize = 0;
 
-class Item : BaseItem<char *> {
+class Item : BaseItem<int> {
 public:
     Item() {}
 
@@ -20,21 +21,36 @@ void printArray(Item *array, int cols);
 
 void printArray(Item **array, int cols, int rows);
 
+bool checkSorted(Item *mainArray, int iteration);
+
 template<class E>
 class SortListener : public BaseSortListener<E> {
 public:
-    virtual bool onMergeCompare(E &el1, E &el2) {
-        if (!el1.isNull() & !el2.isNull())
-            return strcmp(el1.getKey(), el2.getKey()) >= 0;
+    using BaseSortListener<E>::safeOnSortCompare;
 
-        return !el1.isNull() & el2.isNull();
+    virtual bool onMergeCompare(E &el1, E &el2) {
+        return el1.getKey() <= el2.getKey();
     }
 
     virtual bool onSortCompare(E &el1, E &el2) {
-        if (!el1.isNull() & !el2.isNull())
-            return strcmp(el1.getKey(), el2.getKey()) < 0;
+        return el1.getKey() < el2.getKey();
+    }
 
-        return el1.isNull() & !el2.isNull();
+    virtual int onSortTape(E *tape, int size) {
+        E tmp;
+        for (int step = size / 2; step > 0; step /= 2) {
+            for (int i = step, j; i < size; i++) {
+                tmp = tape[i];
+                for (j = i; j >= step; j -= step) {
+                    if (safeOnSortCompare(tmp, tape[j - step])) {
+                        tape[j] = tape[j - step];
+                    } else
+                        break;
+                }
+                tape[j] = tmp;
+            }
+        }
+        return 0;
     }
 
     virtual int onChangeArray(const std::string &title, E *mainArray, int cols) {
@@ -48,51 +64,49 @@ public:
         printArray(tapeArray, cols, rows);
         return 0;
     }
-
-    virtual int onSortTape(E *tape, int size) {
-        E tmp;
-        for (int step = size / 2; step > 0; step /= 2) {
-            for (int i = step, j; i < size; i++) {
-                tmp = tape[i];
-                for (j = i; j >= step; j -= step) {
-                    if (onSortCompare(tmp, tape[j - step])) {
-                        tape[j] = tape[j - step];
-                    } else
-                        break;
-                }
-                tape[j] = tmp;
-            }
-        }
-        return 0;
-    }
 };
 
+MergeSort<Item> mergeSort(new SortListener<Item>());
 
 int main() {
-    //srand(time(NULL));
-    MergeSort<Item> mergeSort(new SortListener<Item>());
+    srand(time(NULL));
 
     cout << "Enter the number of elements: ";
-    cin >> mainSize;
-    Item *mainArray = new Item[mainSize];
-    for (int i = 0; i < mainSize; i++) {
-        char *chaas = new char[2];
-        for (int j = 0; j < 2; ++j) {
-            chaas[j] = 'Z' - i % 24;
-        }
-        mainArray[i].setKey(chaas);
+    //cin >> mainSize;
+    mainSize = 82;
+    int tests = 1;
+    int j = 0;
+    for (; j < tests; j++) {
+        cout << "TEST ITERATION " << j << " -------------------------------- open" << endl;
+        Item *mainArray = new Item[mainSize];
+        for (int i = 0; i < mainSize; i++)
+            mainArray[i].setKey(10 + rand() % 90);
+        mainArray = mergeSort.sort(mainArray, mainSize);
+
+        if (!checkSorted(mainArray, j)) break;
+        cout << endl;
+        cout << "TEST ITERATION " << j << " -------------------------------- close : NO ERROR" << endl << endl << endl;
+        delete[](mainArray);
+
+        //For escape lag
+        usleep(10 * 1000);
     }
-
-
-    mergeSort.sort(mainArray, mainSize);
-    for (int i = 1; i < mainSize; i++) {
-        if (mergeSort.getListener()->onSortCompare(mainArray[i], mainArray[i - 1])) {
-            cerr << "Error: Data not sorted (i=" << i << ", el[i]=" << mainArray[i].getKey() << ", el[i-1]="
-                 << mainArray[i - 1].getKey() << ")" << endl;
-            break;
-        }
+    if (j >= tests) {
+        cout << "ALL TESTS PASSED" << endl;
     }
     return 0;
+}
+
+bool checkSorted(Item *mainArray, int iteration) {
+    for (int i = 1; i < mainSize; i++) {
+        if (mergeSort.getListener()->safeOnSortCompare(mainArray[i], mainArray[i - 1])) {
+            cout << "TEST ITERATION " << iteration << " : ERROR: Data not sorted (i=" << i << ", el[i]="
+                 << mainArray[i].getKey() << ", el[i-1]="
+                 << mainArray[i - 1].getKey() << ")" << endl;
+            return false;
+        }
+    }
+    return true;
 }
 
 void printArray(Item *array, int cols) {

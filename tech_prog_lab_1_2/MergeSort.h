@@ -51,6 +51,17 @@ public:
         return false;
     };
 
+    virtual bool safeOnSortCompare(E &el1, E &el2) {
+        if (!el1.isNull() & !el2.isNull())
+            return onSortCompare(el1, el2);
+        return el1.isNull() > el2.isNull();
+    };
+
+    virtual int onSortTape(E *tape, int size) {
+        cerr << "onSortTape not overridden" << endl;
+        return 0;
+    };
+
     virtual int onChangeArray(const std::string &title, E *mainArray, int size) {
         cerr << "onChangeArray not overridden" << endl;
         return 0;
@@ -58,11 +69,6 @@ public:
 
     virtual int onChangeTapeArray(const std::string &title, E **tapeArray, int cols, int rows) {
         cerr << "onChangeTapeArray not overridden" << endl;
-        return 0;
-    };
-
-    virtual int onSortTape(E *tape, int size) {
-        cerr << "onSortTape not overridden" << endl;
         return 0;
     };
 };
@@ -117,27 +123,30 @@ public:
         mainArray = new E[mainSize];
 
         int *offsets = new int[tapeSize];
-        for (int i = 0; i < tapeSize; offsets[i] = 0, i++);
 
-        int minOffset = 0;
+        for (int i = 0; i < tapeSize; i++) {
+            offsets[i] = 0;
+            for (int j = 0; j < tapeSize; j++) {
+                if (tapeArray[i][j].isNull()) {
+                    offsets[i]++;
+                } else {
+                    break;
+                }
+            }
+        }
+
         for (int i = 0; i < mainSize; i++) {
-            int offset = minOffset;
+            int offset = 0;
             for (int j = 0; j < tapeSize; j++) {
                 if (offsets[j] >= tapeSize)
                     continue;
                 if (offsets[offset] >= tapeSize)
                     offset = j;
-                if (listener->onMergeCompare(tapeArray[offset][offsets[offset]], tapeArray[j][offsets[j]]))
+                if (!listener->onMergeCompare(tapeArray[offset][offsets[offset]], tapeArray[j][offsets[j]]))
                     offset = j;
             }
-
-            if (tapeArray[offset][offsets[offset]].isNull())
-                i--;
-            else
-                mainArray[i] = tapeArray[offset][offsets[offset]];
-
+            mainArray[i] = tapeArray[offset][offsets[offset]];
             offsets[offset]++;
-            if (offsets[minOffset] >= tapeSize) minOffset++;
         }
         listener->onChangeArray(string("Merged tapes:"), mainArray, mainSize);
 
