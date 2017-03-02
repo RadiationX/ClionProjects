@@ -1,12 +1,9 @@
 #include <iostream>
-#include "MergeSort.h"
 #include <unistd.h>
+#include "MergeSort.h"
 //#include "/sdcard/tech_prog_lab_1_2/MergeSort.h"
 
 using namespace std;
-
-
-int mainSize = 0;
 
 class Item : BaseItem<int> {
 public:
@@ -66,14 +63,13 @@ public:
     }
 };
 
+int mainSize = 0;
 MergeSort<Item> mergeSort(new SortListener<Item>());
 
 int main() {
     srand(time(NULL));
-
     cout << "Enter the number of elements: ";
-    //cin >> mainSize;
-    mainSize = 82;
+    cin >> mainSize;
     int tests = 1;
     int j = 0;
     for (; j < tests; j++) {
@@ -91,9 +87,8 @@ int main() {
         //For escape lag
         usleep(10 * 1000);
     }
-    if (j >= tests) {
+    if (j >= tests)
         cout << "ALL TESTS PASSED" << endl;
-    }
     return 0;
 }
 
@@ -112,11 +107,10 @@ bool checkSorted(Item *mainArray, int iteration) {
 void printArray(Item *array, int cols) {
     cout << "[";
     for (int i = 0; i < cols; i++) {
-        if (array[i].isNull()) {
+        if (array[i].isNull())
             cout << "--";
-        } else {
+        else
             cout << array[i].getKey();
-        }
         if (i + 1 != cols) cout << ", ";
     }
     cout << "]" << endl;
@@ -126,11 +120,10 @@ void printArray(Item **array, int cols, int rows) {
     for (int i = 0; i < cols; i++) {
         cout << "[";
         for (int j = 0; j < rows; ++j) {
-            if (array[i][j].isNull()) {
+            if (array[i][j].isNull())
                 cout << "--";
-            } else {
+            else
                 cout << array[i][j].getKey();
-            }
             if (j + 1 != rows) cout << ", ";
         }
         cout << "]" << endl;
