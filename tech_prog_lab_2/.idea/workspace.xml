@@ -12,8 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e08af5b3-9ef7-431f-84df-e7984d40171c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/tech_prog_lab_2.iml" afterPath="$PROJECT_DIR$/.idea/tech_prog_lab_2.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../tech_prog_lab_2_2_1/CMakeLists.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../tech_prog_lab_2_2_1/MergeSort.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../tech_prog_lab_2_2_1/Search.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tech_prog_lab_2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -347,7 +349,7 @@
     <option name="totallyTimeSpent" value="2734000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1053" extended-state="1" />
+    <frame x="0" y="23" width="1920" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.083728276" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
