@@ -1,0 +1,8 @@
+//
+// Created by radiationx on 09.03.17.
+//
+
+#ifndef CLIONPROJECTS_LINKEDLIST_H
+#define CLIONPROJECTS_LINKEDLIST_H
+
+#endif //CLIONPROJECTS_LINKEDLIST_H
