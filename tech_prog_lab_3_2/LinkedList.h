@@ -87,7 +87,7 @@ public:
             target->setPrev(newItem);
             newItem->setNext(target);
         }
-        cout << "HEAD " << head->getData() << " : TAIL " << tail->getData() << endl;
+        //cout << "HEAD " << head->getData() << " : TAIL " << tail->getData() << endl;
         length++;
     }
 
@@ -135,6 +135,21 @@ public:
         length--;
     }
 
+    void clear() {
+        if (length < 1)  return;
+        int i = 0;
+        LinkedItem<T> *item = head;
+        while (i < length) {
+            if (item->getNext() == NULL) delete (item);
+            item = item->getNext();
+            if (item != NULL) delete (item->getPrev());
+            i++;
+        }
+        length = 0;
+        head = NULL;
+        tail = NULL;
+    }
+
     void print() {
         if (length > 0) {
             int i = 0;
@@ -154,7 +169,7 @@ public:
         }
 
         cout << "SIZE " << size() << endl;
-        cout<<endl;
+        cout << endl;
     }
 
     int size() {
