@@ -133,7 +133,7 @@ void printItem(Item *item) {
 }
 
 void printCatalogItem(CatalogItem *item) {
-    cout << "[" << item->getKey() << ", ";
+    cout << "[" << item->getKey() << ", *";
     printItem(item->getItem());
     cout << "]";
 }
@@ -172,7 +172,7 @@ void initMenu() {
             cout << "No items!" << endl;
         } else {
             for (int i = result[0], j = 0; i <= result[1]; i++, j++) {
-                cout << "[" << j << "] : ";
+                cout << "[" << j << "] : *";
                 printItem(blockSearch.getCatalog()[i].getItem());
                 cout << endl;
             }
