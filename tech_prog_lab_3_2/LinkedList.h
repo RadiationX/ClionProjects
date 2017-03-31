@@ -43,6 +43,7 @@ public:
 
 template<typename T>
 class IndexTable {
+private:
     const static int TABLE_SIZE = 4;
     struct TableItem {
         int index = 0;
@@ -78,14 +79,11 @@ public:
             if (index <= ((tIndex > 0) ? table[tIndex].index : 0)) {
                 break;
             }
-            if (tIndex + 1 == TABLE_SIZE)
-                break;
         }
         T *item = table[tIndex].item;
 
         if (index != table[tIndex].index) {
-            int border = ((table[tIndex].index - table[tIndex - 1].index) / 2) +
-                         table[tIndex - 1].index;
+            int border = ((table[tIndex].index - table[tIndex - 1].index) / 2) + table[tIndex - 1].index;
             if (border < index) {
                 tIndex--;
             }
@@ -101,74 +99,69 @@ public:
                 }
             }
         }
-
-        cout << "ITEM BY TABLE " << index << " : " << item->getData() << endl;
         return item;
     }
 
     void add(T *newItem, int listIndex, int listLength) {
-        int tIndex = 0;
+        int tIndex = listIndex;
         if (listLength <= TABLE_SIZE) {
-            length++;
             bool moved = false;
-            for (int j = length - 1; j > listIndex; j--) {
+            for (int j = length; j > tIndex; j--) {
                 table[j].item = table[j - 1].item;
                 table[j].index = table[j - 1].index;
                 table[j].index++;
                 moved = true;
             }
-            tIndex = listIndex;
             if (!moved) {
                 table[tIndex].index = tIndex;
             }
             table[tIndex].item = newItem;
+            length++;
         } else {
             tIndex = getTableIndex(listIndex);
 
-            for (int i = tIndex == 0 ? tIndex + 1 : tIndex; i < length; i++)
+            for (int i = tIndex == 0 ? tIndex + 1 : tIndex; i < length; i++) {
                 table[i].index++;
+            }
 
-            if (table[tIndex].index <= listIndex)
+            if (table[tIndex].index <= listIndex) {
                 table[tIndex].index = listIndex;
+            }
+
             table[tIndex].item = newItem;
 
             restoreUniformity(listLength);
         }
-        cout << "INFO " << listLength << " : " << length << " : " << listIndex << " : " << tIndex << endl;
-        cout << endl;
     }
 
     void remove(int listIndex, int listLength) {
-        int tIndex = 0;
+        cout << "REMOVE " << listIndex << " : " << listLength << endl;
+        int tIndex = listIndex;
         if (listLength <= TABLE_SIZE) {
-            cout << "branch 1" << endl;
-            tIndex = listIndex;
-
-            for (int j = listIndex; j < length - 1; j++) {
+            for (int j = tIndex; j < length - 1; j++) {
                 table[j].item = table[j + 1].item;
                 table[j].index = table[j + 1].index;
                 table[j].index--;
-                cout << "MOVE " << j + 1 << " to " << j << ", len " << length - 1 << endl;
                 if (length - 1 == j + 1) {
                     table[j + 1].item = NULL;
                     table[j + 1].index = 0;
                 }
             }
-
-
             length--;
         } else {
-            cout << "branch 2" << endl;
             tIndex = getTableIndex(listIndex);
 
-            if (table[tIndex].index == listIndex)
+            if (table[tIndex].index == listIndex) {
                 table[tIndex].item = tIndex == 0 ? table[tIndex].item->getNext() : table[tIndex].item->getPrev();
+            }
 
-            for (int i = tIndex == 0 ? tIndex + 1 : tIndex; i < length; i++)
+            for (int i = tIndex == 0 ? tIndex + 1 : tIndex; i < length; i++) {
                 table[i].index--;
+            }
 
-            if (abs(table[tIndex].index - table[tIndex - 1].index) <= 1)
+            if (abs(table[tIndex].index - table[tIndex - 1].index) <= 1) {
                 table[tIndex - 1].index--;
+            }
 
             restoreUniformity(listLength);
         }
@@ -290,12 +283,6 @@ public:
         }
         delete (item);
         length--;
-        /*if (length <= TABLE_SIZE) {
-            table.setLength(length);
-            table[table.length(] - 1).index = 0;
-            table[table.length(] - 1).item = NULL;
-        }*/
-        //cout << "TABLE LENGTH " << table.length() << ", LENGTH " << length << endl;
     }
 
     void clear() {
