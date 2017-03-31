@@ -48,52 +48,51 @@ class IndexTable {
         int index = 0;
         T *item = NULL;
     };
-    TableItem *indexTable = new TableItem[TABLE_SIZE];
-    int tableLength = 0;
-    int tableInterval = 0;
+    TableItem *table = new TableItem[TABLE_SIZE];
+    int length = 0;
+    int interval = 0;
 
 public:
     TableItem getItem(int index) {
-        return indexTable[index];
+        return table[index];
     }
 
-    int length() {
-        return tableLength;
+    int getLength() {
+        return length;
     }
 
-    int interval() {
-        return tableInterval;
-    }
-
-    void setLength(int l) {
-        tableLength = l;
-    }
-
-    void setInterval(int i) {
-        tableInterval = i;
+    int getTableIndex(int listIndex) {
+        int tIndex = 0;
+        for (; tIndex < length; tIndex++) {
+            if (listIndex <= ((tIndex > 0) ? table[tIndex].index : 0))
+                break;
+            if (tIndex + 1 == length)
+                break;
+        }
+        return tIndex;
     }
 
     T *get(int index) {
         int tIndex = 0;
         for (; tIndex < TABLE_SIZE; tIndex++) {
-            if (index <= ((tIndex > 0) ? indexTable[tIndex].index : 0)) {
+            if (index <= ((tIndex > 0) ? table[tIndex].index : 0)) {
                 break;
             }
             if (tIndex + 1 == TABLE_SIZE)
                 break;
         }
-        T *item = indexTable[tIndex].item;
+        T *item = table[tIndex].item;
 
-        if (index != indexTable[tIndex].index) {
-            int border = ((indexTable[tIndex].index - indexTable[tIndex - 1].index) / 2) +
-                         indexTable[tIndex - 1].index;
+        if (index != table[tIndex].index) {
+            int border = ((table[tIndex].index - table[tIndex - 1].index) / 2) +
+                         table[tIndex - 1].index;
             if (border < index) {
                 tIndex--;
             }
-            item = indexTable[tIndex].item;
-            int i = indexTable[tIndex].index;
+            item = table[tIndex].item;
+            int i = table[tIndex].index;
             while (i != index) {
-                if (indexTable[tIndex].index < index) {
+                if (table[tIndex].index < index) {
                     item = item->getNext();
                     i++;
                 } else {
@@ -107,50 +106,84 @@ public:
         return item;
     }
 
-    void update(T *newItem, int index, int listLength) {
+    void add(T *newItem, int listIndex, int listLength) {
         int tIndex = 0;
         if (listLength <= TABLE_SIZE) {
-            tableLength = listLength;
+            length++;
             bool moved = false;
-            for (int j = tableLength - 1; j > index; j--) {
-                indexTable[j].item = indexTable[j - 1].item;
-                indexTable[j].index = indexTable[j - 1].index;
-                indexTable[j].index++;
+            for (int j = length - 1; j > listIndex; j--) {
+                table[j].item = table[j - 1].item;
+                table[j].index = table[j - 1].index;
+                table[j].index++;
                 moved = true;
             }
-            tIndex = index;
+            tIndex = listIndex;
             if (!moved) {
-                indexTable[tIndex].index = tIndex;
+                table[tIndex].index = tIndex;
             }
-            indexTable[tIndex].item = newItem;
+            table[tIndex].item = newItem;
         } else {
-            for (; tIndex < tableLength; tIndex++) {
-                if (index <= ((tIndex > 0) ? indexTable[tIndex].index : 0))
-                    break;
-                if (tIndex + 1 == tableLength)
-                    break;
-            }
+            tIndex = getTableIndex(listIndex);
 
-            for (int j = tIndex == 0 ? tIndex + 1 : tIndex; j < tableLength; j++)
-                indexTable[j].index++;
+            for (int i = tIndex == 0 ? tIndex + 1 : tIndex; i < length; i++)
+                table[i].index++;
 
-            if (indexTable[tIndex].index <= index)
-                indexTable[tIndex].index = index;
-            indexTable[tIndex].item = newItem;
+            if (table[tIndex].index <= listIndex)
+                table[tIndex].index = listIndex;
+            table[tIndex].item = newItem;
 
-            //Array uniformity
-            if (((listLength - tableLength) % (tableLength - 1) == 0)) {
-                tableInterval = (listLength - tableLength) / (tableLength - 1);
-                cout << "NEW TABLE INTERVAL: " << tableInterval << endl;
-                for (int j = 1; j < TABLE_SIZE - 1; j++) {
-                    int newIndex = j + j * tableInterval;
-                    indexTable[j].item = get(newIndex);
-                    indexTable[j].index = newIndex;
+            restoreUniformity(listLength);
+        }
+        cout << "INFO " << listLength << " : " << length << " : " << listIndex << " : " << tIndex << endl;
+        cout << endl;
+    }
+
+    void remove(int listIndex, int listLength) {
+        int tIndex = 0;
+        if (listLength <= TABLE_SIZE) {
+            cout << "branch 1" << endl;
+            tIndex = listIndex;
+
+            for (int j = listIndex; j < length - 1; j++) {
+                table[j].item = table[j + 1].item;
+                table[j].index = table[j + 1].index;
+                table[j].index--;
+                cout << "MOVE " << j + 1 << " to " << j << ", len " << length - 1 << endl;
+                if (length - 1 == j + 1) {
+                    table[j + 1].item = NULL;
+                    table[j + 1].index = 0;
                 }
             }
+
+
+            length--;
+        } else {
+            cout << "branch 2" << endl;
+            tIndex = getTableIndex(listIndex);
+
+            if (table[tIndex].index == listIndex)
+                table[tIndex].item = tIndex == 0 ? table[tIndex].item->getNext() : table[tIndex].item->getPrev();
+
+            for (int i = tIndex == 0 ? tIndex + 1 : tIndex; i < length; i++)
+                table[i].index--;
+
+            if (abs(table[tIndex].index - table[tIndex - 1].index) <= 1)
+                table[tIndex - 1].index--;
+
+            restoreUniformity(listLength);
         }
-        cout << "INFO " << listLength << " : " << tableLength << " : " << index << " : " << tIndex << endl;
-        cout << endl;
+    }
+
+    void restoreUniformity(int listLength) {
+        if (((listLength - length) % (length - 1) == 0)) {
+            interval = (listLength - length) / (length - 1);
+            cout << "NEW TABLE INTERVAL: " << interval << endl;
+            for (int j = 1; j < TABLE_SIZE - 1; j++) {
+                int newIndex = j + j * interval;
+                table[j].item = get(newIndex);
+                table[j].index = newIndex;
+            }
+        }
     }
 };
 
@@ -205,7 +238,7 @@ public:
         }
         length++;
         cout << "NEW ITEM " << newItem->getData() << endl;
-        indexTable.update(newItem, index, length);
+        indexTable.add(newItem, index, length);
     }
 
     LinkedItem<T> *getItem(int index) {
@@ -229,11 +262,11 @@ public:
         } else {
             item = getItem(index);
         }
+        indexTable.remove(index, length - 1);
         remove(item);
     }
 
     void remove(LinkedItem<T> *item) {
-        cout << item->getData() << " : " << head->getData() << " : " << tail->getData() << endl;
         if (length == 1) {
             //Delete first element
             head = NULL;
@@ -258,11 +291,11 @@ public:
         delete (item);
         length--;
         /*if (length <= TABLE_SIZE) {
-            indexTable.setLength(length);
-            indexTable[indexTable.length(] - 1).index = 0;
-            indexTable[indexTable.length(] - 1).item = NULL;
+            table.setLength(length);
+            table[table.length(] - 1).index = 0;
+            table[table.length(] - 1).item = NULL;
         }*/
-        //cout << "TABLE LENGTH " << indexTable.length() << ", LENGTH " << length << endl;
+        //cout << "TABLE LENGTH " << table.length() << ", LENGTH " << length << endl;
     }
 
     void clear() {
@@ -274,11 +307,13 @@ public:
     }
 
     void printTable() {
-        for (int i = 0; i < indexTable.length(); i++) {
+        cout << endl;
+        for (int i = 0; i < indexTable.getLength(); i++) {
             cout << "TABLE ITEM[" << i << "]: " << indexTable.getItem(i).index << " : "
                  << indexTable.getItem(i).item->getData()
                  << endl;
         }
+        cout << endl;
     }
 
     void print() {
