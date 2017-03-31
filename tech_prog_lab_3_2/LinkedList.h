@@ -44,9 +44,17 @@ public:
 template<typename T>
 class LinkedList {
 private:
+    const static int TABLE_SIZE = 4;
+    struct TableItem {
+        int index;
+        LinkedItem<T> *item;
+    };
     LinkedItem<T> *head = NULL;
     LinkedItem<T> *tail = NULL;
+    TableItem *indexTable = new TableItem[TABLE_SIZE];
     int length = 0;
+    int tableLength = 0;
+    int tableInterval = 1;
 
 public:
     void addHead(T data) {
@@ -58,6 +66,7 @@ public:
     }
 
     void add(T data, int index) {
+        //cout << "add " << data << " to " << index << endl;
         LinkedItem<T> *newItem = new LinkedItem<T>();
         newItem->setData(data);
         if (index > length)
@@ -81,20 +90,60 @@ public:
             tail = newItem;
         } else {
             //Add to position
-            LinkedItem<T> *target = get(index);
+            LinkedItem<T> *target = getItem(index);
             target->getPrev()->setNext(newItem);
             newItem->setPrev(target->getPrev());
             target->setPrev(newItem);
             newItem->setNext(target);
         }
-        //cout << "HEAD " << head->getData() << " : TAIL " << tail->getData() << endl;
         length++;
+        int tIndex = 0;
+        if (length <= TABLE_SIZE) {
+            tableLength = length;
+            tIndex = tableLength - 1;
+            indexTable[tIndex].index = tIndex;
+            indexTable[tIndex].item = newItem;
+        } else {
+            for (; tIndex < TABLE_SIZE; tIndex++) {
+                if (index <= ((tIndex > 0) ? indexTable[tIndex].index : 0)) {
+                    break;
+                }
+                if (tIndex + 1 == TABLE_SIZE)
+                    break;
+            }
+
+            for (int j = tIndex; j < TABLE_SIZE; j++) {
+                indexTable[j].index ++;
+            }
+            if(indexTable[tIndex].index<=index){
+                indexTable[tIndex].index = index;
+                indexTable[tIndex].item = newItem;
+            }
+
+            //Array uniformity
+            if (((length - TABLE_SIZE) % (TABLE_SIZE - 1) == 0)) {
+                tableInterval = (length - TABLE_SIZE) / (TABLE_SIZE - 1);
+                cout << "NEW TABLE INTERVAL: " << tableInterval << endl;
+                for (int j = 1; j < TABLE_SIZE - 1; j++) {
+                    indexTable[j].index = j+j*tableInterval;
+                    indexTable[j].item = getItem(indexTable[j].index);
+                }
+            }
+        }
+        cout << "INFO " << length << " : " << index << " : " << tIndex << endl;
+        //cout << "TABLE LENGTH " << tableLength << ", LENGTH " << length << endl;
     }
 
-    LinkedItem<T> *get(int index) {
+    LinkedItem<T> *getItem(int index) {
         if (index < 0 || index >= length) {
             return NULL;
         }
+        /*for (int i = 0; i < tableLength; i++) {
+            if (indexTable[i].index == index) {
+                cout << "TABLE POSITION: " << indexTable[i].index << " : " << indexTable[i].item->getData() << endl;
+                break;
+            }
+        }*/
         int i = 0;
         LinkedItem<T> *item = head;
         while (i < index) {
@@ -105,49 +154,69 @@ public:
         return item;
     }
 
+    T get(int index) {
+        return getItem(index)->getData();
+    }
+
     void remove(int index) {
-        if (index < 0 || index >= length) {
+        if (index < 0 || index >= length)
             return;
+        LinkedItem<T> *item = NULL;
+        if (index == 0) {
+            item = head;
+        } else if (index == length - 1) {
+            item = tail;
+        } else {
+            item = getItem(index);
         }
-        LinkedItem<T> *target = get(index);
+        remove(item);
+    }
+
+    void remove(LinkedItem<T> *item) {
+        cout << item->getData() << " : " << head->getData() << " : " << tail->getData() << endl;
         if (length == 1) {
             //Delete first element
             head = NULL;
             tail = NULL;
-        } else if (index == 0) {
+        } else if (item == head) {
             //Remove from head
-            head = target->getNext();
+            head = item->getNext();
             head->setPrev(NULL);
-            target->setNext(NULL);
-        } else if (index == length - 1) {
+            item->setNext(NULL);
+        } else if (item == tail) {
             //Remove from tail
-            tail = target->getPrev();
+            tail = item->getPrev();
             tail->setNext(NULL);
-            target->setPrev(NULL);
+            item->setPrev(NULL);
         } else {
             //Remove from position
-            target->getPrev()->setNext(target->getNext());
-            target->getNext()->setPrev(target->getPrev());
-            target->setPrev(NULL);
-            target->setNext(NULL);
+            item->getPrev()->setNext(item->getNext());
+            item->getNext()->setPrev(item->getPrev());
+            item->setPrev(NULL);
+            item->setNext(NULL);
         }
-        delete (target);
+        delete (item);
         length--;
+        if (length <= TABLE_SIZE) {
+            tableLength = length;
+            indexTable[tableLength - 1].index = 0;
+            indexTable[tableLength - 1].item = NULL;
+        }
+        cout << "TABLE LENGTH " << tableLength << ", LENGTH " << length << endl;
     }
 
     void clear() {
-        if (length < 1)  return;
-        int i = 0;
-        LinkedItem<T> *item = head;
-        while (i < length) {
-            if (item->getNext() == NULL) delete (item);
-            item = item->getNext();
-            if (item != NULL) delete (item->getPrev());
-            i++;
+        if (length < 1) return;
+        int length = this->length;
+        for (int i = 0; i < length; i++) {
+            remove(this->length - 1);
         }
-        length = 0;
-        head = NULL;
-        tail = NULL;
+    }
+
+    void printTable() {
+        for (int i = 0; i < tableLength; i++) {
+            cout << "TABLE ITEM: " << indexTable[i].index << " : " << indexTable[i].item->getData() << endl;
+        }
     }
 
     void print() {
@@ -155,17 +224,17 @@ public:
             int i = 0;
             LinkedItem<T> *temp = head;
             cout << endl;
-            cout << "HEAD " << head->getData() << endl;
+            cout << "HEAD ITEM: " << head->getData() << endl;
             while (temp != NULL) {
                 if (i > 20) {
-                    cout << "SUUUUKA" << endl;
-                    return;
+                    cout << "ALARMA!!!!!" << endl;
+                    break;
                 }
                 cout << "[" << i << "] " << temp->getData() << endl;
                 temp = temp->getNext();
                 i++;
             }
-            cout << "TAIL " << tail->getData() << endl;
+            cout << "TAIL ITEM: " << tail->getData() << endl;
         }
 
         cout << "SIZE " << size() << endl;
