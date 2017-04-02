@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>LabProg</title>
+    <script src="scripts/script.js" type="text/javascript"></script>
+    <script src="scripts/math.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="styles/main.css" class="css"> </head>
+
+<body>
+    <div class="tables">
+        <h4>Выражение (A+B^T-k*I)*C^T</h4>
+        <div id="wrappers">
+            <div class="wrapper_table" id="wrapper_settings">
+                <h3>Настройки матриц</h3>
+                <div class="controls">
+                    <input class="rows" type="text" placeholder="Количество строк">
+                    <input class="cols" type="text" placeholder="Количество столбцов">
+                    <input type="button" value="Обновить матрицы" onclick="updateTable(this);"> </div>
+            </div>
+        </div>
+        <div class="result_controls">
+            <input type="button" value="Показать результат" onclick="start(this)"> </div>
+    </div>
+    <div class="result" id="result">
+        <h2>Результат</h2> </div>
+    <script>
+        window.onload = function () {
+            setAction(0);
+        }
+    </script>
+</body>
+
+</html>
