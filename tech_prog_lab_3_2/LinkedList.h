@@ -73,32 +73,30 @@ public:
         return tIndex;
     }
 
-    T *get(int index) {
-        int tIndex = 0;
-        for (; tIndex < TABLE_SIZE; tIndex++) {
-            if (index <= ((tIndex > 0) ? table[tIndex].index : 0)) {
-                break;
-            }
-        }
+    T *get(int listIndex) {
+        int tIndex = getTableIndex(listIndex);
         T *item = table[tIndex].item;
 
-        if (index != table[tIndex].index) {
-            int border = ((table[tIndex].index - table[tIndex - 1].index) / 2) + table[tIndex - 1].index;
-            if (border < index) {
-                tIndex--;
-            }
-            item = table[tIndex].item;
-            int i = table[tIndex].index;
-            while (i != index) {
-                if (table[tIndex].index < index) {
-                    item = item->getNext();
-                    i++;
-                } else {
-                    item = item->getPrev();
-                    i--;
-                }
+        cout << "GET: " << listIndex << " : " << tIndex << " : " << table[tIndex].index << " : " << item->getData()
+             << endl;
+
+
+        int border = ((table[tIndex].index - table[tIndex - 1].index) / 2) + table[tIndex - 1].index;
+        if (border < listIndex) {
+            tIndex--;
+        }
+        item = table[tIndex].item;
+        int i = table[tIndex].index;
+        while (i != listIndex) {
+            if (table[tIndex].index < listIndex) {
+                item = item->getNext();
+                i++;
+            } else {
+                item = item->getPrev();
+                i--;
             }
         }
+
         return item;
     }
 
@@ -137,7 +135,7 @@ public:
     void remove(int listIndex, int listLength) {
         cout << "REMOVE " << listIndex << " : " << listLength << endl;
         int tIndex = listIndex;
-        if (listLength <= TABLE_SIZE) {
+        if (listLength < TABLE_SIZE) {
             for (int j = tIndex; j < length - 1; j++) {
                 table[j].item = table[j + 1].item;
                 table[j].index = table[j + 1].index;
@@ -151,7 +149,68 @@ public:
         } else {
             tIndex = getTableIndex(listIndex);
 
-            if (table[tIndex].index == listIndex) {
+            cout << "TINDEX " << tIndex << " : " << listIndex << endl;
+
+            /*int ctIndex = tIndex;
+
+            cout << "FIRST COMPARE " << table[ctIndex].index << " - " << (table[ctIndex + 1].index - 1) << " == 0"
+                 << endl;
+            while (table[ctIndex].index - (table[ctIndex + 1].index - 1) == 0) {
+                cout << "COMPARE " << table[ctIndex].index << " - " << (table[ctIndex + 1].index - 1) << " == 0"
+                     << endl;
+                table[ctIndex].index++;
+
+                //cout << "CTINDEX " << ctIndex << endl;
+                ctIndex++;
+            }*/
+            bool shiftToRight = false;
+            for (int i = tIndex; i < length - 1; i++) {
+                cout << "SHIFT COMPARE " << table[i].index + 1 << " == " << table[i + 1].index << endl;
+                if (table[i].index + 1 == table[i + 1].index) {
+                    cout << "SHIFT TO RIGHT BITCH" << endl;
+                    shiftToRight = true;
+                    break;
+                }
+            }
+            if (shiftToRight) {
+                cout << endl << "SHIFT TO RIGHT" << endl;
+
+                table[tIndex].index++;
+                table[tIndex].item = get(table[tIndex].index);
+                for (int i = tIndex; i < length; i++) {
+                    if (i + 1 < length) {
+                        int cur = table[i].index;
+                        int next = table[i + 1].index;
+                        cout << "COMPARE " << cur << " : " << next << endl;
+                        if (cur == next) {
+                            cout << "COMPARE TRUE" << endl;
+                            table[i + 1].index++;
+                            table[i + 1].item = get(table[i + 1].index);
+                        }
+                    }
+                    table[i].index--;
+                }
+            } else {
+                cout << endl << "SHIFT TO LEFT" << endl;
+                table[tIndex].index--;
+                table[tIndex].item = get(table[tIndex].index);
+                for (int i = tIndex; i > 0; i--) {
+                    if (i - 1 > 0) {
+                        int cur = table[i].index;
+                        int next = table[i - 1].index;
+                        cout << "COMPARE " << cur << " : " << next << endl;
+                        if (cur == next) {
+                            cout << "COMPARE TRUE" << endl;
+                            table[i - 1].index--;
+                            table[i - 1].item = get(table[i - 1].index);
+                        }
+                    }
+                    //table[i].index++;
+                }
+            }
+
+
+            /*if (table[tIndex].index == listIndex) {
                 table[tIndex].item = tIndex == 0 ? table[tIndex].item->getNext() : table[tIndex].item->getPrev();
             }
 
@@ -161,7 +220,7 @@ public:
 
             if (abs(table[tIndex].index - table[tIndex - 1].index) <= 1) {
                 table[tIndex - 1].index--;
-            }
+            }*/
 
             restoreUniformity(listLength);
         }
