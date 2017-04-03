@@ -47,45 +47,51 @@ private:
     const static int TABLE_SIZE = 4;
     struct TableItem {
         int index = 0;
-        T *item = NULL;
+        LinkedItem<T> *item = NULL;
     };
     TableItem *table = new TableItem[TABLE_SIZE];
     int length = 0;
     int interval = 0;
 
-public:
-    TableItem getItem(int index) {
-        return table[index];
+    int getTableIndex(int listIndex) {
+        int tableIndex = 0;
+        int delta = table[length - 1].index;
+        for (int i = 0; i < length; i++) {
+            if (abs(listIndex - table[i].index) < delta) {
+                tableIndex = i;
+                delta = abs(listIndex - table[i].index);
+            }
+        }
+        return tableIndex;
     }
 
+    void restoreUniformity(int listLength) {
+        if (((listLength - length) % (length - 1) == 0)) {
+            interval = (listLength - length) / (length - 1);
+            for (int j = 1; j < length - 1; j++) {
+                int newIndex = j + j * interval;
+                table[j].item = get(newIndex);
+                table[j].index = newIndex;
+            }
+        }
+    }
+
+public:
     int getLength() {
         return length;
     }
 
-    int getTableIndex(int listIndex) {
-        int tIndex = 0;
-        for (; tIndex < length; tIndex++) {
-            if (listIndex <= ((tIndex > 0) ? table[tIndex].index : 0))
-                break;
-            if (tIndex + 1 == length)
-                break;
-        }
-        return tIndex;
+    int getInterval() {
+        return interval;
     }
 
-    T *get(int listIndex) {
+    TableItem getItem(int index) {
+        return table[index];
+    }
+
+    LinkedItem<T> *get(int listIndex) {
         int tIndex = getTableIndex(listIndex);
-        T *item = table[tIndex].item;
-
-        cout << "GET: " << listIndex << " : " << tIndex << " : " << table[tIndex].index << " : " << item->getData()
-             << endl;
-
-
-        int border = ((table[tIndex].index - table[tIndex - 1].index) / 2) + table[tIndex - 1].index;
-        if (border < listIndex) {
-            tIndex--;
-        }
-        item = table[tIndex].item;
+        LinkedItem<T> *item = table[tIndex].item;
         int i = table[tIndex].index;
         while (i != listIndex) {
             if (table[tIndex].index < listIndex) {
@@ -96,11 +102,10 @@ public:
                 i--;
             }
         }
-
         return item;
     }
 
-    void add(T *newItem, int listIndex, int listLength) {
+    void add(LinkedItem<T> *newItem, int listIndex, int listLength) {
         int tIndex = listIndex;
         if (listLength <= TABLE_SIZE) {
             bool moved = false;
@@ -133,7 +138,6 @@ public:
     }
 
     void remove(int listIndex, int listLength) {
-        cout << "REMOVE " << listIndex << " : " << listLength << endl;
         int tIndex = listIndex;
         if (listLength < TABLE_SIZE) {
             for (int j = tIndex; j < length - 1; j++) {
@@ -149,92 +153,42 @@ public:
         } else {
             tIndex = getTableIndex(listIndex);
 
-            cout << "TINDEX " << tIndex << " : " << listIndex << endl;
-
-            /*int ctIndex = tIndex;
-
-            cout << "FIRST COMPARE " << table[ctIndex].index << " - " << (table[ctIndex + 1].index - 1) << " == 0"
-                 << endl;
-            while (table[ctIndex].index - (table[ctIndex + 1].index - 1) == 0) {
-                cout << "COMPARE " << table[ctIndex].index << " - " << (table[ctIndex + 1].index - 1) << " == 0"
-                     << endl;
-                table[ctIndex].index++;
-
-                //cout << "CTINDEX " << ctIndex << endl;
-                ctIndex++;
-            }*/
             bool shiftToRight = false;
             for (int i = tIndex; i < length - 1; i++) {
-                cout << "SHIFT COMPARE " << table[i].index + 1 << " == " << table[i + 1].index << endl;
-                if (table[i].index + 1 == table[i + 1].index) {
-                    cout << "SHIFT TO RIGHT BITCH" << endl;
+                if (table[i].index + 1 == table[i + 1].index || table[i].index <= listIndex) {
                     shiftToRight = true;
                     break;
                 }
             }
             if (shiftToRight) {
-                cout << endl << "SHIFT TO RIGHT" << endl;
-
+                table[tIndex].item = get(table[tIndex].index + 1);
                 table[tIndex].index++;
-                table[tIndex].item = get(table[tIndex].index);
                 for (int i = tIndex; i < length; i++) {
                     if (i + 1 < length) {
                         int cur = table[i].index;
                         int next = table[i + 1].index;
-                        cout << "COMPARE " << cur << " : " << next << endl;
                         if (cur == next) {
-                            cout << "COMPARE TRUE" << endl;
+                            table[i + 1].item = get(table[i + 1].index + 1);
                             table[i + 1].index++;
-                            table[i + 1].item = get(table[i + 1].index);
                         }
                     }
                     table[i].index--;
                 }
             } else {
-                cout << endl << "SHIFT TO LEFT" << endl;
+                table[tIndex].item = get(table[tIndex].index - 1);
                 table[tIndex].index--;
-                table[tIndex].item = get(table[tIndex].index);
                 for (int i = tIndex; i > 0; i--) {
                     if (i - 1 > 0) {
                         int cur = table[i].index;
                         int next = table[i - 1].index;
-                        cout << "COMPARE " << cur << " : " << next << endl;
                         if (cur == next) {
-                            cout << "COMPARE TRUE" << endl;
+                            table[i - 1].item = get(table[i - 1].index - 1);
                             table[i - 1].index--;
-                            table[i - 1].item = get(table[i - 1].index);
                         }
                     }
-                    //table[i].index++;
                 }
             }
-
-
-            /*if (table[tIndex].index == listIndex) {
-                table[tIndex].item = tIndex == 0 ? table[tIndex].item->getNext() : table[tIndex].item->getPrev();
-            }
-
-            for (int i = tIndex == 0 ? tIndex + 1 : tIndex; i < length; i++) {
-                table[i].index--;
-            }
-
-            if (abs(table[tIndex].index - table[tIndex - 1].index) <= 1) {
-                table[tIndex - 1].index--;
-            }*/
-
             restoreUniformity(listLength);
-        }
-    }
-
-    void restoreUniformity(int listLength) {
-        if (((listLength - length) % (length - 1) == 0)) {
-            interval = (listLength - length) / (length - 1);
-            cout << "NEW TABLE INTERVAL: " << interval << endl;
-            for (int j = 1; j < TABLE_SIZE - 1; j++) {
-                int newIndex = j + j * interval;
-                table[j].item = get(newIndex);
-                table[j].index = newIndex;
-            }
         }
     }
 };
@@ -245,7 +199,39 @@ private:
     LinkedItem<T> *head = NULL;
     LinkedItem<T> *tail = NULL;
     int length = 0;
-    IndexTable<LinkedItem<T>> indexTable;
+    IndexTable<T> indexTable;
+
+    LinkedItem<T> *getItem(int index) {
+        if (index < 0 || index >= length)
+            return NULL;
+        return indexTable.get(index);
+    }
+
+    void remove(LinkedItem<T> *item) {
+        if (length == 1) {
+            //Delete first element
+            head = NULL;
+            tail = NULL;
+        } else if (item == head) {
+            //Remove from head
+            head = item->getNext();
+            head->setPrev(NULL);
+            item->setNext(NULL);
+        } else if (item == tail) {
+            //Remove from tail
+            tail = item->getPrev();
+            tail->setNext(NULL);
+            item->setPrev(NULL);
+        } else {
+            //Remove from position
+            item->getPrev()->setNext(item->getNext());
+            item->getNext()->setPrev(item->getPrev());
+            item->setPrev(NULL);
+            item->setNext(NULL);
+        }
+        delete (item);
+        length--;
+    }
 
 public:
     void addHead(T data) {
@@ -256,9 +242,7 @@ public:
         add(data, length);
     }
 
-
     void add(T data, int index) {
-        //cout << "add " << data << " to " << index << endl;
         LinkedItem<T> *newItem = new LinkedItem<T>();
         newItem->setData(data);
         if (index > length)
@@ -293,11 +277,6 @@ public:
         indexTable.add(newItem, index, length);
     }
 
-    LinkedItem<T> *getItem(int index) {
-        if (index < 0 || index >= length)
-            return NULL;
-        return indexTable.get(index);
-    }
 
     T get(int index) {
         return getItem(index)->getData();
@@ -318,31 +297,6 @@ public:
         remove(item);
     }
 
-    void remove(LinkedItem<T> *item) {
-        if (length == 1) {
-            //Delete first element
-            head = NULL;
-            tail = NULL;
-        } else if (item == head) {
-            //Remove from head
-            head = item->getNext();
-            head->setPrev(NULL);
-            item->setNext(NULL);
-        } else if (item == tail) {
-            //Remove from tail
-            tail = item->getPrev();
-            tail->setNext(NULL);
-            item->setPrev(NULL);
-        } else {
-            //Remove from position
-            item->getPrev()->setNext(item->getNext());
-            item->getNext()->setPrev(item->getPrev());
-            item->setPrev(NULL);
-            item->setNext(NULL);
-        }
-        delete (item);
-        length--;
-    }
 
     void clear() {
         if (length < 1) return;

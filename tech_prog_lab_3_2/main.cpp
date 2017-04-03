@@ -9,23 +9,19 @@ using namespace std;
 int main() {
     cout << "test" << endl;
     LinkedList<int> linkedList;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 7; i++) {
         //linkedList.addTail((i + 1) * 11);
         linkedList.addTail((i + 1) * 10);
         //linkedList.addTail(i+1);
     }
-
-    //todo NE RABOATET HITROE UDALENIE(((((((((
     linkedList.print();
     linkedList.printTable();
-    linkedList.remove(1);
-    linkedList.remove(1);
-    linkedList.remove(1);
+    linkedList.remove(6);
     linkedList.print();
-    linkedList.printTable();/*
+    linkedList.printTable();
     linkedList.remove(5);
     linkedList.print();
-    linkedList.printTable();*/
+    linkedList.printTable();
     return 0;
 }
 
