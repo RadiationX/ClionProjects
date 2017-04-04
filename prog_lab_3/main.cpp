@@ -36,7 +36,7 @@ int main() {
 
 void generateFile() {
     cout<< endl <<"----------"<<endl;
-    ofstream fout("/home/radiationx/ClionProjects.git/prog_lab3/file.bin", ios::out | ios::binary);
+    ofstream fout("/home/radiationx/ClionProjects.git/prog_lab_3/file.bin", ios::out | ios::binary);
     int size = 10;
     double array[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     fout.write((char *) &size, sizeof(size));
@@ -48,7 +48,7 @@ void generateFile() {
 
 void readFile() {
     cout<< endl <<"----------"<<endl;
-    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab3/file.bin", ios::in | ios::binary);
+    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab_3/file.bin", ios::in | ios::binary);
     int size;
     fin.read((char *) &size, sizeof(size));
     double *array = new double[size];
@@ -71,7 +71,7 @@ void readFile() {
 
 void readFile2() {
     cout<< endl <<"----------"<<endl;
-    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab3/file.bin", ios::in | ios::binary);
+    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab_3/file.bin", ios::in | ios::binary);
     int size;
     fin.read((char *) &size, sizeof(size));
     double *Array = new double[size];

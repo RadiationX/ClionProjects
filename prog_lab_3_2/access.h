@@ -2,8 +2,8 @@
 // Created by radiationx on 27.04.16.
 //
 
-#ifndef PROG_LAB3_ACCESS_H
-#define PROG_LAB3_ACCESS_H
+#ifndef PROG_LAB_3_2_ACCESS_H
+#define PROG_LAB_3_2_ACCESS_H
 
 #include<locale>
 #include<iostream>
@@ -20,7 +20,7 @@ struct data {
 
 void one() {
     //Generate file
-    ofstream fout1("/home/radiationx/ClionProjects.git/prog_lab3/text.bin", ios::out | ios::binary);
+    ofstream fout1("/home/radiationx/ClionProjects.git/prog_lab_3/text.bin", ios::out | ios::binary);
     int size = 5;
     fout1.write((char *) &size, sizeof(int));
     data temp1[] =
@@ -36,8 +36,8 @@ void one() {
     fout1.close();
 
     //Main
-    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab3/text.bin", ios::in | ios::binary);
-    ofstream fout("/home/radiationx/ClionProjects.git/prog_lab3/out.bin", ios::out | ios::binary);
+    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab_3/text.bin", ios::in | ios::binary);
+    ofstream fout("/home/radiationx/ClionProjects.git/prog_lab_3/out.bin", ios::out | ios::binary);
     int dataSize, middle = 0;
     fin.read((char *) &dataSize, sizeof(int));
     data *temp = new data[dataSize];
@@ -61,15 +61,15 @@ void two() {
     //Generate file
     char initText[] = "this  text is a  very awesome.";
     int initSize;
-    ofstream fout("/home/radiationx/ClionProjects.git/prog_lab3/text2.bin", ios::out | ios::binary);
+    ofstream fout("/home/radiationx/ClionProjects.git/prog_lab_3/text2.bin", ios::out | ios::binary);
     initSize = sizeof(initText);
     fout.write((char *) &initSize, sizeof(initSize));
     fout.write((char *) &initText, initSize);
     fout.close();
 
     //Main
-    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab3/text2.bin", ios::in | ios::binary);
-    fout.open("/home/radiationx/ClionProjects.git/prog_lab3/out2.bin", ios::out | ios::binary);
+    ifstream fin("/home/radiationx/ClionProjects.git/prog_lab_3/text2.bin", ios::in | ios::binary);
+    fout.open("/home/radiationx/ClionProjects.git/prog_lab_3/out2.bin", ios::out | ios::binary);
 
     int size = -1;
     fin.read((char *) &size, sizeof(size));
@@ -98,4 +98,4 @@ void two() {
     fout.close();
 }
 
-#endif //PROG_LAB3_ACCESS_H
+#endif //PROG_LAB_3_2_ACCESS_H

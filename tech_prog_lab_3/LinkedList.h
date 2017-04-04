@@ -1,5 +1,5 @@
-#ifndef TECH_PROG_LAB3_LINKEDLIST_H
-#define TECH_PROG_LAB3_LINKEDLIST_H
+#ifndef TECH_PROG_LAB_3_LINKEDLIST_H
+#define TECH_PROG_LAB_3_LINKEDLIST_H
 #define blockSize 10
 
 #include <iostream>
@@ -311,4 +311,4 @@ private:
 };
 
 
-#endif //TECH_PROG_LAB3_LINKEDLIST_H
+#endif //TECH_PROG_LAB_3_LINKEDLIST_H
