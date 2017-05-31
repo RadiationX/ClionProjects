@@ -41,7 +41,6 @@ public:
         int tags = 0, comments = 0, resolvedErrors = 0, openTagsCount = 0, closeTagsCount = 0;
         string temp = html;
         while (regex_search(temp, m, *mainPattern)) {
-            temp = m.suffix().str();
             tags++;
             //Более удобное обращение к последнему открытому тегу
             if (openedTags.size() > 0)
@@ -64,6 +63,7 @@ public:
                     lastClosed->addAfterText(m[0]);
                 }
                 //Нет смысла продолжать выполнение
+                temp = m.suffix().str();
                 continue;
             }
 
@@ -122,7 +122,9 @@ public:
                 }
             } else {
                 //ВЕТВЬ 1.2: Закрытие элемента и исправление ошибок в getHtml
+                cout<<"lastOpened "<<lastOpened->getTagName()<<endl;
                 if (lastOpened != NULL) {
+
 
                     lastClosed = lastOpened;
 
@@ -130,6 +132,7 @@ public:
                     //<span><b></span></b>
                     //<span></b></span>
                     //<span><b></span>
+                    cout<<"compare "<<lastClosed->getTagName()<<" to "<<tag<<endl;
                     if (lastClosed->getTagName().compare(tag) != 0) {
                         bool resolved = false;
 
@@ -166,6 +169,7 @@ public:
                         //Если ошибка исправлена, то продолжать смысла нет
                         if (resolved) {
                             resolvedErrors++;
+                            temp = m.suffix().str();
                             continue;
                         }
 
@@ -183,9 +187,11 @@ public:
                                 closeTagsCount++;
                                 lastClosed = NULL;
                                 resolvedErrors++;
+                                temp = m.suffix().str();
                                 continue;
                             }
                         }
+                        temp = m.suffix().str();
                         continue;
                     }
 
@@ -198,6 +204,7 @@ public:
                     closeTagsCount++;
                 }
             }
+            temp = m.suffix().str();
         }
 
         cout << endl;
