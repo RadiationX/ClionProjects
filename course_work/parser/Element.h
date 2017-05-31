@@ -9,14 +9,15 @@
 #include "iostream"
 #include "string"
 #include "ElementsList.h"
+#include "ElementHelper.h"
 
 using namespace std;
 
 class Element {
 
 private :
-    //vector<Element> elements/* = new vector<Element>()*/;
-    ElementsList<Element> elements/* = new vector<Element>()*/;
+    ElementsList<Element> elements;
+    vector<pair<string, string>> *attributes = NULL;
     Element *parent;
     string text = "";
     string afterText = "";
@@ -35,10 +36,31 @@ public:
         this->attrSource = attrs;
     }
 
+
+    string attr(string key) {
+        for (pair<string, string> p : *getAttributes()) {
+            if (p.first.compare(key) == 0) {
+                return p.second;
+            }
+        }
+        return "";
+    }
+
+
+    vector<pair<string, string>> *getAttributes() {
+        if (attributes == NULL) {
+            attributes = parseAttributes(attrSource, new vector<pair<string, string>>());
+        }
+        return attributes;
+    }
+
     string getTagName() {
         return tagName;
     }
 
+    string getAttrSource() {
+        return attrSource;
+    }
 
     void setParent(Element *parent) {
         this->parent = parent;
@@ -80,7 +102,6 @@ public:
 
     void add(Element *element) {
         elements.push_back(element);
-        cout << "DOCUMENT ADD TO ELEMENTS " << elements.back() << endl;
     }
 
     Element *getLast() {
@@ -88,15 +109,15 @@ public:
     }
 
     string html() {
-        return html(this, true);
+        return getHtml(this, true);
     }
 
     string htmlNoParent() {
-        return "";
+        return getHtml(this, false);
     }
 
     string getAllText() {
-        return "";
+        return getAllText(this);
     }
 
     ElementsList<Element> getElements() {
@@ -107,35 +128,60 @@ public:
         return afterText;
     }
 
-    string html(Element *element, bool withParent) {
-        cout << "SUKA " << &element << " : " << element->getTagName() << endl;
-        string html = "";
+    static string getHtml(Element *element, bool withParent) {
+        string resultHtml = "";
         if (withParent) {
-            html.append("<").append(element->getTagName());
-            /*if (!element->getAttrsSource().isEmpty()) {
-                html.append(" ").append(element->getAttrsSource());
-            }*/
-            html.append(">");
+            resultHtml.append("<").append(element->getTagName());
+            if (element->getAttrSource().length() > 0) {
+                resultHtml.append(" ").append(element->getAttrSource());
+            }
+            resultHtml.append(">");
         }
 
         if (element->getText().length() > 0) {
-            html.append(element->getText());
+            resultHtml.append(element->getText());
         }
 
         for (int i = 0; i < element->getElements().size(); i++) {
-            string suka = this->html(element->getElements().get(i), true);
-            html.append(suka);
+            string suka = getHtml(element->getElements().get(i), true);
+            resultHtml.append(suka);
         }
 
 
         if (withParent) {
-            //if (!containsInUTag(element->tagName()))
-            html.append("</").append(element->getTagName()).append(">");
+            if (!ElementHelper::Instance().containsInUTag(element->getTagName()))
+                resultHtml.append("</").append(element->getTagName()).append(">");
 
             if (element->getAfterText().length() > 0)
-                html.append(element->getAfterText());
+                resultHtml.append(element->getAfterText());
         }
-        return html;
+        return resultHtml;
+    }
+
+    static string getAllText(Element *element) {
+        string text = "";
+        text.append(" ").append(element->getText());
+
+        for (int i = 0; i < element->getElements().size(); i++) {
+            text.append(getAllText(element->getElements().get(i)));
+        }
+
+        text.append(" ").append(element->getAfterText());
+        return text;
+    }
+
+    static vector<pair<string, string>> *parseAttributes(string source, vector<pair<string, string>> *attrs) {
+        if (source.length() > 0) {
+            smatch m;
+            string temp = source;
+
+            while (regex_search(temp, m, *ElementHelper::Instance().getAttrPattern())) {
+                pair<string, string> *newPair = new pair<string, string>(m[1], m[2]);
+                attrs->push_back(*newPair);
+                temp = m.suffix().str();
+            }
+        }
+        return attrs;
     }
 };
 

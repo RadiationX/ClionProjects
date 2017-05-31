@@ -10,6 +10,7 @@
 #include "iostream"
 #include "string"
 #include "Element.h"
+#include "ElementHelper.h"
 
 using namespace std;
 
@@ -17,8 +18,7 @@ class Document {
 private:
     regex *mainPattern;
     Element *root;
-    string uTags[17] = {"area", "area", "br", "col", "colgroup", "command", "embed", "hr", "img", "input", "keygen",
-                        "link", "meta", "param", "source", "track", "wbr"};
+
 
 
 public:
@@ -36,7 +36,7 @@ public:
         //ssTag - блоки script/style, т.к в них может быть всякая дичь
         string tag, text, afterText, ssTag;
         bool ssTagNull;
-        //Matcher m = mainPattern.matcher(html);
+        //Matcher m = mainPattern.matcher(getHtml);
         smatch m;
         int tags = 0, comments = 0, resolvedErrors = 0, openTagsCount = 0, closeTagsCount = 0;
         string temp = html;
@@ -98,7 +98,7 @@ public:
                 this->add(newElement);
 
                 //Проверка на теги, которые можно не закрывать
-                if (!ssTagNull | containsInUTag(newElement->getTagName())) {
+                if (!ssTagNull | ElementHelper::Instance().containsInUTag(newElement->getTagName())) {
 
                     //Добавляем текст внутри script/style
                     if (!ssTagNull) {
@@ -121,7 +121,7 @@ public:
                     lastClosed = NULL;
                 }
             } else {
-                //ВЕТВЬ 1.2: Закрытие элемента и исправление ошибок в html
+                //ВЕТВЬ 1.2: Закрытие элемента и исправление ошибок в getHtml
                 if (lastOpened != NULL) {
 
                     lastClosed = lastOpened;
@@ -140,11 +140,11 @@ public:
                                 //Если последний в последнем или последний в последнем в последнем тег равен тегу по разметке
                                 //На случай когда есть в errorTags, но уже исправлено
                                 if (lastClosed->getLast() != NULL && (lastClosed->getLast()->getLast() != NULL &&
-                                                                       lastClosed->getLast()->getLast()->getTagName().compare(
-                                                                               tag) == 0 |
-                                                                       lastClosed->getLast()->getTagName().compare(
-                                                                               tag) ==
-                                                                       0)) {
+                                                                      lastClosed->getLast()->getLast()->getTagName().compare(
+                                                                              tag) == 0 |
+                                                                      lastClosed->getLast()->getTagName().compare(
+                                                                              tag) ==
+                                                                      0)) {
                                     errorTags.erase(errorTags.begin() + i);
                                     resolved = true;
                                     break;
@@ -216,11 +216,7 @@ public:
         return this;
     }
 
-    bool containsInUTag(string tag) {
-        for (string uTag : uTags)
-            if (uTag.compare(tag) == 0) return true;
-        return false;
-    }
+
 
 
     void findToAdd(Element *root, Element *children) {
