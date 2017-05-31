@@ -6,15 +6,17 @@
 #define COURSE_WORK_ELEMENTSLIST_H
 
 #include "iostream"
+#include "../LinkedList.h"
 
 using namespace std;
 
 template<class T>
 class ElementsList {
 private:
-    T **array = new T*[0];
-    int count = 0;
-    int countMax = 0;
+    //T **array = new T *[0];
+    //int count = 0;
+    //int countMax = 0;
+    LinkedList<T*> linkedList;
 public:
     ElementsList() {
 
@@ -25,7 +27,8 @@ public:
     }
 
     void add(T *item) {
-        count++;
+        linkedList.addTail(item);
+        /*count++;
         if (count > countMax) {
             T **newArray = new T*[count];
             std::copy(array, array + std::min(count - 1, count), newArray);
@@ -33,20 +36,21 @@ public:
             array = newArray;
         }
         array[count - 1] = item;
-        countMax++;
+        countMax++;*/
     }
 
     int size() {
-        return count;
+        return linkedList.length();
     }
 
     T *back() {
-        return array[count - 1];
+        return linkedList.get(linkedList.length() - 1);
     }
 
     T *get(int index) {
-        return array[index];
+        return linkedList.get(index);
     }
+
     T *at(int index) {
         return get(index);
     }
@@ -58,13 +62,14 @@ public:
     }*/
 
 
-    int begin(){
+    int begin() {
         return 0;
     }
 
     void remove(int index) {
-        array[index] = NULL;
-        count--;
+        linkedList.remove(index);
+        //array[index] = NULL;
+        //count--;
     }
 };
 

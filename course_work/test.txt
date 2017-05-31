@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <link rel="dns-prefetch" href="//s.4pda.to/">
+    <link rel="dns-prefetch" href="//an.yandex.ru/">
+    <link rel="dns-prefetch" href="//mc.yandex.ru/">
+    <link rel="dns-prefetch" href="//google-analytics.com/">
+    <link rel="dns-prefetch" href="//www.google-analytics.com/">
+    <meta name="google-play-app" content="app-id=ru.fourpda.client"
+          data-icon-url="//s.4pda.to/JK4Kz0feLhoibneUW8R3svz2AR82huqPbg9r3KCY.png" data-title="4PDA"
+          data-author="4PDA"/>
+    <meta charset="windows-1251"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"/>
+    <meta name="MobileOptimized" content="400"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="theme-color" content="#0072bc"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="//s.4pda.to/JK4KQ2BWPLd6X7K0ghmI4Odv8j.css?_=1496243965" media="all,handheld"/>
+    <link rel="stylesheet" href="//s.4pda.to/JK4KQ2BWPjdz0CHVPKjOPKT8cZB9M.css?_=1484663757" media="all,handheld"/>
+    <link rel="stylesheet"
+          href="//s.4pda.to/JK4KHXswoMyZnUL6ETdDsjZuz2DFatuOitRZ6jdOz12YpPSaX3d3uUTrGvb3vJPoRgpa3axH.css"
+          media="all,handheld"/>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="//s.4pda.to/JK4K30MKetz12i1NDsuPQoYeMxNVH.css?_=1231"><![endif]-->
+    <script type="text/javascript">(function (g, k) {
+        var c = "$4";
+        if ("function" != typeof g[c] || .8 > g[c].lib4PDA) {
+            var h = {}, a = function () {
+                return g[c] || this
+            }, l = function (b, f, d) {
+                return function () {
+                    if ("function" == typeof f)if (!b || b in a) {
+                        for (var e = [], c = d.length; c;)e.unshift(a[d[--c]]);
+                        f.apply(a, e)
+                    } else!h[b] && (h[b] = [[f, d]]) || h[b].push([f, d])
+                }
+            };
+            a.fn = a.prototype = {
+                lib4PDA: .8, constructor: a, addModule: function (b, f) {
+                    if (!(b in a)) {
+                        a[b] = a.fn[b] = f ? "function" == typeof f ? f(a) : f : k;
+                        for (var d = 0, e = h[b]; e && d < e.length;) {
+                            for (var c = [], g = e[d][1].length; g;)c.unshift(a[e[d][1][--g]]);
+                            e[d++][0].apply(this, c)
+                        }
+                        delete h[b]
+                    }
+                    return a
+                }, onInit: function (b, c) {
+                    for (var d = (b = (b + "").split(" ")).length, e = c; d;)e = new l(b[--d], e, b);
+                    e();
+                    return a
+                }
+            };
+            g[c] = g.lib4PDA = a;
+            for (c in a.fn)a[c] = a.fn[c]
+        }
+    })(window);
+    var gs = {
+        ipb_var_image_url: "//s.4pda.to/JK4K79XpPpuVeto7IfoudM1NI0or/1",
+        ipb_var_cookieid: "",
+        ipb_input_f: 614,
+        ipb_input_t: 84979,
+        ipb_input_p: 0,
+        ipb_md5_check: "0fb763c63e8ada2d5b6543e53ed6aaed",
+        ipb_var_base_url: location.protocol + "//4pda.ru/forum/index.php?",
+        ipb_var_cookieid: "",
+        ipb_var_cookie_domain: "",
+        ipb_var_cookie_path: "/",
+        ipb_var_st: 0,
+        ipb_skin_emodir: "default"
+    };
+    for (var i in gs) {
+        window[i] = gs[i]
+    }</script>
+    <script type="text/javascript" src="//s.4pda.to/JK4KQ2BWP1UcHgdRql.js?_=1493135959" async="async"
+            defer="defer"></script>
+    <script type="text/javascript" src="//s.4pda.to/JK4KQ2BWPLd6X7K0gZNNsjqmPuz0h86aH.js?_=1493051462" async="async"
+            defer="defer"></script>
+    <link rel="search" type="application/opensearchdescription+xml" title="Поиск по форуму 4pda"
+          href="/forum/opensearch_4pda_forum.xml"/>
+    <link rel="search" type="application/opensearchdescription+xml" title="Поиск по сайту 4pda"
+          href="/forum/opensearch_4pda.xml"/>
+    <title>Hackintosh на PC - обсуждение - 4PDA</title></head>
+<body>
+<header id="header">
+    <div class="h-frame">
+        <div class="holder-no-hidden">
+            <div class="p-area">
+                <div class="dropdown i-code"><a data-toggle="dropdown" href="//4pda.ru/forum/index.php?showuser=2556269"
+                                                class="overlay-block"><i class="icon-profile"></i><span
+                        class="overlay overlay-.25em overlay-right overlay-bottom overlay-orange">&nbsp;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="//4pda.ru/forum/index.php?showuser=2556269" title="Перейти в свой профиль"><i
+                                class="icon-profile"></i>Профиль</a></li>
+                        <li><a href="//4pda.ru/forum/index.php?act=mentions" title="Открыть список упоминаний"><i
+                                class="icon-text-overlay blue">0</i>Упоминания</a></li>
+                        <li><a href="//4pda.ru/forum/index.php?act=fav" title="Список избранных тем и форумов"><i
+                                class="icon-text-overlay blue">16</i>Избранное</a></li>
+                        <li><a href="//4pda.ru/forum/index.php?act=members" title="Поиск пользователей"><i
+                                class="icon-users"></i>Пользователи</a></li>
+                        <li>
+                            <a href="//4pda.ru/forum/index.php?act=search&amp;username-id=2556269&amp;source=pst&amp;sort=dd&amp;noform=1"
+                               title="Список ваших сообщений"><i class="icon-comment-baloons"></i>Мои ответы</a></li>
+                        <li><a href="//4pda.ru/forum/index.php?act=attach&amp;code=showuser"
+                               title="Список загруженных вами файлов"><i class="icon-cloud"></i>Мои файлы</a></li>
+                        <li><a href="//4pda.ru/forum/index.php?act=usercp" title="Настройки форума"><i
+                                class="icon-cog"></i><strong>Настройки</strong></a></li>
+                        <li>
+                            <a href="//4pda.ru/forum/index.php?act=auth&amp;action=logout&amp;k=0fb763c63e8ada2d5b6543e53ed6aaed&amp;return=%2F%2F4pda.ru%2Fforum%2Findex.php%3Fshowtopic%3D84979"
+                               id="r5iSeLlgXw6hWAxA1ekvXJmM" target="_top" title="Выход"><i class="icon-logout"></i>Выход</a>
+                        </li>
+                        <script>(function (t) {
+                            t && (t.href = "//4pda.ru/forum/index.php?act=auth&action=logout&k=0fb763c63e8ada2d5b6543e53ed6aaed&return=" + location.protocol + "%2F%2F4pda.ru%2Fforum%2Findex.php%3Fshowtopic%3D84979")
+                        })(document.getElementById("r5iSeLlgXw6hWAxA1ekvXJmM"))</script>
+                    </ul>
+                </div>
+                <form action="//4pda.ru/forum/index.php?" class="search-form" method="GET"><input type="hidden"
+                                                                                                  name="act"
+                                                                                                  value="search"/><input
+                        type="hidden" name="source" value="all"/><input type="hidden" name="forums" value="614"/><input
+                        type="hidden" name="subforums" value="1"/><input type="text"
+                                                                         placeholder="Поиск по форуму &quot;UNIX-based OS&quot;"
+                                                                         name="query" value=""/><span
+                        class="btn-search1"><i class="icon-search"></i><i class="icon-up"></i></span>
+                    <div class="btn-search"><i class="icon-search"></i><input type="submit" value="search"/></div>
+                </form>
+                <div class="events-wrapper"><a id="events-link" class="events-count"
+                                               href="//4pda.ru/forum/index.php?act=qms" target="_blank"><strong
+                        id="events-count" href="//4pda.ru/forum/index.php?act=qms" target="_blank"
+                        data-count="0">0</strong>новых</a>
+                    <div class="events-popup" id="events-list" style="display:none"></div>
+                </div>
+                <script type="text/javascript">window.CONFIG = {
+                    "member_id": 2556269,
+                    "baseurl": "//4pda.ru/forum/index.php?",
+                    "mailboxes": ["u2556269"],
+                    "xhr": "//app.4pda.ru/er/",
+                    "showMessage": false
+                };</script>
+                <script type="text/javascript" src="//s.4pda.to/JK4KQ2BWPDMxWxi24i8J0T.js?_=1493051201" async="async"
+                        defer="defer" charset="windows-1251"></script>
+            </div>
+            <a href="/" title="4pda" class="logo"><i class="icon-4PDA-plain"></i></a>
+            <nav id="nav"><span class="title"><span>Форум</span></span>
+                <ul>
+                    <li class=""><a href="/news/" title="Новости">Новости</a></li>
+                    <li class=""><a href="/articles/" title="Статьи">Статьи</a></li>
+                    <li class=""><a href="/reviews/" title="Обзоры">Обзоры</a></li>
+                    <li class=""><a href="/software/" title="Программы">Программы</a></li>
+                    <li class=""><a href="/games/" title="Игры">Игры</a></li>
+                    <li class=""><a href="/devdb/" title="Каталог устройств">DevDB</a></li>
+                    <li class="rHfMqXjt5"><a href="/forum/" title="Форум">Форум</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="drop-search">
+            <div class="holder-no-hidden">
+                <form action="//4pda.ru/forum/index.php?" class="search-form" method="GET"><input type="hidden"
+                                                                                                  name="act"
+                                                                                                  value="search"/><input
+                        type="hidden" name="source" value="all"/><input type="hidden" name="forums" value="614"/><input
+                        type="hidden" name="subforums" value="1"/>
+                    <div class="btn-search"><i class="icon-search"></i><input type="submit" value="search"/></div>
+                    <div class="area"><input type="text" name="query"
+                                             placeholder="Поиск по форуму &quot;UNIX-based OS&quot;" value=""/></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="ipbwrapper">
+    <link rel="stylesheet" href="//s.4pda.to/JK4KQ2BWPDcQOIxGkR2dN6z0Nu9XJfBKn3Ldc1df2EHjP9wx2.css?_=1482749083"
+          media="all,handheld"/>
+    <script type="text/javascript" src="//s.4pda.to/JK4K7Hm8z2Ez2nVLJKYIykz0nr3w8ncIvsMoaolARz0elle.js"></script>
+    <div class="r4UTOlNz2buYZCOiM5Yts" style="display:none" id="gc_1"><p
+            style="float:right;width:auto;margin:7px;padding:0"><a href="javascript:toggleglobalmess(1,0,1496262593);"
+                                                                   style="text-decoration:none;margin:-.4em;padding:.4em;display:inline-block;position:relative"><span
+            style="font-family:fontello,sans-serif">&#xFF0B;</span></a></p><h4>Объявления</h4></div>
+    <div class="r4UTOlNz2buYZCOiM5Yts" style="display:show" id="go_1"><p
+            style="float:right;width:auto;margin:7px;padding:0"><a href="javascript:toggleglobalmess(1,1,1496262593);"
+                                                                   style="text-decoration:none;margin:-.4em;padding:.4em;display:inline-block;position:relative"><span
+            style="font-family:fontello,sans-serif">&#xFF0D;</span></a></p><h4>Объявления</h4>
+        <div class="globalmesscontent">
+            <div align="center"><b><a title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=825305"
+                                      target="_blank">Помогите нам исправить <span
+                    style="color:blue">шапки тем</span></a></b></div>
+        </div>
+    </div>
+    <div id="navstrip">&gt;&nbsp;<a href="//4pda.ru/forum/index.php?act=idx">4PDA</a>&nbsp;&gt; <a
+            href="//4pda.ru/forum/index.php?showforum=607">Компьютеры и периферия</a>&nbsp;&gt; <a
+            href="//4pda.ru/forum/index.php?showforum=609">Мой компьютер (десктоп)</a>&nbsp;&gt; <a
+            href="//4pda.ru/forum/index.php?showforum=610">Операционные системы и софт</a>&nbsp;&gt; <a
+            href="//4pda.ru/forum/index.php?showforum=614">UNIX-based OS</a></div>
+    <script type="text/javascript">
+        //<![CDATA[
+        function jump_to_page(pag) {
+            var pages = parseInt(1448);
+            var st = (pag - 1);
+            if (st < 0) st = 0;
+            if (st > pages) st = pages;
+            st = parseInt(st * 20);
+            window.location = "//4pda.ru/forum/index.php?showtopic=84979&st=" + st;
+        }
+        //]]>
+    </script>
+    <a name="top"></a>
+    <div class="makepost_link"><a href="/forum/index.php?act=post&amp;do=reply_post&amp;f=614&amp;t=84979">Ответить</a>&nbsp;&nbsp;<a
+            href="//4pda.ru/forum/index.php?act=zfw&f=614" title="Открытие новой темы">Создать тему</a></div>
+    <div class="pagination"><a href="#"
+                               onclick="var pag = prompt('Введите номер страницы:','');if(!isNaN(pag)&&pag){jump_to_page(pag)} return false;">1449
+        страниц</a>&nbsp;&nbsp;<span class="pagecurrent">1</span>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=20">2</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=40">3</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=60">4</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=80">5</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=100">6</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=20">&gt;</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=28960">&raquo;</a></div>
+    <br/>
+    <div class="topic_title_post">Hackintosh на PC - обсуждение | [macOS] Установка, методы и сборки<br/>
+        <form action="/forum/index.php?" method="get" name="search" style="margin:0;">
+            <div style="text-align:center; margin:2px;"><input type="hidden" name="forums[]" value="614"/><input
+                    type="hidden" name="topics[]" value="84979"/><input type="hidden" name="act" value="search"/><input
+                    type="hidden" name="source" value="pst"/><input type="text" size="15" name="query"
+                                                                    class="searchinput" value="Ключевое слово"
+                                                                    id="search-in-post-query-1"
+                                                                    onfocus="if ( 'Ключевое слово' == this.value ) this.value = '';"/><input
+                    type="submit" value="Найти в этой теме" class="button"/></div>
+        </form>
+    </div>
+    <script type="text/javascript"><!--
+    img_item = "";
+    var img_item_a = [img_item + ' <a href="/forum/index.php?act=fav&amp;type=topics&amp;tact=delete&amp;selectedtids=2649933&amp;referer=%2Fforum%2Findex.php%3Fshowtopic%3D84979%26st%3D0" onclick="return confirm(this.getAttribute(&quot;data-confirm&quot;));" data-confirm="Вы подписаны на эту тему.\nПри удалении темы из избранного подписка на тему будет отменена.\n\nПродолжить?">Удалить из избранного</a>', img_item + ' <a href="/forum/index.php?act=fav&amp;type=topics&amp;tact=none&amp;selectedtids=2649933&amp;referer=%2Fforum%2Findex.php%3Fshowtopic%3D84979%26st%3D0">Отписаться от темы</a>', img_item + " <a href='/forum/index.php?act=Print&amp;client=printer&amp;f=614&amp;t=84979'>Версия для печати</a>", img_item + " <a href='/forum/index.php?act=Print&amp;client=choose&amp;f=614&amp;t=84979'>Скачать тему</a>"];//--></script>
+    <div data-post="1990421" class=""><a name="entry1990421"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">02.10.08, 21:31&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=1990421"
+                    onclick="link_to_post(1990421); return false;">#1</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]1990421[/SNAPBACK] [B]ctich,[/B] ')"
+                                                                        data-av="66/719866-13204963.jpg" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">ctich</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=719866" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=719866" target="qms_719866" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><strong class="t-cur-title">Куратор темы</strong><br/><span
+                    style='font-weight:bold;color:#0099FF'>Модераторы</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=719866&p=1990421"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=719866" title="Просмотреть репутацию"><span
+                    id="ajaxrep-719866">1010</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=719866&p=1990421"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=1990421&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=1990421">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-1990421"><span style="font-size:14pt;line-height:100%"><b>Hackintosh на РС - обсуждение</b></span>
+            <br/><a title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=5929&view=getnewpost"
+                    target="_blank"><b>Обсуждение и сравнение: Windows & Mac OS X</b></a> | <a title="Ссылка"
+                                                                                               rel="nofollow"
+                                                                                               href="//4pda.ru/forum/index.php?showtopic=255406"
+                                                                                               target="_blank"><b>FAQ по
+                Mac OS X</b></a> | <img alt="Изображение"
+                                        src="//s.4pda.to/JK4K7Gdo8r2pWqGEksAXwkjg0cDi5JWz1dsJvUD6z0dMWTUKY.png"/><a
+                    title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=72333&view=getnewpost"
+                    target="_blank"><b><span style="color:green">Выбор комплектующих для MAC OS X (хакинтош)</span></b></a>
+            | <a title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=584031" target="_blank"><b>Клуб
+                любителей Mac OS</b></a> | <a title="Ссылка" rel="nofollow"
+                                              href="//4pda.ru/forum/index.php?showtopic=575042" target="_blank"><b>Программы
+                для Mac OS X</b></a> | <a title="Ссылка" rel="nofollow"
+                                          href="//4pda.ru/forum/index.php?showtopic=138395" target="_blank"><b>Apple
+                MacBook — общая тема</b></a> | <a title="Ссылка" rel="nofollow"
+                                                  href="//4pda.ru/forum/index.php?showtopic=107160" target="_blank"><b>Обсуждение
+                Mac OS X</b></a> | <a title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=73940"
+                                      target="_blank"><b>Macintosh vs Hackintosh</b></a> | <a title="Ссылка"
+                                                                                              rel="nofollow"
+                                                                                              href="//4pda.ru/forum/index.php?showtopic=163270"
+                                                                                              target="_blank"><b>Мак ОС
+                или Линукс?</b></a> | <a title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=107160"
+                                         target="_blank"><b>Mac OS X</b></a> | <img alt="Изображение"
+                                                                                    src="//s.4pda.to/JK4K7Gdo8r2pWqGEksAXwkjg0cDi5JWz1dsJvUD6z0dMWTUKY.png"/>
+            <b> <a title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=669880" target="_blank"><span
+                    style="color:blue">Hackintosh на РС - OS X 10.11 El Capitan</span></a></b> | <img alt="Изображение"
+                                                                                                      src="//s.4pda.to/JK4K7Gdo8r2pWqGEksAXwkjg0cDi5JWz1dsJvUD6z0dMWTUKY.png"/>
+            <b><a title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=753765" target="_blank"><span
+                    style="color:red">Hackintosh на РС - macOS Sierra</span></a></b><br/><img
+                    src="//cs5-2.4pda.to/4456733.png" class="linked-image"
+                    alt="Прикрепленное изображение"/><br/><br/><span style="color:royalblue"><b><ul><li>В теме действуют все <a
+                    title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?act=boardrules" target="_blank">Правила форума</a> и <a
+                    title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=121191" target="_blank">10 заповедей новичка, кому тяжело осилить Правила Форума</a><br/></li><li>Обсуждение устройств, не относящихся к данной теме, запрещено. Если нужной вам темы по конкретной модели не существует - создайте её.<br/></li><li>Вместо слов «Спасибо!» используйте <img
+                    alt="Изображение" src="//s.4pda.to/JK4KGY1Ic4XUCoBOLJr12wtcHhZdMTAjwaS6z0Vf58F.gif"/>. Если у Вас меньше 15 постов - нажмите на кнопку <img
+                    alt="Изображение" src="//s.4pda.to/JK4K0Q0Y2XrSjACCWz03123KJ5pmspK6ODZjVI7hl31Z.gif"/> под тем сообщением, где Вам помогли, и напишите благодарность.<br/></li><li>Полезные темы на заметку: <a
+                    title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=89878" target="_blank">FAQ по форуму</a> | <a
+                    title="Ссылка" rel="nofollow"
+                    href="//4pda.ru/forum/index.php?s=&showtopic=54518&view=findpost&p=1069832" target="_blank">Как искать на форуме?</a> | <a
+                    title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=353146," target="_blank">Работа с изображениями на форуме</a> |  <a
+                    title="Ссылка" rel="nofollow"
+                    href="//4pda.ru/forum/index.php?s=&showtopic=353146&view=findpost&p=14041004" target="_blank">Как убирать изображения под спойлер</a><br/></li></ul></b></span><br/><span
+                    style="color:red"><b><span style="font-size:8pt;line-height:100%">Здесь обсуждаем процесс установки, проблемы и их решение, для получения <a
+                    title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showtopic=72333&view=getnewpost"
+                    target="_blank">информации по совместимому железу идем в соответствующую тему</a>.</span></b></span><br/>
+            <div class="post-block spoil close">
+                <div class="block-title"
+                     title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                    <span style="color:red"><b>Прочесть перед установкой OS X</b></span></div>
+                <div class="block-body">Раз вы решились установить Maс OS X на ПК, то этим Вы подписываетесь под тем,
+                    изучили процесс установки Mac OS X, умеете читать мануалы, находить информацию в шапке, пользоваться
+                    поиском по форуму, знаете как найти/зайти/настроить биос, и многие другие базовые знания
+                    пользователя ПК.<br/><span style="color:red"><b>Внимание: все посты, ответы на которые уже рассмотренные на ниже указанных русурсах, и в этой теме  - будут удаляться.</b></span>
+                    <div class="post-block hidden">
+                        <div class="block-title"></div>
+                        <div class="block-body">
+                            <ul>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://nnm-club.me/forum/viewtopic.php?t=764582" target="_blank">http://nnm-club.me/forum/viewtopic.php?t=764582</a><br/>
+                                </li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://www.macdigger.ru/macall/kak-ustanovit-os-x-mavericks-na-windows-pk-instrukciya.html"
+                                       target="_blank">http://www.macdigger.r…ws-pk-instrukciya.html</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://konstantin.in/page/ustanovka-mac-os-x-mountain-lion-1084-na-pc"
+                                       target="_blank">http://konstantin.in/p…untain-lion-1084-na-pc</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/ustanovka-os-x-mavericks-10-9-x-na-intel-pc.42133/"
+                                       target="_blank">https://applelife.ru/t…9-x-na-intel-pc.42133/</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/ustanovka-mountain-lion-10-8-s-firmennogo-obraza.35396/"
+                                       target="_blank">https://applelife.ru/t…rmennogo-obraza.35396/</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/ustanovka-mac-os-x-10-7-lion-s-firmennogo-obraza.29109/"
+                                       target="_blank">https://applelife.ru/t…rmennogo-obraza.29109/</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://www.tonymacx86.com/374-unibeast-install-os-x-mavericks-any-supported-intel-based-pc.html"
+                                       target="_blank">http://www.tonymacx86.…ed-intel-based-pc.html</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://www.tonymacx86.com/61-unibeast-install-os-x-mountain-lion-any-supported-intel-based-pc.html"
+                                       target="_blank">http://www.tonymacx86.…ed-intel-based-pc.html</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://www.tonymacx86.com/61-unibeast-install-os-x-mountain-lion-any-supported-intel-based-pc.html"
+                                       target="_blank">http://www.tonymacx86.…ed-intel-based-pc.html</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://tonymacx86.blogspot.com/2010/04/iboot-multibeast-install-mac-os-x-on.html"
+                                       target="_blank">http://tonymacx86.blog…stall-mac-os-x-on.html</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://www.prostomac.com/2013/10/kak-ustanovit-os-x-mavericks-na-rs-instrukciya/"
+                                       target="_blank">http://www.prostomac.c…cks-na-rs-instrukciya/</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://www.prostomac.com/2012/10/instrukciya-po-ustanovke-mountain-lion-na-pk-s-windows/"
+                                       target="_blank">http://www.prostomac.c…-lion-na-pk-s-windows/</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow" href="http://www.rampagedev.com/?page_id=144"
+                                       target="_blank">http://www.rampagedev.com/?page_id=144</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/panic-cpu-panika-varianty-reshenija.42135/"
+                                       target="_blank"><span
+                                        style="color:red">Варианты "panic"<i>(остановка загрузки)</i> на этапе установки OS X и их решение</span></a><br/><br/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br/><br/><br/></div>
+            </div>
+            <div class="post-block spoil close">
+                <div class="block-title"
+                     title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                    Настройка bios
+                </div>
+                <div class="block-body">
+                    <ol type="1">
+                        <li>Скидываем все настройки в default. <br/></li>
+                        <li>AHCI - enable; <br/></li>
+                        <li>HPET - enable;<br/></li>
+                        <li>VTD - disable;<br/></li>
+                        <li>ACPI Suspend Type - S3 (Only); <br/></li>
+                        <li>No Execute memory - enable;<br/></li>
+                        <li>USB Legacy - enable;<br/></li>
+                        <li>Отключаем всю периферию (вебки, смарты, блютуз-свистки, кард-ридеры и т.д.)</li>
+                    </ol>
+                    <br/>. ...<br/>&#91;i&#93;Примечание:<br/>
+                    <ol type="1">
+                        <li>HDD должен быть подключен к SATA-0, контролер Intel.<br/></li>
+                        <li>...&#91;/i&#93;</li>
+                    </ol>
+                    <br/></div>
+            </div>
+            <div class="post-block spoil close">
+                <div class="block-title"
+                     title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                    <b>Установка Mac OS через Boot Disk Utility</b></div>
+                <div class="block-body"><br/>Для установки потребуется флешка не менее 8Гб. <br/> 1. ПК на ОС Windows
+                    XP/7/8. <br/>2. Скачать утилиту Boot Disk Utility с <a title="Ссылка" rel="nofollow"
+                                                                           href="http://cvad-mac.narod.ru/index/0-5"
+                                                                           target="_blank">страницы разработчика
+                        cvad</a> или с форума - applelife.ru со страницы <a title="Ссылка" rel="nofollow"
+                                                                            href="https://applelife.ru/threads/delaem-zagruzochnuju-clover-fleshku-s-macosx-iz-windows.37189/"
+                                                                            target="_blank">посвященной данной
+                        утилите.</a> <br/>3. Установить по <a title="Ссылка" rel="nofollow"
+                                                              href="https://applelife.ru/threads/delaem-zagruzochnuju-clover-fleshku-s-macosx-iz-windows.37189/"
+                                                              target="_blank">инструкции</a> <br/>4. Зайти на флешку в
+                    папку EFI\CLOVER\ и удалить папку OEM и файл config-sample <i>(не путать с config.plist)</i>. <br/>5.
+                    Скачать образ Mac OS X по указанным ссылкам: <br/>5.1 <a title="Ссылка" rel="nofollow"
+                                                                             href="https://applelife.ru/threads/mac-osx-i-clover-iz-windows-izgotovlenie-zagruzochnoj-flehshki.37189/page-57#post-557498"
+                                                                             target="_blank"><b>Нажми и
+                        качай!</b></a><br/>6. Развернуть скаченный образ на подготовленную флешку. <br/>6.1 Инструкция с
+                    applelife.ru пункт <a title="Ссылка" rel="nofollow"
+                                          href="https://applelife.ru/threads/delaem-zagruzochnuju-clover-fleshku-s-macosx-iz-windows.37189/"
+                                          target="_blank">"<i>Заливка дистрибутива MACOSX на второй том загрузочного USB
+                        Flash drive:</i>"</a>: <br/>6.2. В основном окне программы -&gt; Destination Disk - выбираем наш
+                    USB Flash Drive -&gt; Part2. <br/> 6.3. Нажимаем кнопку "Restore Partition". <br/> 6.4. В
+                    открывшемся окне проводника, выбираем распакованный файл с расширением *.hfs. <br/>7. Тем кто
+                    устанавливает на ноутбук<span
+                            style="font-size:8pt;line-height:100%"><i> (или PS/2 мышь клавиатуру)</i></span>,
+                    обязательно скачать более старая версия <a class="ipb-attach attach-file"
+                                                               href="//4pda.ru/forum/dl/post/4617905/VoodooPS2Controller.kext.zip"
+                                                               data-rel="lyteframe"
+                                                               rev="width:728px;height:628px;scrolling:no;"
+                                                               title="Скачать VoodooPS2Controller.kext.zip"
+                                                               target="_blank"><img
+                            src="//s.4pda.to/JK4K4z1TwZaXZW4rDcCeM9VsPCxCcrJSUQZjz0Pwz2WtugILoR0z1d9I65FCe9bn.gif"
+                            alt="Прикрепленный файл" style="margin-right:3px;"/>VoodooPS2Controller.kext.zip</a> ( 97,46
+                    КБ )<br/>, новая версия <a class="ipb-attach attach-file"
+                                               href="//4pda.ru/forum/dl/post/9410133/VoodooPS2Controller.kext.zip"
+                                               data-rel="lyteframe" rev="width:728px;height:628px;scrolling:no;"
+                                               title="Скачать VoodooPS2Controller.kext.zip" target="_blank"><img
+                            src="//s.4pda.to/JK4K4z1TwZaXZW4rDcCeM9VsPCxCcrJSUQZjz0Pwz2WtugILoR0z1d9I65FCe9bn.gif"
+                            alt="Прикрепленный файл" style="margin-right:3px;"/>VoodooPS2Controller.kext.zip</a> ( 93,86
+                    КБ )<br/> положить в папку EFI/CLOVER/KEXT/10.X И Other <br/>8. Все установочная флешка готова,
+                    можно приступать к установке. <br/><br/><i><b>За данный споcоб установки благодарим cvad и Skvo</b></i>
+                    <br/><i>Данная инструкция написана по материалам с applelife.ru</i> <br/><br/></div>
+            </div>
+            <div class="post-block spoil close">
+                <div class="block-title"
+                     title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                    <b>После установки</b></div>
+                <div class="block-body"><br/>Установить один из загрузчиков на диск <span
+                        style="font-size:8pt;line-height:100%">(<i>если он не входит в состав сборки</i>)</span>: <br/>-
+                    <a title="Ссылка" rel="nofollow" href="http://sourceforge.net/projects/cloverefiboot/?source=pdlp"
+                       target="_blank">Загрузчик №1 - Clover</a> <i>(рекомендуем)</i>;<br/><i>Как это сделать: </i><a
+                            title="Ссылка" rel="nofollow"
+                            href="//4pda.ru/forum/index.php?showtopic=84979&st=4420&view=findpost&p=31174480"
+                            target="_blank"><i>Legacy bios</i></a>, <a title="Ссылка" rel="nofollow"
+                                                                       href="//4pda.ru/forum/index.php?showtopic=84979&st=4740&view=findpost&p=31561690"
+                                                                       target="_blank"><i>UEFI</i></a>. <br/>- <a
+                            title="Ссылка" rel="nofollow" href="http://www.osx86.net/files/category/3-bootloaders/"
+                            target="_blank">Загрузчик №2 - Chameleon</a>;<br/><i><span
+                            style="font-size:8pt;line-height:100%">*загрузчик устанавливаем только один, на ваш выбор</span></i><br/><br/><b>После
+                        входа в OS X первое что делаем:</b> <br/>
+                    <ol type="1">
+                        <li>Устанавливаем кекст для сетевой карты; <br/></li>
+                        <li>Настраиваем SMbios;<br/></li>
+                        <li>"Заводим" видео-карту <i>(разрешение должно быть правильным, и верхняя строка
+                            прозрачная);</i><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=31411055"
+                               target="_blank">Поднимаем "нативное управление питанием" процессора</a>;<br/></li>
+                        <li>Поднимаем звук через патченый AppleHDA или VoodooHDA</li>
+                    </ol>
+                    <br/>...<br/>21. Ставим програмулинки и "рюшечки".<br/><br/>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            <span style="color:darkblue">Как выбрать "модель" ПК для прописи в SMbios</span></div>
+                        <div class="block-body"><span style="color:red">Важно - модель всегда выбирается в зависимости от процессора.</span><br/>В
+                            Mac OS управление питанием процесса и видеокарты, а также других устройств зависит от модели
+                            конкретного ПК.<br/>Приведу пример на процессоре Intel Core 2 Duo E8400 3Ghz.<br/>Итак, для
+                            определения модели "мака" на который больше всего похож мой ПК, воспользуемся прогой <a
+                                    title="Ссылка" rel="nofollow" href="http://mactracker.ca"
+                                    target="_blank">Mactracker </a>.<br/>Запускаем ее и находим, наиболее похожий
+                            процессор на наш, в моем случаи это Intel Core 2 Duo E8600 (<i>частота не совпадает, но это
+                                не столь принципиально, главное они на одном ядре - "Wolfdale"</i>):<br/>
+                            <div align="center">
+                                <table style="width:auto;display:inline;" id="ipb-attach-table-4467039-bb"
+                                       cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div id="ipb-attach-div-4467039-bb">
+                                                <div id="ipb-attach-ct-4467039-bb"></div>
+                                                <a rel="nofollow" data-rel="lytebox[1990421]"
+                                                   id="ipb-attach-url-4467039-bb"
+                                                   href="//4pda.ru/forum/dl/post/4467039/mactraker1.jpg"
+                                                   title="mactraker1.jpg - Размер: 137,75 КБ" target="_blank"><img
+                                                        src="//cs5-2.4pda.to/4467039.jpg" id="ipb-attach-img-4467039-bb"
+                                                        class="attach" data-rel="lytebox[1990421]"
+                                                        style="width:330;height:400" width="330" height="400"
+                                                        alt="Прикрепленное изображение"/></a>
+                                                <div id="ipb-attach-cb-4467039-bb" style="margin:0px"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>Ну вот, найдя необходимый нам процессор, мы сразу же определяем и модель по которой
+                            далее будем создавать наш SMbios, у нас это - <b>Imac 10.1</b><br/>Далее прописываем SMbios
+                            исходя из вашего загрузчика...<br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            <span style="color:darkblue">Как прописать SMbios в Clover</span></div>
+                        <div class="block-body">Clover и сам прекрасно знает какой наиболее подходящий профиль подходит
+                            вашему процессору, но иногда есть необходимость сделать "по своему".<br/>Приведу наиболее
+                            просто способ, при помощи утилиты - <b>CloverConfigurator.</b><br/>
+                            <div align="center"><b><span style="color:darkblue">Запускаем утилиту и переходим в раздел SMbios.</span></b>
+                            </div>
+                            <br/>
+                            <div align="center">
+                                <table style="width:auto;display:inline;" id="ipb-attach-table-4467081-bb"
+                                       cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div id="ipb-attach-div-4467081-bb">
+                                                <div id="ipb-attach-ct-4467081-bb"></div>
+                                                <a rel="nofollow" data-rel="lytebox[1990421]"
+                                                   id="ipb-attach-url-4467081-bb"
+                                                   href="//4pda.ru/forum/dl/post/4467081/cloverconf1.jpg"
+                                                   title="cloverconf1.jpg - Размер: 198,53 КБ" target="_blank"><img
+                                                        src="//cs5-2.4pda.to/4467081.jpg" id="ipb-attach-img-4467081-bb"
+                                                        class="attach" data-rel="lytebox[1990421]"
+                                                        style="width:400;height:221" width="400" height="221"
+                                                        alt="Прикрепленное изображение"/></a>
+                                                <div id="ipb-attach-cb-4467081-bb" style="margin:0px"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <div align="center"><span style="color:darkblue"><b>Нажимаем на "волшебный болт" :D , и выбираем модель Imac 10.1.</b></span>
+                            </div>
+                            <br/>
+                            <div align="center">
+                                <table style="width:auto;display:inline;" id="ipb-attach-table-4467088-bb"
+                                       cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div id="ipb-attach-div-4467088-bb">
+                                                <div id="ipb-attach-ct-4467088-bb"></div>
+                                                <a rel="nofollow" data-rel="lytebox[1990421]"
+                                                   id="ipb-attach-url-4467088-bb"
+                                                   href="//4pda.ru/forum/dl/post/4467088/cloverconf2.jpg"
+                                                   title="cloverconf2.jpg - Размер: 243,84 КБ" target="_blank"><img
+                                                        src="//cs5-2.4pda.to/4467088.jpg" id="ipb-attach-img-4467088-bb"
+                                                        class="attach" data-rel="lytebox[1990421]"
+                                                        style="width:400;height:221" width="400" height="221"
+                                                        alt="Прикрепленное изображение"/></a>
+                                                <div id="ipb-attach-cb-4467088-bb" style="margin:0px"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <div align="center"><span style="color:darkblue"><b>Получаем автоматом с генерированные параметры, нажимаем  - "ок".</b></span>
+                            </div>
+                            <br/>
+                            <div align="center">
+                                <table style="width:auto;display:inline;" id="ipb-attach-table-4467103-bb"
+                                       cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div id="ipb-attach-div-4467103-bb">
+                                                <div id="ipb-attach-ct-4467103-bb"></div>
+                                                <a rel="nofollow" data-rel="lytebox[1990421]"
+                                                   id="ipb-attach-url-4467103-bb"
+                                                   href="//4pda.ru/forum/dl/post/4467103/cloverconf3.jpg"
+                                                   title="cloverconf3.jpg - Размер: 95,67 КБ" target="_blank"><img
+                                                        src="//cs5-2.4pda.to/4467103.jpg" id="ipb-attach-img-4467103-bb"
+                                                        class="attach" data-rel="lytebox[1990421]"
+                                                        style="width:400;height:214" width="400" height="214"
+                                                        alt="Прикрепленное изображение"/></a>
+                                                <div id="ipb-attach-cb-4467103-bb" style="margin:0px"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <div align="center"><span style="color:darkblue"><b>Нажимаем "copy all data".</b></span>
+                            </div>
+                            <br/>
+                            <div align="center">
+                                <table style="width:auto;display:inline;" id="ipb-attach-table-4467121-bb"
+                                       cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div id="ipb-attach-div-4467121-bb">
+                                                <div id="ipb-attach-ct-4467121-bb"></div>
+                                                <a rel="nofollow" data-rel="lytebox[1990421]"
+                                                   id="ipb-attach-url-4467121-bb"
+                                                   href="//4pda.ru/forum/dl/post/4467121/cloverconf4.jpg"
+                                                   title="cloverconf4.jpg - Размер: 21,34 КБ" target="_blank"><img
+                                                        src="//cs5-2.4pda.to/4467121.jpg" id="ipb-attach-img-4467121-bb"
+                                                        class="attach" data-rel="lytebox[1990421]"
+                                                        style="width:400;height:120" width="400" height="120"
+                                                        alt="Прикрепленное изображение"/></a>
+                                                <div id="ipb-attach-cb-4467121-bb" style="margin:0px"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <div align="center"><span style="color:darkblue"><b>Все данные заполнены.</b></span></div>
+                            <br/>
+                            <div align="center">
+                                <table style="width:auto;display:inline;" id="ipb-attach-table-4467136-bb"
+                                       cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div id="ipb-attach-div-4467136-bb">
+                                                <div id="ipb-attach-ct-4467136-bb"></div>
+                                                <a rel="nofollow" data-rel="lytebox[1990421]"
+                                                   id="ipb-attach-url-4467136-bb"
+                                                   href="//4pda.ru/forum/dl/post/4467136/cloverconf5.jpg"
+                                                   title="cloverconf5.jpg - Размер: 141,61 КБ" target="_blank"><img
+                                                        src="//cs5-2.4pda.to/4467136.jpg" id="ipb-attach-img-4467136-bb"
+                                                        class="attach" data-rel="lytebox[1990421]"
+                                                        style="width:400;height:120" width="400" height="120"
+                                                        alt="Прикрепленное изображение"/></a>
+                                                <div id="ipb-attach-cb-4467136-bb" style="margin:0px"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <div align="center"><span style="color:darkblue"><b>В меню Clover Configurator нажимаем "File save".</b></span>
+                            </div>
+                            <br/>
+                            <div align="center"><b><span style="color:darkblue">"Finish".</span></b></div>
+                            <br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            <span style="color:darkblue">Как прописать SMbios в Chameleon\Chimera</span></div>
+                        <div class="block-body">
+                            <div align="center"><span style="color:darkblue"><b>Запускаем утилиту Chameleon Wizzard, переходим в раздел "SMbios" и нажимаем "Edit".</b></span>
+                            </div>
+                            <br/>
+                            <div align="center">
+                                <table style="width:auto;display:inline;" id="ipb-attach-table-4467651-bb"
+                                       cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div id="ipb-attach-div-4467651-bb">
+                                                <div id="ipb-attach-ct-4467651-bb"></div>
+                                                <a rel="nofollow" data-rel="lytebox[1990421]"
+                                                   id="ipb-attach-url-4467651-bb"
+                                                   href="//4pda.ru/forum/dl/post/4467651/chamsmbios1.jpg"
+                                                   title="chamsmbios1.jpg - Размер: 93,82 КБ" target="_blank"><img
+                                                        src="//cs5-2.4pda.to/4467651.jpg" id="ipb-attach-img-4467651-bb"
+                                                        class="attach" data-rel="lytebox[1990421]"
+                                                        style="width:400;height:345" width="400" height="345"
+                                                        alt="Прикрепленное изображение"/></a>
+                                                <div id="ipb-attach-cb-4467651-bb" style="margin:0px"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/><br/>
+                            <div align="center"><span style="color:darkblue"><b>Выбираем уже определившуюся нами модель мака.</b></span>
+                            </div>
+                            <br/>
+                            <div align="center">
+                                <table style="width:auto;display:inline;" id="ipb-attach-table-4467652-bb"
+                                       cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div id="ipb-attach-div-4467652-bb">
+                                                <div id="ipb-attach-ct-4467652-bb"></div>
+                                                <a rel="nofollow" data-rel="lytebox[1990421]"
+                                                   id="ipb-attach-url-4467652-bb"
+                                                   href="//4pda.ru/forum/dl/post/4467652/chamsmbios2.jpg"
+                                                   title="chamsmbios2.jpg - Размер: 264,37 КБ" target="_blank"><img
+                                                        src="//cs5-2.4pda.to/4467652.jpg" id="ipb-attach-img-4467652-bb"
+                                                        class="attach" data-rel="lytebox[1990421]"
+                                                        style="width:340;height:400" width="340" height="400"
+                                                        alt="Прикрепленное изображение"/></a>
+                                                <div id="ipb-attach-cb-4467652-bb" style="margin:0px"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/><br/>
+                            <div align="center"><b><span style="color:darkblue">Получаем автоматом с генерированные параметры, нажимаем  - "Save As", и сохраняем в папку \Extra.</span></b>
+                            </div>
+                            <br/>
+                            <div align="center">
+                                <table style="width:auto;display:inline;" id="ipb-attach-table-4467661-bb"
+                                       cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div id="ipb-attach-div-4467661-bb">
+                                                <div id="ipb-attach-ct-4467661-bb"></div>
+                                                <a rel="nofollow" data-rel="lytebox[1990421]"
+                                                   id="ipb-attach-url-4467661-bb"
+                                                   href="//4pda.ru/forum/dl/post/4467661/chamsmbios3.jpg"
+                                                   title="chamsmbios3.jpg - Размер: 159,69 КБ" target="_blank"><img
+                                                        src="//cs5-2.4pda.to/4467661.jpg" id="ipb-attach-img-4467661-bb"
+                                                        class="attach" data-rel="lytebox[1990421]"
+                                                        style="width:400;height:343" width="400" height="343"
+                                                        alt="Прикрепленное изображение"/></a>
+                                                <div id="ipb-attach-cb-4467661-bb" style="margin:0px"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/><br/>
+                            <div align="center"><b><span style="color:darkblue">"Finish".</span></b></div>
+                            <br/></div>
+                    </div>
+                    <br/><br/></div>
+            </div>
+            <div class="post-block spoil close">
+                <div class="block-title"
+                     title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                    Видео, Звук, USB, Сеть, прочее:
+                </div>
+                <div class="block-body">
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            Процессор:
+                        </div>
+                        <div class="block-body">
+                            <ul>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=31411055"
+                                       target="_blank">Инструкция по заведению P&C-States (SpeedStep) на процессорах
+                                    Core2Duo/Sandy Bridge/Ivy Bridge/Haswell через Clover.</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="http://osxpc.ru/zavod/cpu-zavod/hackintosh-pentium-haswell/"
+                                       target="_blank">Pentium и Celeron (Haswell-LGA1150)</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/entries/rabotaet-li-spidstep.108/" target="_blank">Работает
+                                    ли спидстеп?</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://www.applelife.ru/threads/ivy-bridge-haswell-speedstep-turboboost.38283/"
+                                       target="_blank">Ivy Bridge, Haswell - SpeedStep & TurboBoost</a></li>
+                            </ul>
+                            <br/><br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            Видео:
+                        </div>
+                        <div class="block-body">
+                            <ul>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=32265264"
+                                       target="_blank">Заведение видеокарт Intel HD4000/4400/4600/5000. Отключение
+                                    видеокарт NVIDIA.</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?showtopic=84979&st=4840&view=findpost&p=31658497"
+                                       target="_blank">Отключение выдеокарт NVidia в ноутбуках с технологией Optimus</a><br/>
+                                </li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=45486199"
+                                       target="_blank">Заводим видеокарты на 10.11.2 (EL Capitan) NVIDIA
+                                    780/680/285/120/8800 GT/Quadro K5000, Quadro 4000/Quadro FX 4800, Quadro FX 5600</a>.<br/>
+                                </li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/intel-hd3000-hd4000-hd4600-hd5000-nd5500-hd5600-hd520-hd530.1289648/"
+                                       target="_blank">Intel HD3000 HD4000 HD4600 HD5000 НD5500 HD5600 HD520 HD530</a>
+                                    <a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/ustanovka-macos-sierra-10-12-na-intel-pc.1367064/page-421#post-634198"
+                                       target="_blank">Desktop HD530</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow" href="http://osxpc.ru/category/zavod/gpu/"
+                                       target="_blank">Заводим видеокарты, инструкции от osxpc.ru</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/reguljator-jarkosti-dlja-hd3000-hd4000-hd4600-odnim-slovom-acpibacklight.688531/"
+                                       target="_blank">Регулятор яркости для HD3000, HD4000, HD4600 (одним словом
+                                    ACPIBacklight)</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://www.cmd-help.ru/как-завести-intel-hd-graphics-на-mac-os-x-10-11-el-capitan/"
+                                       target="_blank">Intel HD Graphics на Mac OS X 10.11 El Capitan</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://www.tonymacx86.com/threads/kaby-lake-hd620-working.209598/"
+                                       target="_blank">Kaby Lake HD620</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=753765&view=findpost&p=58075541"
+                                       target="_blank">Заводим Kaby Lake Intel HD630 на dekstop</a><br/></li>
+                            </ul>
+                            <br/><br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            Звук:
+                        </div>
+                        <div class="block-body">
+                            <ul>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=39462191"
+                                       target="_blank">Запускаем звук при помощи авто-патча DUMMY и Сlovera</a><br/>
+                                </li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=39604028"
+                                       target="_blank">Запускаем звук при помощи авто-патча от Toleda и Clovera</a><br/>
+                                </li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=669880&view=findpost&p=44725176"
+                                       target="_blank">Запускаем звук при помощи авто-патча от Mirone</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/applealc-dinamicheskij-patching-applehda.1171672/"
+                                       target="_blank">AppleALC — динамический патчинг AppleHDA</a> | <a title="Ссылка"
+                                                                                                         rel="nofollow"
+                                                                                                         href="//4pda.ru/forum/index.php?s=&showtopic=753765&view=findpost&p=57190685"
+                                                                                                         target="_blank">Инструкция
+                                    на пальцах как поднять звук через AppleALC</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=40629650"
+                                       target="_blank">Мануалы по VooooHDA.kext</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=753765&view=findpost&p=50669573"
+                                       target="_blank">Установка и настройка VoodooHDA.kext</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://www.applelife.ru/threads/delaem-zvuk-na-osnove-voodoohda.18413/"
+                                       target="_blank">Оригинальная тема по VoodooHDA</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=57173635"
+                                       target="_blank">AppleHDA Patcher v1.8 by Micky1979 and Mirone</a></li>
+                            </ul>
+                            <br/><br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            Сеть:
+                        </div>
+                        <div class="block-body">
+                            <ul>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/ustanovka-os-x-s-pomoschju-bdu-i-obraza-recoveryhd.1154924/page-5#post-613981"
+                                       target="_blank">https://applelife.ru/t…924/page-5#post-613981</a><br/></li>
+                            </ul>
+                            <br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            USB:
+                        </div>
+                        <div class="block-body">
+                            <ul>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads"
+                                       target="_blank">https://bitbucket.org/…b-inject-all/downloads</a><br/></li>
+                            </ul>
+                            <br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            MacAppStore и iCloud; iMessage и FaceTime:
+                        </div>
+                        <div class="block-body">
+                            <ul>
+                                <li><a title="Ссылка" rel="nofollow" href="http://osxpc.ru/faq/apple-services/"
+                                       target="_blank">Завод MacAppStore и iCloud; iMessage и FaceTime; HandOff и
+                                    Continuity.</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=30937780"
+                                       target="_blank">Проверка валидности серийника для успешной работы App Store,
+                                    iMessage, Facetime</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://www.applelife.ru/threads/nastrojka-appstore-imessage-i-icloud-v-os-x.40790/"
+                                       target="_blank">Настройка AppStore, iMessage и iCloud в OS X</a><br/></li>
+                                <li><a title="Ссылка" rel="nofollow"
+                                       href="https://applelife.ru/threads/nastrojka-appstore-imessage-i-icloud-v-os-x.40790/page-130#post-609733"
+                                       target="_blank">Настройка AppStore, iMessage и iCloud в OS X 10.12</a></li>
+                            </ul>
+                            <br/></div>
+                    </div>
+                    <br/><br/></div>
+            </div>
+            <div class="post-block spoil close">
+                <div class="block-title"
+                     title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                    <b>Полезные ссылки</b></div>
+                <div class="block-body">
+                    <ol type="1">
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="https://applelife.ru/threads/delaem-zagruzochnuju-clover-fleshku-s-macosx-iz-windows.37189/"
+                               target="_blank">Boot Disk Utility - создание загрузочной флешки из под Windows.</a> <br/>
+                        </li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="http://sourceforge.net/projects/cloverefiboot/?source=pdlp&quot;" target="_blank">Clover
+                            - скачать EFI загрузчик.</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow" href="https://applelife.ru/threads/clover.42089/"
+                               target="_blank">Clover - обсуждение на applelife.ru</a> <br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="http://sourceforge.net/projects/hwsensors/?source=navbar" target="_blank">HWmonitor
+                            - мониторинг всех показателей системы</a> | <a title="Ссылка" rel="nofollow"
+                                                                           href="http://hwsensors.com/" target="_blank">hwsensors</a>
+                            | <a title="Ссылка" rel="nofollow"
+                                 href="https://applelife.ru/threads/fakesmc-i-monitoring-vsego.24475/"
+                                 target="_blank"><i>Обсуждение на applelife.ru</i></a>. <br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="https://applelife.ru/threads/latest-kext-utility.41036/" target="_blank">Kext
+                            Utility - Восстановление прав в системе, установка кекстов.</a> <br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="http://www.hackintoshosx.com/files/category/3-bootloaders/" target="_blank">Chameleon</a>
+                            <br/></li>
+                        <li><a title="Ссылка" rel="nofollow" href="http://www.hackintoshosx.com/" target="_blank">База
+                            драйверов (kext) для Hackintosh</a> <br/></li>
+                        <li><a title="Ссылка" rel="nofollow" href="http://www.insanelymac.com" target="_blank">Хороший
+                            зарубежный форум по хакинтошам (insanelymac)</a> <br/></li>
+                        <li><a title="Ссылка" rel="nofollow" href="http://wiki.osx86project.org" target="_blank">Wiki-база
+                            по совместимому железу (wiki.osx86project)</a> <br/></li>
+                        <li><a title="Ссылка" rel="nofollow" href="http://applelife.ru" target="_blank"><span
+                                style="color:darkblue"><b>Лучший форум по хакинтошам (applelife.ru)</b></span></a> <br/>
+                        </li>
+                        <li><a title="Ссылка" rel="nofollow" href="http://macpages.ru" target="_blank">Можно найти
+                            подробные мануалы в стиле "для чайников"(macpages)</a> <br/></li>
+                        <li><a title="Ссылка" rel="nofollow" href="http://rutracker.org/forum/viewforum.php?f=1366"
+                               target="_blank">Ветка Rutracker.org по макам (ритейлы, сборки, софт)</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=30931033"
+                               target="_blank">Установка Mac OS X 10.9.2 - 10.10.3 на Lenovo A730</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=30945519"
+                               target="_blank">Исправление ошибки "boot error" в Clover вариант №1</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=32540139"
+                               target="_blank">Исправление ошибки "boot error" в Clover вариант №2</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=34105771"
+                               target="_blank">Исправление ошибки "boot error" в Clover/Chameleon от</a> <a
+                                title="Ссылка" rel="nofollow" href="//4pda.ru/forum/index.php?showuser=3887317"
+                                target="_blank">Bobko_904</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=31174480"
+                               target="_blank">Установка Clover на жесткий диск для Legacy bios (<i>старые материнские
+                            платы</i>)</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=31561690"
+                               target="_blank">Установка Clover на жесткий диск для UEFI материнских плат.</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="https://bitbucket.org/blackosx/darwindumper/downloads" target="_blank">DarwinDumper
+                            - утилита для снятия полного отчета о системе.</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=31414927"
+                               target="_blank"><span style="color:crimson"><b>Редакторы config.plist</b></span></a><br/>
+                        </li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=29196063"
+                               target="_blank">Как установить kext в Mac OS X</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?showtopic=84979&st=4840&view=findpost&p=31658783"
+                               target="_blank">Как удалить кекст в Mac OS X</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=31996682"
+                               target="_blank">Изменение разметки диска с MBR в GPT без потери данных</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=54114705"
+                               target="_blank">Как конвертировать жесткий диск с установленной Windows 10 c MBR на GPT
+                            без потери данных!</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=32236021"
+                               target="_blank">Как включить режим Dark Graphite в OS X 10.10 Yosemite</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=32506503"
+                               target="_blank">Как включить usb-bluetooth на чипе CSR</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=31608696"
+                               target="_blank">Обновление Mac OS X 10.8.5 на Mac OS X 10.9 Mavericks</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=32257410"
+                               target="_blank">Останавливается на загрузке "&#91;IOBluetoothHCIController&#93;&#91;SearchForTransportEventTimeOutHandler&#93;
+                            -- Missing Bluetooth Controller Transport</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=30310122"
+                               target="_blank"> Способ №1 Активация TRIM на SSD, фикс "оранжевых" иконок в Clover</a> |
+                            <a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?showtopic=84979&st=26240&view=findpost&p=56890488"
+                               target="_blank">Способ №2</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=32821554"
+                               target="_blank">Создание флешки для установки Windows на диск с Mac OS X</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=34067211"
+                               target="_blank"><span style="color:darkred"><b>Создание загрузочной флешки Mac OS X Mavericks  или Yosemite с загрузчиком Clover</b></span></a><br/>
+                        </li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=37150265"
+                               target="_blank">Elan Touchpad Driver для ноутбуков</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="https://applelife.ru/threads/panic-cpu-panika-varianty-reshenija.42135/"
+                               target="_blank"><span style="color:red">Варианты "panic"<i>(остановка загрузки)</i> на этапе установки OS X и их решение</span></a><br/>
+                        </li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=37266737"
+                               target="_blank">Создаем Legacy kext для Bluetooth</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=37367017"
+                               target="_blank">Решение проблемы с отображением времени в Windows</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=40595142"
+                               target="_blank"><span style="color:teal"><b>Скриншоты GUI Clover</b></span></a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=40610502"
+                               target="_blank"><span style="color:red"><b>Назначений ключей <i>(boot arguements)</i> в загрузчике Clover</b></span></a><br/>
+                        </li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=45378314"
+                               target="_blank">Как получить доступ из Windows к EFI разделу (тут прячется клевер) на Mac
+                            OS</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=45522785"
+                               target="_blank">Установка Mac Os X на ноутбуки семейства Asus N/k/s Core I 3\5\7 Ivy
+                            Bridge.</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=47357233"
+                               target="_blank"><b><span
+                                style="color:red">Установка Винды и Мака на один жесткий диск</span></b></a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=36925759"
+                               target="_blank">Краткое описание кекстов: FakeSMC.kext, AppleHDA.kext и т.д.</a><br/>
+                        </li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=50372231"
+                               target="_blank">Как восстановить EFI раздел HDD Mac OS X</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=51228255"
+                               target="_blank"><b>Сборник полезных программ в одном архиве</b></a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="https://applelife.ru/threads/nastrojka-usb-v-10-11.627190/" target="_blank">Настройка
+                            USB в 10.11</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=753765&view=findpost&p=56893758"
+                               target="_blank"><span
+                                style="color:blue"><b>Патчи для macOS Sierra и SkyLake</b></span></a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="http://systemagic.ru/windows-8/ustanovka-mac-os-x-i-windows-na-odin-zhyostkij-disk-hddssd/"
+                               target="_blank">Установка Mac OS X и Windows на один жёсткий диск (HDD|SSD)</a><br/></li>
+                        <li>Решение ошибки <a title="Ссылка" rel="nofollow"
+                                              href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=57053567"
+                                              target="_blank">Черный экран с ++++++++++++++++++</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=59891628"
+                               target="_blank"><b>FakeSMC + HWSensors с поддержкой Kaby Lake</b></a>\<br/></li>
+                        <li><a title="Ссылка" rel="nofollow"
+                               href="http://toklovich.ru/ustanavlivaem-mac-os-x-na-semeystvo-noutbukov-hp-probook-elitebook/"
+                               target="_blank">Устанавливаем Mac OS X на семейство ноутбуков HP ProBook,
+                            Elitebook</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow" href="https://habrahabr.ru/post/318448/" target="_blank">Разворачиваем
+                            macOS Sierra на Intel-PC подробно и понятно</a><br/></li>
+                        <li><a title="Ссылка" rel="nofollow" href="https://support.apple.com/ru-ru/HT201372"
+                               target="_blank">Создание загружаемого установщика для macOS с apple.com</a><br/></li>
+                    </ol>
+                    <br/><br/></div>
+            </div>
+            <div class="post-block spoil close">
+                <div class="block-title"
+                     title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                    <b>Актуальные сборки:</b></div>
+                <div class="block-body">
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            macOS Sierra 10.12
+                        </div>
+                        <div class="block-body"><a title="Ссылка" rel="nofollow"
+                                                   href="https://applelife.ru/threads/mac-osx-i-clover-iz-windows-izgotovlenie-zagruzochnoj-flehshki.37189/page-57#post-557498"
+                                                   target="_blank"><b>Образы* OS X от 10.7.5 до 10.12.1 для
+                            BDU</b></a><br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            OS X El Capitan 10.11
+                        </div>
+                        <div class="block-body"><a title="Ссылка" rel="nofollow"
+                                                   href="https://applelife.ru/threads/mac-osx-i-clover-iz-windows-izgotovlenie-zagruzochnoj-flehshki.37189/page-57#post-557498"
+                                                   target="_blank"><b>Образы* OS X от 10.7.5 до 10.12.1 для
+                            BDU</b></a><br/><a title="Ссылка" rel="nofollow" href="https://inmac.org/topic/32811/"
+                                               target="_blank">OS X El Capitan 10.11 &#91;Mac & PC установленный образ&#93;</a><br/><a
+                                title="Ссылка" rel="nofollow" href="https://inmac.org/topic/33485/" target="_blank">Загрузочный
+                            раздел (5.hfs) с инсталлятором OS X 10.11.1 (15B42) - для BootDiskUtility.</a><br/><a
+                                title="Ссылка" rel="nofollow" href="https://inmac.org/topic/35721/" target="_blank">OS X
+                            El Capitan 10.11.5 &#91;MAS&#93; &#91;15F34&#93;</a><br/><a title="Ссылка" rel="nofollow"
+                                                                                        href="https://inmac.org/topic/33357/"
+                                                                                        target="_blank">OS X El Capitan
+                            10.11.5 &#91;Установочный ISO&#93;</a><br/><a title="Ссылка" rel="nofollow"
+                                                                          href="https://inmac.org/topic/33456/"
+                                                                          target="_blank">Загрузочный раздел (5.hfs) с
+                            инсталлятором OS X 10.10.5 (14F27) - для BootDiskUtility.</a><br/><a title="Ссылка"
+                                                                                                 rel="nofollow"
+                                                                                                 href="http://rutracker.org/forum/viewtopic.php?t=5020993"
+                                                                                                 target="_blank">OS X El
+                            Capitan 10.11.5 (15F34) &#91;Intel&#93; (Флешка для установки) Legacy, UEFI, MBR,
+                            GPT.</a><br/><a title="Ссылка" rel="nofollow"
+                                            href="http://rutracker.org/forum/viewtopic.php?t=5226768" target="_blank">OS
+                            X El Capitan 10.11.5 &#91;Mac App Store&#93; (Установочный)</a><br/><a title="Ссылка"
+                                                                                                   rel="nofollow"
+                                                                                                   href="http://rutracker.org/forum/viewtopic.php?t=5030423"
+                                                                                                   target="_blank">OS X
+                            El Capitan 10.11.3 (15D21) &#91;Intel&#93; MBR (Установленная система)</a><br/><a
+                                title="Ссылка" rel="nofollow" href="http://rutracker.org/forum/viewtopic.php?t=5077339"
+                                target="_blank">&#91;RUS&#93; OS X El Capitan 10.11.4 + clover
+                            3389&#91;Intel&#93;</a><br/><br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            OS X Yosemite 10.10
+                        </div>
+                        <div class="block-body"><a title="Ссылка" rel="nofollow"
+                                                   href="https://applelife.ru/threads/mac-osx-i-clover-iz-windows-izgotovlenie-zagruzochnoj-flehshki.37189/page-57#post-557498"
+                                                   target="_blank"><b>Образы* OS X от 10.7.5 до 10.12.1 для
+                            BDU</b></a><br/><a title="Ссылка" rel="nofollow"
+                                               href="http://rutracker.org/forum/viewtopic.php?t=4755224"
+                                               target="_blank">Образ установленной OS X Yosemite 10.10.1 для
+                            разворачивания через R-Drive MBR.</a><br/><a title="Ссылка" rel="nofollow"
+                                                                         href="http://rutracker.org/forum/viewtopic.php?t=4755796"
+                                                                         target="_blank">OS X Yosemite 10.10.1 (14B25)
+                            &#91;Intel&#93; (Флешка для установки) + MBR patch</a><br/><a title="Ссылка" rel="nofollow"
+                                                                                          href="http://rutracker.org/forum/viewtopic.php?t=4755224"
+                                                                                          target="_blank">OS X Yosemite
+                            10.10.1 (14B25) (Установленная система для быстрой и легкой установки)</a><br/><a
+                                title="Ссылка" rel="nofollow" href="https://inmac.org/topic/28093" target="_blank"><b>OS
+                            X Yosemite 10.10 GM 14A389</b> <span style="font-size:8pt;line-height:100%"><i>(с inmac.org )</i></span></a><br/><a
+                                title="Ссылка" rel="nofollow" href="http://rutracker.org/forum/viewtopic.php?t=4755796"
+                                target="_blank">OS X Yosemite 10.10.1 (14B25) &#91;Intel&#93; (Флешка для установки) +
+                            MBR patch</a><br/><a title="Ссылка" rel="nofollow" href="https://inmac.org/topic/29613/"
+                                                 target="_blank">OS X Yosemite 10.10.2 (14C109) - для
+                            BootDiskUtility</a><br/><a title="Ссылка" rel="nofollow"
+                                                       href="https://inmac.org/topic/30694/" target="_blank">OS X
+                            Yosemite 10.10.3 (14D131) - для BootDiskUtility</a><br/><a title="Ссылка" rel="nofollow"
+                                                                                       href="https://inmac.org/topic/28301/"
+                                                                                       target="_blank">OS X Yosemite
+                            10.10 (14A389) - для BootDiskUtility</a><br/><a title="Ссылка" rel="nofollow"
+                                                                            href="https://inmac.org/topic/28647/"
+                                                                            target="_blank">OS X Yosemite 10.10.1 &#91;MAS&#93;</a><br/><a
+                                title="Ссылка" rel="nofollow" href="http://rutracker.org/forum/viewtopic.php?t=4893965"
+                                target="_blank">OS X Yosemite 10.10.1 &#91;Intel, AMD&#93;</a><br/><a title="Ссылка"
+                                                                                                      rel="nofollow"
+                                                                                                      href="https://inmac.org/topic/29650/"
+                                                                                                      target="_blank">OS
+                            X Yosemite 10.10.2 &#91;Mac & PC установленный образ&#93;</a><br/><a title="Ссылка"
+                                                                                                 rel="nofollow"
+                                                                                                 href="https://inmac.org/topic/30689/"
+                                                                                                 target="_blank">OS X
+                            Yosemite 10.10.3 &#91;Mac & PC установленный образ&#93;</a><br/><a title="Ссылка"
+                                                                                               rel="nofollow"
+                                                                                               href="http://rutracker.org/forum/viewtopic.php?t=4981363"
+                                                                                               target="_blank">OS X
+                            Yosemite 10.10.3 + clover <i>(Разворачиваем образ через Transmac из под винды.)</i></a><br/><a
+                                title="Ссылка" rel="nofollow" href="https://inmac.org/topic/31639/" target="_blank">OS X
+                            Yosemite 10.10.4 (14E46) &#91;MAS&#93;</a><br/><a title="Ссылка" rel="nofollow"
+                                                                              href="https://inmac.org/topic/31666/"
+                                                                              target="_blank">OS X Yosemite 10.10.4
+                            &#91;Mac & PC установленный образ&#93;</a><br/><a title="Ссылка" rel="nofollow"
+                                                                              href="https://inmac.org/topic/32154/"
+                                                                              target="_blank">OS X Yosemite 10.10.5
+                            &#91;MAS&#93;</a><br/><a title="Ссылка" rel="nofollow" href="https://inmac.org/topic/33456/"
+                                                     target="_blank">OS X Yosemite 10.10.5 (14F27) - для
+                            BootDiskUtility</a><br/><a title="Ссылка" rel="nofollow"
+                                                       href="https://inmac.org/topic/32313/" target="_blank">OS X
+                            Yosemite 10.10.5 &#91;Установочный ISO&#93;</a><br/><a title="Ссылка" rel="nofollow"
+                                                                                   href="http://osxamd.ru/own-image/"
+                                                                                   target="_blank">OS X Yosemite 10.10.5
+                            для AMD</a><br/><br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            Mac OS X 10.9 Mavericks
+                        </div>
+                        <div class="block-body"><a title="Ссылка" rel="nofollow"
+                                                   href="https://applelife.ru/threads/mac-osx-i-clover-iz-windows-izgotovlenie-zagruzochnoj-flehshki.37189/page-57#post-557498"
+                                                   target="_blank"><b>Образы* OS X от 10.7.5 до 10.12.1 для
+                            BDU</b></a><br/><b>Образы с inmac.org</b> <br/><a title="Ссылка" rel="nofollow"
+                                                                              href="https://inmac.org/topic/24290/"
+                                                                              target="_blank">OS X Mavericks 10.9.1 Boot
+                            Disk Utility.</a> <br/><a title="Ссылка" rel="nofollow"
+                                                      href="https://inmac.org/topic/25737/" target="_blank">OS X
+                            Mavericks 10.9.2 Boot Disk Utility.</a><br/><a title="Ссылка" rel="nofollow"
+                                                                           href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=31874281"
+                                                                           target="_blank">OS X Mavericks 10.9.3 Boot
+                            Disk Utility.</a><br/><a title="Ссылка" rel="nofollow" href="https://inmac.org/topic/27191/"
+                                                     target="_blank">OS X Mavericks 10.9.4 Boot Disk Utility</a>.<br/><a
+                                title="Ссылка" rel="nofollow" href="https://inmac.org/topic/27796/" target="_blank">OS X
+                            Mavericks 10.9.5 Boot Disk Utility.</a><br/><a title="Ссылка" rel="nofollow"
+                                                                           href="http://www.mediafire.com/folder/s4qc57b5pji2d/OS_X_for_BDU"
+                                                                           target="_blank">OS X Mavericks 10.9.X Boot
+                            Disk Utility зеркало на mediafire</a><br/><a title="Ссылка" rel="nofollow"
+                                                                         href="https://inmac.org/topic/27785/"
+                                                                         target="_blank">OS X Mavericks 10.9.5 +
+                            загрузчик Clover</a><br/><a title="Ссылка" rel="nofollow"
+                                                        href="https://inmac.org/topic/27790/" target="_blank">OS X
+                            Mavericks 10.9.5 &#91;Mac & PC установленный образ&#93;</a><br/><b>Образы с
+                            rutracker.org</b><br/><a title="Ссылка" rel="nofollow" href="https://inmac.org/topic/27796/"
+                                                     target="_blank">OS X Mavericks 10.9.5 Boot Disk Utility.</a><br/><a
+                                title="Ссылка" rel="nofollow" href="http://rutracker.org/forum/viewtopic.php?t=4622382"
+                                target="_blank">OS X Mavericks 10.9.1 &#91;Intel&#93; + Clover</a> <br/><a
+                                title="Ссылка" rel="nofollow" href="http://rutracker.org/forum/viewtopic.php?t=4679601"
+                                target="_blank">OS X Mavericks 10.9.3 (13D65) &#91;Intel&#93; + Clover (MBR or GUID)</a>
+                            <br/><a title="Ссылка" rel="nofollow"
+                                    href="http://rutracker.org/forum/viewtopic.php?t=4470864" target="_blank">Флешка для
+                                самостоятельной установки OS X Mavericks 10.9.3 (13C64) MAS</a> <br/><a title="Ссылка"
+                                                                                                        rel="nofollow"
+                                                                                                        href="https://dark-os.com/viewtopic.php?t=150830"
+                                                                                                        target="_blank">Флешка
+                                для самостоятельной установки OS X Mavericks 10.9 &#91;Intel/AMD&#93;</a> <br/><a
+                                    title="Ссылка" rel="nofollow"
+                                    href="http://rutracker.org/forum/viewtopic.php?t=4690725" target="_blank">Флешка для
+                                самостоятельной установки OS X Mavericks 10.9 &#91;Intel/AMD&#93; <i>(с
+                                    http://rutracker.org)</i></a> <br/><a title="Ссылка" rel="nofollow"
+                                                                          href="http://rutracker.org/forum/viewtopic.php?t=4462718"
+                                                                          target="_blank">OS X Mavericks 10.9.4 (13E28)
+                                &#91;Intel&#93; (Установленная система для быстрой и легкой установки) MAS *(only
+                                MBR)</a> <br/><a title="Ссылка" rel="nofollow"
+                                                 href="http://rutracker.org/forum/viewtopic.php?t=4462718"
+                                                 target="_blank">OS X Mavericks 10.9.5</a><br/><a title="Ссылка"
+                                                                                                  rel="nofollow"
+                                                                                                  href="http://rutracker.org/forum/viewtopic.php?t=4679601"
+                                                                                                  target="_blank">OS X
+                                Mavericks 10.9.5 (13F34) &#91;Intel&#93; + Clover</a><br/><br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            Mac OS X 10.8 Mountain Lion
+                        </div>
+                        <div class="block-body"><a title="Ссылка" rel="nofollow"
+                                                   href="https://applelife.ru/threads/mac-osx-i-clover-iz-windows-izgotovlenie-zagruzochnoj-flehshki.37189/page-57#post-557498"
+                                                   target="_blank"><b>Образы* OS X от 10.7.5 до 10.12.1 для
+                            BDU</b></a><br/><a title="Ссылка" rel="nofollow"
+                                               href="http://rutracker.org/forum/viewtopic.php?t=4121627"
+                                               target="_blank">Флешка для самостоятельной установки Mountain Lion 10.8.5&#91;Intel&#93;</a>
+                            <br/><a title="Ссылка" rel="nofollow"
+                                    href="http://rutracker.org/forum/viewtopic.php?t=4029581" target="_blank">Mac OS X
+                                Mountain Lion 10.8.5 &#91;Установленная система. Простая и быстрая установка&#93;&#91;Intel&#93;</a>
+                            <br/><a title="Ссылка" rel="nofollow"
+                                    href="http://rutracker.org/forum/viewtopic.php?t=4152164" target="_blank">OS X
+                                Mountain Lion Install DVD 10.8.2 &#91;Intel&#93;</a> <br/><a title="Ссылка"
+                                                                                             rel="nofollow"
+                                                                                             href="http://rutracker.org/forum/viewtopic.php?t=4309922"
+                                                                                             target="_blank">iAtkos ML2
+                                (OS X Mountain Lion 10.8.2) для USB-флешки &#91;Intel&#93;</a> <br/><a title="Ссылка"
+                                                                                                       rel="nofollow"
+                                                                                                       href="http://rutracker.org/forum/viewtopic.php?t=4222713"
+                                                                                                       target="_blank">Os
+                                X Mountain Lion 10.8.2 (Образ для VMware)&#91;Intel&#93;</a> <br/><br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            Mac OS X 10.7 Lion
+                        </div>
+                        <div class="block-body"><a title="Ссылка" rel="nofollow"
+                                                   href="https://applelife.ru/threads/mac-osx-i-clover-iz-windows-izgotovlenie-zagruzochnoj-flehshki.37189/page-57#post-557498"
+                                                   target="_blank"><b>Образы* OS X от 10.7.5 до 10.12.1 для
+                            BDU</b></a><br/><a title="Ссылка" rel="nofollow"
+                                               href="http://rutracker.org/forum/viewtopic.php?t=3968290"
+                                               target="_blank">Флешка для самостоятельной установки Mac OS X Lion 10.7.5
+                            &#91;Intel&#93;</a> <br/><a title="Ссылка" rel="nofollow"
+                                                        href="http://rutracker.org/forum/viewtopic.php?t=3936738"
+                                                        target="_blank">Mac OS X 10.7.3 Install DVD </a> <br/><a
+                                title="Ссылка" rel="nofollow" href="http://rutracker.org/forum/viewtopic.php?t=3826338"
+                                target="_blank">iAtkos L2 (OS X Lion 10.7.2) </a> <br/><br/></div>
+                    </div>
+                    <div class="post-block spoil close">
+                        <div class="block-title"
+                             title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                            Mac OS X 10.6 Snow Leopard
+                        </div>
+                        <div class="block-body"><a title="Ссылка" rel="nofollow"
+                                                   href="http://rutracker.org/forum/viewtopic.php?t=3739310"
+                                                   target="_blank">Mac OS X Snow Leopard - 10.6.8 (установленная
+                            система. Простая и быстрая установка) &#91;AMD/Intel&#93;</a> <br/><a title="Ссылка"
+                                                                                                  rel="nofollow"
+                                                                                                  href="http://rutracker.org/forum/viewtopic.php?t=3028010"
+                                                                                                  target="_blank">iAtkos
+                            S3 10.6.3 ver.2</a> <br/><a title="Ссылка" rel="nofollow"
+                                                        href="http://rutracker.org/forum/viewtopic.php?t=2922803"
+                                                        target="_blank">Mac OS X Snow Leopard Install DVD (Retail) -
+                            10.6.3</a> <br/><br/></div>
+                    </div>
+                </div>
+            </div>
+            <div class="post-block spoil close">
+                <div class="block-title"
+                     title="Открыть этот спойлер - Click или Touch&#10;Открыть все спойлеры на странице - Ctrl+Click или LongTouch">
+                    <span style="color:red"><b><span
+                            style="font-size:10pt;line-height:100%">Как правильно задать вопрос</span></b></span></div>
+                <div class="block-body"><br/>Задавая вопрос указывайте: <br/>Процессор: Intel i7 4770; <br/>Материнская
+                    плата: GA-Z87-DH3; <br/>Видеокарту: NV GTX660; <br/>Загрузчик:<br/><i>Clover -2671;<br/>Chameleon
+                        -2258; </i><br/>Версия Mac OS X; <br/>Прикрепляем скрин с проблемой и прячем его под спойлер.
+                    <br/>Если вы желаете получить помощь в этой теме, <b><span style="color:red">настоятельно рекомендуется</span></b>
+                    занести описание комплектующих в <a title="Ссылка" rel="nofollow"
+                                                        href="//4pda.ru/forum/index.php?act=UserCP&CODE=22"
+                                                        target="_blank"><b><i>подпись</i></b></a>:<span
+                            style="font-size:8pt;line-height:100%"><i>( пример: Процессор/Материнская плата/Видеокарта/Загрузчик).</i></span><br/>
+                    <div class="post-block code box">
+                        <div class="block-title"></div>
+                        <div class="block-body noemoticons">&#91;b&#93;Процессор: &#91;/b&#93; | &#91;b&#93;Материнская
+                            плата:&#91;/b&#93; | &#91;b&#93;Видеокарта:&#91;/b&#93; | &#91;b&#93;Версия ОС и загрузчик:&#91;/b&#93;<br/>&#91;spoiler=Скриншоты
+                            проблемы&#93;Здесь прикрепляем скриншоты или фото&#91;/spoiler&#93;<br/></div>
+                    </div>
+                    <br/></div>
+            </div>
+            <br/><b>Мануал по Кловеру==&gt;&gt;</b><a class="ipb-attach attach-file"
+                                                      href="//4pda.ru/forum/dl/post/8823074/Klever_cveta_xaki_3545.zip"
+                                                      data-rel="lyteframe" rev="width:728px;height:628px;scrolling:no;"
+                                                      title="Скачать Klever_cveta_xaki_3545.zip" target="_blank"><img
+                    src="//s.4pda.to/JK4K4z1TwZaXZW4rDcCeM9VsPCxCcrJSUQZjz0Pwz2WtugILoR0z1d9I65FCe9bn.gif"
+                    alt="Прикрепленный файл" style="margin-right:3px;"/>Klever_cveta_xaki_3545.zip</a> ( 4,18 МБ
+            )<br/><br/><b>Актуальный мануал по Кловеру==&gt;&gt;</b><a class="ipb-attach attach-file"
+                                                                       href="//4pda.ru/forum/dl/post/9629581/Klever_cveta_xaki_4000.zip"
+                                                                       data-rel="lyteframe"
+                                                                       rev="width:728px;height:628px;scrolling:no;"
+                                                                       title="Скачать Klever_cveta_xaki_4000.zip"
+                                                                       target="_blank"><img
+                    src="//s.4pda.to/JK4K4z1TwZaXZW4rDcCeM9VsPCxCcrJSUQZjz0Pwz2WtugILoR0z1d9I65FCe9bn.gif"
+                    alt="Прикрепленный файл" style="margin-right:3px;"/>Klever_cveta_xaki_4000.zip</a> ( 3,77 МБ
+            )<br/><br/><span style="color:darkblue"><b>Актуальный релиз clover</b></span> <a title="Ссылка"
+                                                                                             rel="nofollow"
+                                                                                             href="https://sourceforge.net/projects/cloverefiboot/"
+                                                                                             target="_blank"><img
+                    alt="Изображение" src="//s.4pda.to/JK4KGce6a8k9XcMNDwFz2XLpFpaqSI783tgwxekiZToT.png"/></a><br/><b>
+                <div align="center"><span style="font-size:12pt;line-height:100%"><span style="color:red">Настройки, патчи, фиксы вносятся в файл EFI/CLOVER/</span><b>сonfig.plist</b> <span
+                        style="color:red">редактировать этот файл нужно</span> <a title="Ссылка" rel="nofollow"
+                                                                                  href="//4pda.ru/forum/index.php?s=&showtopic=84979&view=findpost&p=31414927"
+                                                                                  target="_blank"><b>этим.</b></a></span>
+                </div>
+            </b><br/>
+            <div align="center"><span style="font-size:10pt;line-height:100%"><span style="color:red"><b>В OS X порт VGA - не работает, подключать монитор нужно к DVI\HDMI\DP, есть исключения для некотрых моделей. На графике Intel HD порт VGA не работает, ни при каких ухищрениях!</b></span></span>
+            </div>
+            <br/><br/>
+            <div class="post-block tbl cur">
+                <div class="block-title">K</div>
+                <div class="block-body">
+                    <div align="center"><b>Основное правило/требование темы - хотите получить помощь/совет заполните
+                        свою подпись указав:</b><br/><span style="color:teal"><b>Процессор | Материнская плата | Видеокарта | Версия OS X | Загрузчик.</b></span><br/><span
+                            style="color:red"><b>Без подписи все сообщения  - удаляются.</b></span><br/></div>
+                </div>
+            </div>
+            <br/><br/><span class="edit">Сообщение отредактировал <b>ctich</b> - 14.05.17, 16:42</span>
+            <div class="post-edit-reason noemoticons">Причина редактирования: FakeSMC + HWSensors с поддержкой Kaby
+                Lake
+            </div>
+        </div>
+    </div>
+    <div data-post="1812421" class=""><a name="entry1812421"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">19.07.08, 08:10&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=1812421"
+                    onclick="link_to_post(1812421); return false;">#2</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]1812421[/SNAPBACK] [B]Barsik,[/B] ')"
+                                                                        data-av="20/7020.gif" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">Barsik</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=7020" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=7020" target="qms_7020" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=7020&p=1812421"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=7020" title="Просмотреть репутацию"><span
+                    id="ajaxrep-7020">234</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=7020&p=1812421"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=1812421&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=1812421">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-1812421">Железо очень близко у типично хакинтошевскому. После
+            установки кекстов должно всё подхватиться.<br/> Читай хелпы и делай как написано там, и будет счастье.
+            Вообще по этому поводу лучше юзать форум на applelife.ru , нежели 4 кармана - толку будет куда больше.
+        </div>
+    </div>
+    <div data-post="1812689" class=""><a name="entry1812689"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">19.07.08, 13:29&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=1812689"
+                    onclick="link_to_post(1812689); return false;">#3</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]1812689[/SNAPBACK] [B]iBARBOSS,[/B] ')"
+                                                                        data-av="92/215492.jpg" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">iBARBOSS</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=215492" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=215492" target="qms_215492" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#cccccc'>Забанен</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=215492&p=1812689"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=215492" title="Просмотреть репутацию"><span
+                    id="ajaxrep-215492">210</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=215492&p=1812689"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=1812689&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=1812689">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-1812689">Набери в любом поисковике <b>Apple Mac OS X Leopard
+            10.5.2 (2008/Kalyway/x86/RUS)</b> - тебе дадут кучу ссылок, далее прожигаешь на медленно
+            <del>м огне</del>
+            ой скорости болванку и грузишься как при обычной установке <b>ХР</b>юши, всё на русском, ставишь галочки под
+            своё железо - и наслаждаешься прекрасным, если совсем &quot;забалдеешь&quot; - то скачиваешь отдельно
+            обновление до 10.5.3&#33; :victory: <br/>Сборок много но от <b>Kalyway</b> - самое простое и доступное
+            ...<br/><b>НО&#33;</b><br/>Чтобы не омрачить твоё наслаждение, купи всё же отдельный жёсткий диск, рублей за
+            800, чтоб от твоих экспериментов не пострадали другие разделы с Виндой и т.д... поскольку сам, как понимаю
+            не сечёшь в этом деле - ни бум-бум ... <br/>А железо у тебя самое-самое то, что надо, у меня самого такое же
+            почти, кроме видюхи, так что сомнений никаких не должно быть по поводу совместимости - тут ты всё &quot;угадал&quot;
+            ... :)<br/><br/><span class="edit">Сообщение отредактировал <b>iBARBOSS</b> - 19.07.08, 13:32</span></div>
+    </div>
+    <div data-post="1812922" class=""><a name="entry1812922"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">19.07.08, 16:22&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=1812922"
+                    onclick="link_to_post(1812922); return false;">#4</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]1812922[/SNAPBACK] [B]Barsik,[/B] ')"
+                                                                        data-av="20/7020.gif" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">Barsik</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=7020" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=7020" target="qms_7020" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=7020&p=1812922"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=7020" title="Просмотреть репутацию"><span
+                    id="ajaxrep-7020">234</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=7020&p=1812922"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=1812922&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=1812922">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-1812922">
+            <div class="post-block quote">
+                <div class="block-title">iBARBOSS,19.07.08 13:29:20</div>
+                <div class="block-body"> ...прожигаешь на медленно
+                    <del>м огне</del>
+                    ой скорости болванку и ...
+                </div>
+            </div>
+            <br/> аддед: DVR-R (&#33;&#33;&#33;) , но не RW&#33;<br/>И, важно, чтоб привод не подвёл (не все идут)
+        </div>
+    </div>
+    <div data-post="1815862" class=""><a name="entry1815862"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">21.07.08, 08:57&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=1815862"
+                    onclick="link_to_post(1815862); return false;">#5</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]1815862[/SNAPBACK] [B]felicita,[/B] ')"
+                                                                        data-av="61/155561.gif" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">felicita</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=155561" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=155561" target="qms_155561" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=155561&p=1815862"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=155561" title="Просмотреть репутацию"><span
+                    id="ajaxrep-155561">80</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=155561&p=1815862"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=1815862&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=1815862">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-1815862">В общем скачал и пробовал поставить Jas&amp;Leo 10.5.3
+            после долгих мучений с партишинизацией установил таки, но после перезагруза не хочет грузится,ребутится и
+            все тут, полазил по форумам и обнаружил,что это довольно часто случется, но мне не помог ни один метод
+            решения аналогичной проблемы...<br/>
+            <div class="post-block quote">
+                <div class="block-title"></div>
+                <div class="block-body">Набери в любом поисковике Apple Mac OS X Leopard 10.5.2 (2008/Kalyway/x86/RUS)
+                </div>
+            </div>
+            <br/>именно ее уже и качаю уже, осталось 2 гига скачать :wink_kind: <br/>
+            <div class="post-block quote">
+                <div class="block-title"></div>
+                <div class="block-body">аддед: DVR-R (&#33;&#33;&#33;) , но не RW&#33;<br/>И, важно, чтоб привод не
+                    подвёл (не все идут)
+                </div>
+            </div>
+            <br/>Я записал образ как раз на rw проблем с установкой не было, не думаю,что то что система не поднимается
+            после установки как-то связано с болванкой..А насчет приводов,вроде как, проблемы возникают с IDE приводами)<br/>
+            <div class="post-block quote">
+                <div class="block-title"></div>
+                <div class="block-body">Вообще по этому поводу лучше юзать форум на applelife.ru , нежели 4 кармана -
+                    толку будет куда больше.
+                </div>
+            </div>
+            <br/>Я как раз эти форумы и юзаю, так как на нашем родном форуме об этом ничего нет...Но надеюсь мы это
+            исправим, если Удастся завести Леопарда обизательно напишу краткий мануал..<br/><br/>P.S. В шапке немного
+            очепятался, проц у меня не 6750, а 6550 но и с ним ,вроде не должно быть никаких проблем :victory:
+        </div>
+    </div>
+    <div data-post="1832011" class=""><a name="entry1832011"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">28.07.08, 09:51&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=1832011"
+                    onclick="link_to_post(1832011); return false;">#6</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]1832011[/SNAPBACK] [B]Overdrive,[/B] ')"
+                                                                        data-av="16/111016.gif" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">Overdrive</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=111016" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=111016" target="qms_111016" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=111016&p=1832011"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=111016" title="Просмотреть репутацию"><span
+                    id="ajaxrep-111016">85</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=111016&p=1832011"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=1832011&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=1832011">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-1832011"><b>felicita</b>, если хоть до дарвина доходит,то там -v
+            напиши и сюда скопируй ошибку
+        </div>
+    </div>
+    <div data-post="1834697" class=""><a name="entry1834697"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">29.07.08, 11:15&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=1834697"
+                    onclick="link_to_post(1834697); return false;">#7</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]1834697[/SNAPBACK] [B]felicita,[/B] ')"
+                                                                        data-av="61/155561.gif" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">felicita</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=155561" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=155561" target="qms_155561" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=155561&p=1834697"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=155561" title="Просмотреть репутацию"><span
+                    id="ajaxrep-155561">80</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=155561&p=1834697"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=1834697&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=1834697">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-1834697"><b>Москъ</b>, <br/>Я это делал, не помогало... Но вссе
+            же я устновил Macos... Версия Kalyway 10.5.2 встала отлично, единственнное ,что не заработало &quot;out of
+            box&quot; сетевая карта, но нашел в патчик к моей сетевухе и теперь все прекрасно работает, даже блютус
+            донгл работает)Кстати, везде советуют отключать второй &quot;винт&quot;, у меня встала с обоими
+            подключенными винтами( 1-ый Sata, 2-ой IDE)<br/><br/><span
+                    class="edit">Сообщение отредактировал <b>felicita</b> - 29.07.08, 11:18</span></div>
+    </div>
+    <div data-post="1836529" class=""><a name="entry1836529"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">29.07.08, 22:57&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=1836529"
+                    onclick="link_to_post(1836529); return false;">#8</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]1836529[/SNAPBACK] [B]iBARBOSS,[/B] ')"
+                                                                        data-av="92/215492.jpg" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">iBARBOSS</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=215492" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=215492" target="qms_215492" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#cccccc'>Забанен</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=215492&p=1836529"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=215492" title="Просмотреть репутацию"><span
+                    id="ajaxrep-215492">210</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=215492&p=1836529"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=1836529&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=1836529">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-1836529">Фигня, &quot;всё&quot; это - у меня вообще: 2
+            <b>SATA</b> + 1 <b>IDE</b>, и разделов на всех них - аж 10 штук ... :) <br/>Всё работает и Винда(причём -
+            две) и Мак Ось(Лео), все друг с другом - &quot;дружат&quot;, в смысле , и там и там - видят друг друга
+            разделы и файлы ...<br/>Рад, что всё у тебя встало, одним &quot;яблочником&quot; - стало больше ... :)
+        </div>
+    </div>
+    <div data-post="1837049" class=""><a name="entry1837049"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">30.07.08, 08:32&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=1837049"
+                    onclick="link_to_post(1837049); return false;">#9</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]1837049[/SNAPBACK] [B]felicita,[/B] ')"
+                                                                        data-av="61/155561.gif" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">felicita</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=155561" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=155561" target="qms_155561" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=155561&p=1837049"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=155561" title="Просмотреть репутацию"><span
+                    id="ajaxrep-155561">80</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=155561&p=1837049"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=1837049&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=1837049">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-1837049"><b>iBARBOSS</b>, <br/>Спс, ну пока еще не совсем
+            яблочник))) Пока Убунтист)
+        </div>
+    </div>
+    <div data-post="2000992" class=""><a name="entry2000992"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">07.10.08, 00:44&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2000992"
+                    onclick="link_to_post(2000992); return false;">#10</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2000992[/SNAPBACK] [B]nikerossxp,[/B] ')"
+                                                                        data-av="80/80580-7885414.png" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">nikerossxp</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=80580" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=80580" target="qms_80580" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=80580&p=2000992"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=80580" title="Просмотреть репутацию"><span
+                    id="ajaxrep-80580">145</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=80580&p=2000992"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2000992&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2000992">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2000992">за что не люблю мак - хоть одно не поддерживаемое
+            устройство - разворачивай кеды и пакеда&#33;<br/>
+            <div class="post-block tbl mod">
+                <div class="block-title">M</div>
+                <div class="block-body">В теме обсуждается установка ОС, а не личные впечатления о системе. Просьба - не
+                    оффтопить.
+                </div>
+            </div>
+            <br/><br/><span class="edit">Сообщение отредактировал <b>Lenso</b> - 07.10.08, 10:43</span></div>
+    </div>
+    <div data-post="2001562" class=""><a name="entry2001562"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">07.10.08, 10:36&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2001562"
+                    onclick="link_to_post(2001562); return false;">#11</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2001562[/SNAPBACK] [B]e-Ch&#33;,[/B] ')"
+                                                                        data-av="15/18815-21516975.png" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">e-Ch&#33;</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=18815" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=18815" target="qms_18815" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=18815&p=2001562"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=18815" title="Просмотреть репутацию"><span
+                    id="ajaxrep-18815">222</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=18815&p=2001562"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2001562&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2001562">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2001562"><b>nikerossxp,</b> <br/>тебе скорее <a title="Ссылка"
+                                                                                                       rel="nofollow"
+                                                                                                       href="//4pda.ru/forum/index.php?showtopic=5929"
+                                                                                                       target="_blank">сюда</a>
+        </div>
+    </div>
+    <div data-post="2017998" class=""><a name="entry2017998"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">13.10.08, 10:25&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2017998"
+                    onclick="link_to_post(2017998); return false;">#12</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2017998[/SNAPBACK] [B]XmakcX,[/B] ')"
+                                                                        data-av="" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">XmakcX</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=222710" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=222710" target="qms_222710" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:green'>Активные пользователи</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=222710&p=2017998"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=222710" title="Просмотреть репутацию"><span
+                    id="ajaxrep-222710">0</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=222710&p=2017998"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2017998&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2017998">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2017998">всем здрасть...кто нить пробовал ставить хакинтош на
+            virtualbox?или может кто знает у меня серый экран и по центру яблочко,что у меня не проходит
+            инициализацию?просто хочу посмотреть по пробовать а два винта занята операционками вот и решил на бокс
+            поставить....
+        </div>
+    </div>
+    <div data-post="2019547" class=""><a name="entry2019547"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">13.10.08, 19:24&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2019547"
+                    onclick="link_to_post(2019547); return false;">#13</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2019547[/SNAPBACK] [B]e-Ch&#33;,[/B] ')"
+                                                                        data-av="15/18815-21516975.png" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">e-Ch&#33;</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=18815" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=18815" target="qms_18815" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=18815&p=2019547"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=18815" title="Просмотреть репутацию"><span
+                    id="ajaxrep-18815">222</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=18815&p=2019547"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2019547&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2019547">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2019547">а с чего ты взял что у тебя проблемы? серый экран с
+            яблоком это загрузочная заставка. Или там потом знак ошибки появляется?<br/><br/><span class="edit">Сообщение отредактировал <b>e-Ch&#33;</b> - 13.10.08, 19:25</span>
+        </div>
+    </div>
+    <div data-post="2073718" class=""><a name="entry2073718"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">01.11.08, 23:02&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2073718"
+                    onclick="link_to_post(2073718); return false;">#14</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2073718[/SNAPBACK] [B]Rominka,[/B] ')"
+                                                                        data-av="" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">Rominka</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=339588" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=339588" target="qms_339588" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:green'>Пользователи</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=339588&p=2073718"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=339588" title="Просмотреть репутацию"><span
+                    id="ajaxrep-339588">0</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=339588&p=2073718"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2073718&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2073718">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2073718">Пацаны а на какой лапак можно всандалить без проблем ? и
+            вообще ктонибуть может из вас знает что за железо стоит в макбуке ? если знаете то поконкретней что там.
+            просто тогда можно собрать на заказ ..лапак из таких же частей что у мака. :thank_you: заранее
+            благодарен<br/>
+            <div class="post-block tbl ex">
+                <div class="block-title">!</div>
+                <div class="block-body">Нарушаем <a title="Ссылка" rel="nofollow"
+                                                    href="//4pda.ru/forum/index.php?act=boardrules" target="_blank">Правила
+                    форума</a> п. 3.4. Устное предупреждение. Внимательнее...
+                </div>
+            </div>
+            <br/><br/><span class="edit">Сообщение отредактировал <b>Johnny P</b> - 02.11.08, 10:29</span></div>
+    </div>
+    <div data-post="2073757" class=""><a name="entry2073757"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">01.11.08, 23:18&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2073757"
+                    onclick="link_to_post(2073757); return false;">#15</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2073757[/SNAPBACK] [B]e-Ch&#33;,[/B] ')"
+                                                                        data-av="15/18815-21516975.png" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">e-Ch&#33;</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=18815" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=18815" target="qms_18815" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=18815&p=2073757"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=18815" title="Просмотреть репутацию"><span
+                    id="ajaxrep-18815">222</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=18815&p=2073757"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2073757&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2073757">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2073757">там нужна мать без биос, с open firmware, а так на
+            apple.com можешь посмотреть конфиг.
+        </div>
+    </div>
+    <div data-post="2135122" class=""><a name="entry2135122"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">21.11.08, 23:36&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2135122"
+                    onclick="link_to_post(2135122); return false;">#16</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2135122[/SNAPBACK] [B]DrSpawn,[/B] ')"
+                                                                        data-av="27/150027.gif" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">DrSpawn</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=150027" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=150027" target="qms_150027" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=150027&p=2135122"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=150027" title="Просмотреть репутацию"><span
+                    id="ajaxrep-150027">13</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=150027&p=2135122"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2135122&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2135122">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2135122">имею 2 компа с хакинтошем ББ и ноут (ASUS EEEpc 1000h).
+            Видео ноута тут:<br/>_<a title="Ссылка" rel="nofollow" href="http://www.youtube.com/watch?v=wjcmR6C4fRU"
+                                     target="_blank">http://www.youtube.com/watch?v=wjcmR6C4fRU</a><br/>и тут<br/>_<a
+                    title="Ссылка" rel="nofollow" href="http://www.youtube.com/watch?v=ZMQkZKLpuMw" target="_blank">http://www.youtube.com/watch?v=ZMQkZKLpuMw</a><br/>Здесь
+            как настраивать биос ББ<br/>_<a title="Ссылка" rel="nofollow"
+                                            href="http://www.youtube.com/watch?v=hiCX9sxP3JA" target="_blank">http://www.youtube.com/watch?v=hiCX9sxP3JA</a><br/>Здесь
+            что выбрать при установке и сам процесс (ББ)<br/>_<a title="Ссылка" rel="nofollow"
+                                                                 href="http://www.youtube.com/watch?v=UHQ9dPEW8Rk"
+                                                                 target="_blank">http://www.youtube.com/watch?v=UHQ9dPEW8Rk</a><br/>Конечный
+            результат ББ<br/>_<a title="Ссылка" rel="nofollow" href="http://www.youtube.com/watch?v=5inzoY4GacI"
+                                 target="_blank">http://www.youtube.com/watch?v=5inzoY4GacI</a><br/><br/>ББ:<br/><b>Процессор/
+                установленное ядро Mac:</b> AMD Athlon 3200+/netkas 9.4.0<br/><b>Плата/ BIOS:</b> Gigabyte
+            GA-K8NSC-939/стоковый<br/><b>Видеокарта/ установленный драйвер:</b> Sapphire ATI Radeon X1650 PRO 256MB
+            DeviceID:71C6/ Atiinject+ AGPGart<br/><b>Установленные отдельно драйверы (после установки системы):</b>
+            Audigy 2 Sound drivers, Samsung ML-2015 Printer<br/><b>Не работающие после установки leopard устройства:</b>
+            плата видео захвата pinnaclle dc10+<br/><b>Установленная сборка:</b> JAS 10.4.8, Uphuck 10.4.9-10-11,
+            Tubgirl 10.4.10, Kalyway Leopard 10.5.2 (обновил до 10.5.5), Zephyroth AMD 10.5.1<br/><br/>Ноут:<br/>ТТХ и
+            так все знают ASUS EEEpc 1000h<br/>Сборка Kalyway 10.5.2, обновляюсь апдейтами с сайта apple <br/><b>Не
+                работающие после установки leopard устройства:</b> Ethernet, sound (есть подвижки)<br/><br/><span
+                    class="edit">Сообщение отредактировал <b>DrSpawn</b> - 21.11.08, 23:45</span></div>
+    </div>
+    <div data-post="2136693" class=""><a name="entry2136693"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">22.11.08, 16:17&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2136693"
+                    onclick="link_to_post(2136693); return false;">#17</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2136693[/SNAPBACK] [B]e-Ch&#33;,[/B] ')"
+                                                                        data-av="15/18815-21516975.png" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">e-Ch&#33;</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=18815" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=18815" target="qms_18815" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=18815&p=2136693"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=18815" title="Просмотреть репутацию"><span
+                    id="ajaxrep-18815">222</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=18815&p=2136693"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2136693&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2136693">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2136693"><b>DrSpawn,</b> <br/>Спасибо, добавил в шапку (правда
+            немного изменил, но со ссылкой на оригинальный пост) за старания держи +1&#33;</div>
+    </div>
+    <div data-post="2149206" class=""><a name="entry2149206"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">26.11.08, 14:29&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2149206"
+                    onclick="link_to_post(2149206); return false;">#18</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2149206[/SNAPBACK] [B]CDK,[/B] ')"
+                                                                        data-av="87/39487.jpg" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">CDK</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=39487" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=39487" target="qms_39487" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span
+                    style='font-weight:bold;color:purple'>Почетные форумчане</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=39487&p=2149206"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=39487" title="Просмотреть репутацию"><span
+                    id="ajaxrep-39487">185</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=39487&p=2149206"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2149206&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2149206">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2149206">Вопрос немного не в тему, но вы наверно знаете - можно
+            ли соединить Мак с РС по FireWire? РС-РС работает нормально. Перетыкаю один из концов на Мак - Винда говорит
+            что нашла новое устройство, дров к которому нет.<br/><br/><span
+                    class="edit">Сообщение отредактировал <b>CDK</b> - 26.11.08, 14:32</span></div>
+    </div>
+    <div data-post="2152784" class=""><a name="entry2152784"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">27.11.08, 14:20&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2152784"
+                    onclick="link_to_post(2152784); return false;">#19</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2152784[/SNAPBACK] [B]e-Ch&#33;,[/B] ')"
+                                                                        data-av="15/18815-21516975.png" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">e-Ch&#33;</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=18815" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=18815" target="qms_18815" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=18815&p=2152784"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=18815" title="Просмотреть репутацию"><span
+                    id="ajaxrep-18815">222</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=18815&p=2152784"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2152784&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2152784">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2152784">с мак на мак тоже нормально работает, даже инет
+            раздает
+        </div>
+    </div>
+    <div data-post="2169538" class=""><a name="entry2169538"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">02.12.08, 18:50&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2169538"
+                    onclick="link_to_post(2169538); return false;">#20</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2169538[/SNAPBACK] [B]e-Ch&#33;,[/B] ')"
+                                                                        data-av="15/18815-21516975.png" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">e-Ch&#33;</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=18815" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=18815" target="qms_18815" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:#FF9900'>Друзья 4PDA</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=18815&p=2169538"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=18815" title="Просмотреть репутацию"><span
+                    id="ajaxrep-18815">222</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=18815&p=2169538"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2169538&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2169538">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2169538">кстати если уже меряться попугаями то у меня в х-бенче
+            234.<br/><br/><b>CrazyBigCat,</b> <br/>Огромное спасибо и +1 за информацию&#33;</div>
+    </div>
+    <div data-post="2171690" class=""><a name="entry2171690"></a>
+        <div class="post_header_container">
+            <div class="post_header"><span class="post_date">03.12.08, 11:39&nbsp;| <a
+                    href="//4pda.ru/forum/index.php?showtopic=84979&view=findpost&p=2171690"
+                    onclick="link_to_post(2171690); return false;">#21</a></span><br/><span class="post_nick"><font
+                    color="red">&#9679;</font> <div class="dropdown"><a href="#" title="Вставить ник"
+                                                                        onclick="return insertText('[SNAPBACK]2171690[/SNAPBACK] [B]CrazyBigCat,[/B] ')"
+                                                                        data-av="" role="button"
+                                                                        arial-label="Вставить ник в форму ответа">CrazyBigCat</a><a
+                    data-toggle="dropdown" href="#" role="button" arial-label="Меню пользователя"><i
+                    class="icon as-text">&#x1d65;</i></a><ul class="dropdown-menu"><li><a
+                    href="//4pda.ru/forum/index.php?showuser=52101" title="Профиль пользователя" role="button"
+                    aria-label="Открыть профиль пользователя">Профиль</a></li><li><a
+                    href="//4pda.ru/forum/index.php?act=qms&mid=52101" target="qms_52101" role="button"
+                    aria-label="Открыть личные сообщения с пользователем">Сообщения</a></li></ul></div></span><br/><span
+                    class="post_user_info"><span style='color:green'>Активные пользователи</span></span><br/>Реп: <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_minus&mid=52101&p=2171690"
+                    onclick="rep_change_window_open(this.href);return false;" title="Опустить репутацию"><i
+                    class="icon as-text">&#xff0d;</i></a> (<a
+                    href="//4pda.ru/forum/index.php?act=rep&view=history&mid=52101" title="Просмотреть репутацию"><span
+                    id="ajaxrep-52101">6</span></a>) <a
+                    href="//4pda.ru/forum/index.php?act=rep&view=win_add&mid=52101&p=2171690"
+                    onclick="rep_change_window_open(this.href);return false;" title="Поднять репутацию"><i
+                    class="icon as-text">&#xff0b;</i></a><br/><span class="post_action"><a
+                    href="//4pda.ru/forum/index.php?act=report&t=84979&p=2171690&st=0"
+                    target="_blank">Жалоба</a>&nbsp;<a
+                    href="//4pda.ru/forum/index.php?act=Post&CODE=02&f=614&t=84979&qpid=2171690">Цитата</a></span></div>
+        </div>
+        <div class="post_body emoticons" id="post-main-2171690">
+            <div class="post-block quote">
+                <div class="block-title">e&#045;Ch&#33; &#064; 2.12.2008, 8&#58;50 <a
+                        href="/forum/index.php?act=findpost&amp;pid=2169538" target="_blank"
+                        title="Перейти к сообщению"><img
+                        src="//s.4pda.to/JK4KVX96BBF9V3Txz2U8MG4CPSaX37Jmgl8LGYltepJ84uMUHgQ.gif" alt="*"
+                        border="0"/></a></div>
+                <div class="block-body">кстати если уже меряться попугаями то у меня в х-бенче 234.<br/><br/><b>CrazyBigCat,</b>
+                    <br/>Огромное спасибо и +1 за информацию&#33;</div>
+            </div>
+            <br/><br/> :D Не за что... А попугаи - это так, для инфы, чтобы народ ориентировался какую
+            производительность получит на железе (хоть и синтетика, но все же представление составить можно).
+        </div>
+    </div>
+    <div class="topic_foot_nav"><br/></div>
+    <div class="pagination"><a href="#"
+                               onclick="var pag = prompt('Введите номер страницы:','');if(!isNaN(pag)&&pag){jump_to_page(pag)} return false;">1449
+        страниц</a>&nbsp;&nbsp;<span class="pagecurrent">1</span>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=20">2</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=40">3</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=60">4</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=80">5</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=100">6</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=20">&gt;</a>&nbsp;<a
+            href="//4pda.ru/forum/index.php?showtopic=84979&amp;st=28960">&raquo;</a></div>
+    <br/>
+    <div class="makepost_link"><a href="/forum/index.php?act=post&amp;do=reply_post&amp;f=614&amp;t=84979">Ответить</a>&nbsp;&nbsp;<a
+            href="//4pda.ru/forum/index.php?act=zfw&f=614" title="Открытие новой темы">Создать тему</a></div>
+    <div class="quick_editor">
+        <form name="REPLIER" action="/forum/index.php?" method="POST" enctype="multipart/form-data"><input type="hidden"
+                                                                                                           name="act"
+                                                                                                           value="post"/><input
+                type="hidden" name="CODE" value="03"/><input type="hidden" name="f" value="614"/><input type="hidden"
+                                                                                                        name="t"
+                                                                                                        value="84979"/><input
+                type="hidden" name="st" value="0"/><input type="hidden" name="auth_key"
+                                                          value="0fb763c63e8ada2d5b6543e53ed6aaed"/><input type="hidden"
+                                                                                                           name="fast_reply_used"
+                                                                                                           value="1"/>
+            <div class="post_header_editor"><b>Быстрый ответ</b></div>
+            <script language="JavaScript" type="text/javascript"><!--
+            var tags = ["b", "i", "u", "s", "left", "center", "right", "quote", "spoiler", "mod", "ex"];
+            var itags = [];
+            function insertText(text) {
+                var textarea_obj = elem("post");
+                textarea_obj.value += text;
+                try {
+                    textarea_obj.focus()
+                } catch (e) {
+                }
+                return false;
+            }
+            function addtag(id) {
+                var textarea_obj = elem("post"), n = -1;
+                for (i = 0; i < tags.length; i++) {
+                    if (tags[i] == id) n = i;
+                }
+                if (n != -1) {
+                    if (itags[n] != 1) {
+                        itags[n] = 1;
+                        textarea_obj.value += "[" + id + "]";
+                    } else {
+                        itags[n] = 0;
+                        textarea_obj.value += "[/" + id + "]";
+                    }
+                }
+                return false;
+            }
+            function elem(id) {
+                if (isdef(typeof(document.getElementById)))return document.getElementById(id); else if (isdef(typeof(document.all)))return document.all[id]; else if (isdef(typeof(document.layers)))return document[id]; else return null;
+            }
+            function isdef(typestr) {
+                return ((typestr != "undefined") && (typestr != "unknown")) ? true : false;
+            }//--></script>
+            <input type="hidden" name="_wysiwyg_used" id="_wysiwyg_used" value="0"/><input type="hidden"
+                                                                                           name="editor_ids[]"
+                                                                                           value=""/>
+            <div class="editor_button"><input onclick="return addtag('b');" value="B" type="button"
+                                              style="min-width:3.7em"/> <input onclick="return addtag('i');" value="I"
+                                                                               type="button" style="min-width:3.7em"/>
+                <input onclick="return addtag('u');" value="U" type="button" style="min-width:3.7em"/> <input
+                        onclick="return addtag('s');" value="S" type="button" style="min-width:3.7em"/><br/> <input
+                        onclick="return addtag('quote');" value="Цитата" type="button" style="min-width:3.7em"/> <input
+                        onclick="return addtag('left');" value="Влево" type="button" style="min-width:3.7em"/> <input
+                        onclick="return addtag('center');" value="Центр" type="button" style="min-width:3.7em"/> <input
+                        onclick="return addtag('right');" value="Вправо" type="button" style="min-width:3.7em"/> <input
+                        onclick="return addtag('spoiler');" value="Спойлер" type="button" style="min-width:3.7em"/>
+            </div>
+            <center><textarea name="post" id="post" rows="6" cols="80" style="width:98%;"></textarea></center>
+            <div class="post_footer">Тема уже добавлена в <a href="/forum/index.php?act=fav">избранное</a>. <br/><input
+                    class="checkbox" type="checkbox" name="enableemo" value="yes" checked="checked"/>&nbsp;Включить
+                смайлики</a> <br/><input class="checkbox" type="checkbox" name="enablesig" value="yes"
+                                         checked="checked"/>&nbsp;Добавить подпись
+                <center><input type="submit" name="submit" value="Отправить" class="button" tabindex="2" accesskey="s"/>
+                    &nbsp; <input type="submit" name="preview" value="Просмотр" class="button"/></center>
+            </div>
+        </form>
+    </div>
+    <div class="forum_search">
+        <form action="/forum/index.php?" method="get" name="search"><input type="hidden" name="forums[]"
+                                                                           value="614"/><input type="hidden"
+                                                                                               name="topics[]"
+                                                                                               value="84979"/><input
+                type="hidden" name="act" value="search"/><input type="hidden" name="source" value="pst"/><input
+                type="text" size="25" name="query" class="searchinput" value="Ключевое слово"
+                onfocus="if ( 'Ключевое слово' == this.value ) this.value = '';"
+                id="search-in-post-query-2"/><br/><input type="submit" value="Найти в этой теме" class="button"/></form>
+    </div>
+    <div class="forum_user_lnks">
+        <script type="text/javascript"><!--
+        document.write(img_item_a.join("<br />"));
+        //--></script>
+    </div><!-- Yandex.Metrika counter -->
+    <script type="text/javascript">(function (d, w, c) {
+        (w[c] = w[c] || []).push(function () {
+            try {
+                w.yaCounter29691590 = new Ya.Metrika({
+                    id: 29691590,
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true
+                });
+            } catch (e) {
+            }
+        });
+        var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {
+            n.parentNode.insertBefore(s, n);
+        };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else {
+            f();
+        }
+    })(document, window, "yandex_metrika_callbacks");</script>
+    <noscript>
+        <div><img src="//mc.yandex.ru/watch/29691590" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript><!-- /Yandex.Metrika counter -->
+    <div id="gfooter">
+        <script type="text/javascript">if ("jsEmoticons" in window) jsEmoticons.parseAll(); else("$4" in window && $4.onInit("jsEmoticons", function () {
+            jsEmoticons.parseAll()
+        }));
+        if ("initPostBlock" in window) initPostBlock(); else("$4" in window && $4.onInit("initPostBlock", function () {
+            initPostBlock()
+        }));</script>
+        <a href="//4pda.ru/wp-content/plugins/ngx.php?mb=0"><b>Полная версия</b></a>&nbsp;&nbsp;&nbsp;<a
+            href="lofiversion/index.php?t84979.html"><b>Текстовая версия</b></a><br/><br/><a
+            href="//4pda.ru/forum/index.php?act=help">Помощь</a>&nbsp;&nbsp;&nbsp;<a
+            href="//4pda.ru/forum/index.php?act=boardrules">Правила</a><br/><br/>Сейчас: 31.05.17, 23:29
+    </div>
+    <div align="center" class="copyright">&copy; 4PDA 2005-2017 г. Все права защищены.<br/>4PDA<sup>&reg;</sup> -
+        зарегистрированный товарный знак.<br/><a href="/copyright_notice/">Условия использования информации</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                href="/disclaimer/">Отказ от ответственности</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/advert/"
+                                                                                            title="Размещение рекламы"><strong>Размещение
+            рекламы</strong></a><br/><br/>
+        <noindex><a href="http://www.ibresource.ru/" style="text-decoration:none" target="_blank">Форум</a> <a
+                href="http://www.invisionboard.com" style="text-decoration:none" target="_blank">IP.Board</a> &copy;
+            2017 &nbsp;<a href="http://www.invisionpower.com" style="text-decoration:none" target="_blank">IPS, Inc</a>.<br/>
+        </noindex>
+    </div>
+    <script type="text/javascript" src="//s.4pda.to/JK4K6ZqoKG3D.js?_=0.4" async="async"></script>
+    <div style="text-align:center"><!--LiveInternet counter-->
+        <script type="text/javascript"><!--
+        document.write("<a href='http://www.liveinternet.ru/click' " +
+            "target=_blank><img src='//counter.yadro.ru/hit?t26.11;r" +
+            escape(document.referrer) + ((typeof(screen) == "undefined") ? "" :
+                ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
+                    screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
+            ";" + Math.random() +
+            "' alt='' title='LiveInternet: number of visitors for today is" +
+            " shown' " +
+            "border=0 width=88 height=15></a>")//--></script><!--/LiveInternet--></div>
+</div>
+</body>
+</html>

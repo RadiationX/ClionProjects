@@ -20,7 +20,6 @@ private:
     Element *root;
 
 
-
 public:
     Document() {
         mainPattern = new regex(
@@ -40,7 +39,9 @@ public:
         smatch m;
         int tags = 0, comments = 0, resolvedErrors = 0, openTagsCount = 0, closeTagsCount = 0;
         string temp = html;
+
         while (regex_search(temp, m, *mainPattern)) {
+            //cout<<m[0]<<endl;
             tags++;
             //Более удобное обращение к последнему открытому тегу
             if (openedTags.size() > 0)
@@ -122,7 +123,6 @@ public:
                 }
             } else {
                 //ВЕТВЬ 1.2: Закрытие элемента и исправление ошибок в getHtml
-                cout<<"lastOpened "<<lastOpened->getTagName()<<endl;
                 if (lastOpened != NULL) {
 
 
@@ -132,7 +132,6 @@ public:
                     //<span><b></span></b>
                     //<span></b></span>
                     //<span><b></span>
-                    cout<<"compare "<<lastClosed->getTagName()<<" to "<<tag<<endl;
                     if (lastClosed->getTagName().compare(tag) != 0) {
                         bool resolved = false;
 
@@ -222,8 +221,6 @@ public:
         }*/
         return this;
     }
-
-
 
 
     void findToAdd(Element *root, Element *children) {
