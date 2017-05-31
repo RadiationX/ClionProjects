@@ -3,5 +3,5 @@ project(prog_lab_4_2)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp Tree.h MatrixRank.h)
 add_executable(prog_lab_4_2 ${SOURCE_FILES})
