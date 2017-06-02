@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
-#include <regex>
 #include <thread>
 #include <unistd.h>
 #include "parser/Document.h"
 #include <fstream>
+#include "Regex-Matcher-master/reg_exp.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -59,7 +59,7 @@ void printString(int indent, string s) {
     int lastShifted = 0;
     unsigned long iterations = (len + shifted) / columns;
     int i = 0;
-    while (start!=len) {
+    while (start != len) {
         //cout << "ITERATIONS " << i << " in " << (iterations) << endl;
         shifted -= lastShifted;
 
@@ -142,12 +142,15 @@ int main() {
     cout << endl << "End parsing" << endl;
     cout << "Parsing time: " << duration << "ms" << endl;*/
     //cout << document->html() << endl;
-    string suka = "";
-    /*for (int i = 0; i < 120; i++) {
-        suka.append(string(1, 'a' + i % 24));
-    }*/
+    /*string suka = "";
     suka = readFile("test3.txt");
-    //suka = "sjkdlsal;dkjasd.";
-    printString(4, suka);
+    printString(4, suka);*/
+
+    int ssafd = 10;
+    const char *text = "suka6667pisya";
+    const char *piska = regex_search("pi(s)ya", text, &ssafd);
+
+    cout <<ssafd << " : " << text << " : " << piska << endl;
+
     return 0;
 }
