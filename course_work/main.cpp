@@ -27,23 +27,7 @@ string readFile(string fileName) {
     return result;
 }
 
-std::vector<std::string> split(const std::string &s) {
-    std::vector<std::string> v;
-
-    const auto end = s.end();
-    auto to = s.begin();
-    decltype(to) from;
-
-    while ((from = std::find_if(to, end, [](char c) { return !std::isspace(c); })) != end) {
-        to = std::find_if(from, end, [](char c) { return std::isspace(c); });
-        v.emplace_back(from, to);
-    }
-
-    return v;
-}
-
-
-unsigned long *suka4ka(string &S, int *length) {
+unsigned long *getSpaceIndices(string &S, int *length) {
     for (int i = 0; i < S.length(); i++) {
         if (isspace(S[i])) {
             *length = *length + 1;
@@ -52,7 +36,7 @@ unsigned long *suka4ka(string &S, int *length) {
     unsigned long *result = new unsigned long[*length];
 
     int j = 0;
-    for (int i = 0; i < S.length(); i++) {
+    for (unsigned long i = 0; i < S.length(); i++) {
         if (isspace(S[i])) {
             result[j] = i;
             j++;
@@ -67,141 +51,123 @@ const int ALIGN_RIGHT = 1;
 const int ALIGN_CENTER = 2;
 const int ALIGN_JUSTIFY = 3;
 
+void alignBase(int align, string &rowString, bool isIndented, int indent) {
+    unsigned long length = columns - rowString.length();
+    if (isIndented)
+        length -= indent;
+    unsigned long insertIndex = align == ALIGN_RIGHT ? 0 : rowString.length();
+    rowString.insert(insertIndex, length, ' ');
+}
+
+void alignCenter(string &rowString, bool isIndented, int indent) {
+    unsigned long delta = columns - rowString.length();
+    if (isIndented)
+        delta -= indent;
+    unsigned long left = delta / 2;
+    unsigned long right = delta - left;
+    rowString.insert(0, left, ' ');
+    rowString.insert(rowString.length(), right, ' ');
+}
+
+void alignJustify(string &rowString, bool isIndented, int indent) {
+    int indicesLength = 0;
+    unsigned long *spaceIndices = getSpaceIndices(rowString, &indicesLength);
+
+    while ((isIndented ? rowString.length() + indent : rowString.length()) < columns) {
+        for (unsigned long si = 0; si < indicesLength; si++) {
+            if ((isIndented ? rowString.length() + indent : rowString.length()) >= columns) {
+                break;
+            }
+            rowString.insert(spaceIndices[si], 1, ' ');
+            for (unsigned long sj = si; sj < indicesLength; sj++) {
+                spaceIndices[sj]++;
+            }
+        }
+    }
+}
+
+
 void printString(int indent, int align, string s) {
-    unsigned long len = s.length();
     cout << "PRINT: " << s << endl << endl;
-    int shifted = 0;
-    unsigned long start = 0;
-    unsigned long toPrint = 0;
     if (indent > columns) {
         indent = columns;
     }
-    //indent = 0;
 
     string result = "";
-    int lastShifted = 0;
-    unsigned long iterations = (len + shifted) / columns;
-    int i = 0;
-    while (start != len) {
+    int lastOffset = 0;
+    int rowsCount = 0;
+    int offset = 0;
+    unsigned long startIndex = 0;
+    unsigned long len = s.length();
+    while (startIndex != len) {
+        offset -= lastOffset;
 
-        //cout << "ITERATIONS " << i << " in " << (iterations) << endl;
-        shifted -= lastShifted;
-
-        start = toPrint;
-        cout << "AAAAAAAAAAAAAAAAAAA# " << start << " : " << len << endl;
-        if (start == len)
-            break;
-        if (i == 0) {
+        //Отступ первой строки
+        bool isIndented = indent > 0 && rowsCount == 0;
+        if (isIndented) {
             for (int j = 0; j < indent; j++) {
                 result.append(" ");
             }
-            shifted += indent;
-        } else if (i == 1) {
-            shifted -= indent;
+            offset += indent;
+        } else if (rowsCount == 1) {
+            offset -= indent;
         }
 
-        toPrint = (unsigned long) (columns + shifted) /*- 1*/;
-        toPrint = (unsigned long) min(columns, (const int &) toPrint);
-        cout << "SSSSA  USAIODASIOUDPOAS " << toPrint << " : " << start << " : " << (start + toPrint) << " : "
-             << len - 1
-             << endl;
-        toPrint = start + toPrint > len - 1 ? len - start : toPrint;
+        unsigned long lengthToPrint = (unsigned long) (columns + offset);
+        lengthToPrint = (unsigned long) min(columns, (const int &) lengthToPrint);
+        lengthToPrint = startIndex + lengthToPrint > len - 1 ? len - startIndex : lengthToPrint;
 
-        unsigned long tailIndex = start + toPrint - shifted;
+        unsigned long tailIndex = startIndex + lengthToPrint - offset;
 
-        cout << "CHECK " << tailIndex << ": " << s[tailIndex] << " AND " << s[tailIndex + 1] << " AND "
-             << s[tailIndex - 1] << endl;
-
+        //Правильно пределяем индексы для правильного переноса строк
         if ((tailIndex != len) && !isspace(s[tailIndex]) &&
             (!isspace(s[tailIndex + 1]) || !isspace(s[tailIndex - 1]))) {
-            cout << "CHECK3/4: " << start << " : " << tailIndex << endl;
-            cout << "CHECK '";
             while (!(isspace(s[tailIndex]))) {
-                cout << s[tailIndex];
-                if (tailIndex == start) {
+                if (tailIndex == startIndex) {
                     break;
                 }
                 tailIndex--;
-                shifted++;
+                offset++;
             }
-            cout << "'" << endl;
         }
 
-
-        while (isspace(s[start])) {
-            start++;
+        //"Убираем" пробелы вначале
+        while (isspace(s[startIndex])) {
+            startIndex++;
         }
 
-        cout << "PISYA: " << s[tailIndex - 1] << endl;
+        //"Убираем" пробелы вконце
         while (isspace(s[tailIndex - 1])) {
             tailIndex--;
         }
 
+        //Находим длину строки для вывода
+        lengthToPrint = tailIndex - startIndex;
+        lastOffset = offset;
 
-        toPrint = tailIndex - start;
-        cout << "FINAL: " << start << "+" << toPrint << " : " << tailIndex << " : " << shifted << endl;
-        lastShifted = shifted;
-
-        //cout << s.substr(start, toPrint) << endl;
-        string to_print = s.substr(start, toPrint);
-        cout << "TO_PRINT '" << to_print << "'" << endl;
-        if (align == ALIGN_RIGHT) {
-            unsigned long length = to_print.length();
-            if (i == 0) {
-                length += indent;
-            }
-            for (unsigned long j = 0; j < (columns - length); j++) {
-                result.append(" ");
-            }
-        }
-        if (align == ALIGN_JUSTIFY) {
-            int indicesLength = 0;
-            unsigned long *spaceIndices = suka4ka(to_print, &indicesLength);
-
-            while ((i == 0 ? to_print.length() + indent : to_print.length()) < columns) {
-                for (unsigned long si = 0; si < indicesLength; si++) {
-                    if ((i == 0 ? to_print.length() + indent : to_print.length()) >= columns) {
-                        break;
-                    }
-                    to_print.insert(spaceIndices[si], " ");
-                    for (unsigned long sj = si; sj < indicesLength; sj++) {
-                        spaceIndices[sj]++;
-                    }
-                }
-            }
-        }
-        if (align == ALIGN_CENTER) {
-            unsigned long length = i == 0 ? to_print.length() + indent : to_print.length();
-
-            unsigned long delta = columns - length;
-            unsigned long left = delta / 2;
-            unsigned long right = delta - left;
-            to_print.insert(0, left, ' ');
-            to_print.insert(to_print.length(), right, ' ');
-
-            cout << "ALIGN_CENTER " << length << " : " << columns << " : " << (35 - 27) << endl;
-        }
-        result.append(to_print);
-
-
-        if (align == ALIGN_LEFT) {
-            unsigned long length = to_print.length();
-            if (i == 0) {
-                length += indent;
-            }
-            for (unsigned long j = 0; j < (columns - length); j++) {
-                result.append(" ");
-            }
+        //Финальная обработка строки
+        string rowString = s.substr(startIndex, lengthToPrint);
+        switch (align) {
+            case ALIGN_JUSTIFY:
+                alignJustify(rowString, isIndented, indent);
+                break;
+            case ALIGN_CENTER:
+                alignCenter(rowString, isIndented, indent);
+                break;
+            case ALIGN_LEFT:;
+            case ALIGN_RIGHT:;
+            default:
+                alignBase(align, rowString, isIndented, indent);
+                break;
         }
 
-        cout << "TO_PRINT FINAL'" << to_print << "'" << endl;
-        result.append("\n");
-        toPrint += start;
-        i++;
-        if (i > 15) {
-            cout << "ERROR VIDIMO" << endl;
-            break;
-        }
+        result.append(rowString).append("\n");
+
+        //Смещаем индексы вперед по строке
+        lengthToPrint += startIndex;
+        startIndex = lengthToPrint;
+
+        rowsCount++;
     }
     for (int j = 0; j < columns; j++) {
         cout << "_";
@@ -227,7 +193,7 @@ int main() {
     //cout << document->html() << endl;
     string suka = "";
     suka = readFile("test3.txt");
-    printString(4, ALIGN_CENTER, suka);
+    printString(4, ALIGN_RIGHT, suka);
     int length = 0;
     return 0;
 }
