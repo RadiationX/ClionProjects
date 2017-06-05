@@ -267,7 +267,9 @@ public:
     Block *transformToBlock(Element *root, Block *parentBlock) {
         Block *block = new Block();
         block->parent = parentBlock;
-
+        if (block->parent != NULL && block->params.align != block->parent->params.align) {
+            block->params.align = block->parent->params.align;
+        }
         vector<pair<string, string>> attributes = *root->getAttributes();
         for (pair<string, string> attribute:attributes) {
             string key = attribute.first;
@@ -331,9 +333,7 @@ public:
                 }
             }
         }
-        if (block->parent != NULL && block->params.align < block->parent->params.align) {
-            block->params.align = block->parent->params.align;
-        }
+
         block->setText(root->getText());
         block->setAfterText(root->getAfterText());
 
