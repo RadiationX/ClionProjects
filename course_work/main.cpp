@@ -2,7 +2,7 @@
 #include <string>
 #include <thread>
 #include <unistd.h>
-#include "parser/Document.h"
+#include "parser/Parser.h"
 #include <fstream>
 #include <sstream>
 
@@ -392,28 +392,30 @@ void printRows(vector<string> rows) {
 }
 
 int main() {
-    Padding padding = Padding();
-    Margin margin = Margin();
-    Border border = Border();
-    /*string htmlSource = readFile("test2.txt");
-    Document *document = new Document();
+
+    string htmlSource = readFile("test4.txt");
+    Parser *parser = new Parser();
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
     cout << "Start parsing" << endl;
     //usleep(750 * 1000);
 
     //cout<<htmlSource;
-    document->parse(htmlSource);
+    Element *root = parser->parse(htmlSource);
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(t2 - t1).count() / 1000;
     cout << endl << "End parsing" << endl;
-    cout << "Parsing time: " << duration << "ms" << endl;*/
-    //cout << document->html() << endl;
-    string suka = "";
+    cout << "Parsing time: " << duration << "ms" << endl;
+    cout << root->html() << endl;
+
+    Padding padding = Padding();
+    Margin margin = Margin();
+    Border border = Border();
+    /*string suka = "";
     suka = readFile("test3.txt");
     padding.base = 1;
     margin.base = 1;
     border.base = true;
-    for (int i = 0; i < (60 /*+ padding.base * 2 + margin.base * 2 + border.base * 2*/); i++) {
+    for (int i = 0; i < (60 *//*+ padding.base * 2 + margin.base * 2 + border.base * 2*//*); i++) {
         cout << '_';
     }
     cout << endl;
@@ -434,6 +436,6 @@ int main() {
     block.rows.clear();
     block.availColumns = 80;
     Block finalBLock2 = printBlockRecurse(block);
-    printRows(finalBLock2.rows);
+    printRows(finalBLock2.rows);*/
     return 0;
 }

@@ -8,7 +8,6 @@
 #include <vector>
 #include "iostream"
 #include "string"
-#include "ElementsList.h"
 #include "ElementHelper.h"
 
 using namespace std;
@@ -16,7 +15,7 @@ using namespace std;
 class Element {
 
 private :
-    ElementsList<Element> elements;
+    vector<Element *> elements;
     vector<pair<string, string>> *attributes = NULL;
     Element *parent;
     string text = "";
@@ -120,7 +119,7 @@ public:
         return getAllText(this);
     }
 
-    ElementsList<Element> getElements() {
+    vector<Element *> getElements() {
         return elements;
     }
 
@@ -143,7 +142,7 @@ public:
         }
 
         for (int i = 0; i < element->getElements().size(); i++) {
-            string suka = getHtml(element->getElements().get(i), true);
+            string suka = getHtml(element->getElements().at(i), true);
             resultHtml.append(suka);
         }
 
@@ -163,7 +162,7 @@ public:
         text.append(" ").append(element->getText());
 
         for (int i = 0; i < element->getElements().size(); i++) {
-            text.append(getAllText(element->getElements().get(i)));
+            text.append(getAllText(element->getElements().at(i)));
         }
 
         text.append(" ").append(element->getAfterText());

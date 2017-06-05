@@ -1,9 +1,9 @@
 //
-// Created by radiationx on 31.05.17.
+// Created by radiationx on 05.06.17.
 //
 
-#ifndef COURSE_WORK_DOCUMENT_H
-#define COURSE_WORK_DOCUMENT_H
+#ifndef COURSE_WORK_PARSER_H
+#define COURSE_WORK_PARSER_H
 
 #include <list>
 #include <regex>
@@ -14,20 +14,19 @@
 
 using namespace std;
 
-class Document {
+class Parser {
 private:
     regex *mainPattern;
-    Element *root;
-
 
 public:
-    Document() {
+    Parser() {
         mainPattern = new regex(
                 "(?:<(?:!--[\\s\\S]*?--|(?:(script|style)(?: )?([^>]*)>)([\\s\\S]*?)(?:<\\/\\1)|([\\/])?([\\w]*)(?: ([^>]*))?\\/?)>)(?:([^<]+))?");
     }
 
-    Document *parse(string html) {
-        ElementsList<Element> openedTags;
+    Element *parse(string html) {
+        Element *root = new Element("html");
+        vector<Element *> openedTags;
         vector<string> errorTags;
         Element *lastOpened = NULL;
         Element *lastClosed = NULL;
@@ -96,7 +95,7 @@ public:
                             lastOpened->getLevel() == openedTags.size() ? lastOpened->getParent() : lastOpened);
                 }
 
-                this->add(newElement);
+                this->add(root, newElement);
 
                 //Проверка на теги, которые можно не закрывать
                 if (!ssTagNull | ElementHelper::Instance().containsInUTag(newElement->getTagName())) {
@@ -158,7 +157,7 @@ public:
                                 resolveElement->setParent(lastClosed);
                                 resolveElement->setText(lastClosed->getText());
                                 lastClosed->setText("");
-                                this->add(resolveElement);
+                                this->add(root, resolveElement);
                                 lastClosed = NULL;
                                 resolved = true;
                                 errorTags.erase(errorTags.begin() + i);
@@ -176,13 +175,13 @@ public:
                         errorTags.push_back(lastClosed->getTagName());
 
                         //Закрываем тег
-                        openedTags.remove(openedTags.begin() + openedTags.size() - 1);
+                        openedTags.erase(openedTags.begin() + openedTags.size() - 1);
                         closeTagsCount++;
 
                         //Исправление ошибки с правильным выносом элемента
                         if (openedTags.size() > 0) {
                             if (openedTags.at(openedTags.size() - 1)->getTagName().compare(tag) == 0) {
-                                openedTags.remove(openedTags.begin() + openedTags.size() - 1);
+                                openedTags.erase(openedTags.begin() + openedTags.size() - 1);
                                 closeTagsCount++;
                                 lastClosed = NULL;
                                 resolvedErrors++;
@@ -199,7 +198,7 @@ public:
                     lastClosed->addAfterText(afterText);
 
                     //Удаляем/"закрываем" тег
-                    openedTags.remove(openedTags.begin() + openedTags.size() - 1);
+                    openedTags.erase(openedTags.begin() + openedTags.size() - 1);
                     closeTagsCount++;
                 }
             }
@@ -219,9 +218,8 @@ public:
         for (string el : errorTags) {
             Log.e("QualityControl", "Error Tag: " << el);
         }*/
-        return this;
+        return root;
     }
-
 
     void findToAdd(Element *root, Element *children) {
         if (children->getLevel() - 1 == root->getLevel()) {
@@ -231,30 +229,14 @@ public:
         }
     }
 
-    void add(Element *children) {
+    void add(Element *root, Element *children) {
         if (children->getLevel() == 0) {
             root = children;
             return;
         }
         findToAdd(root, children);
     }
-
-    Element *getRoot() {
-        return root;
-    }
-
-    string html() {
-        return root->html();
-    }
-
-    string htmlNoParent() {
-        return root->htmlNoParent();
-    }
-
-    string getAllText() {
-        return root->getAllText();
-    }
 };
 
 
-#endif //COURSE_WORK_DOCUMENT_H
+#endif //COURSE_WORK_PARSER_H
