@@ -54,7 +54,7 @@ struct Margin {
 };
 
 struct Border {
-    bool base = true;
+    bool base = false;
     bool left = false;
     bool top = false;
     bool right = false;

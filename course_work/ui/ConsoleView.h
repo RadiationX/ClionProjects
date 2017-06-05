@@ -253,9 +253,9 @@ public:
         for (int i = 0; i < block.params.margin.getBottom(); i++) {
             block.rows.push_back(mb);
         }
-        Block basd = block.parent == NULL ? block : *block.parent;
-        vector<string> afterTextRows = printString(block.afterText, basd.contentColumns, block.params.align,
-                                                   block.params.indent);
+        Block basic = block.parent == NULL ? block : *block.parent;
+        vector<string> afterTextRows = printString(block.afterText, basic.contentColumns, basic.params.align,
+                                                   basic.params.indent);
         for (string row:afterTextRows) {
             string newRow;
             //newRow.append(ml).append(bl).append(pl).append(row).append(pr).append(br).append(mr);
@@ -265,20 +265,90 @@ public:
         return block;
     }
 
-    Block *transformToBlock(Element *root) {
+    Block *transformToBlock(Element *root, Block *parentBlock) {
         cout << "TRANSFORM " << root->getTagName() << endl;
         Block *block = new Block();
-        for (Element *element:root->getElements()) {
-            Block *newBLock = transformToBlock(element);
-            newBLock->parent = block;
-            block->addBlock(*newBLock);
-        }
+        block->parent = parentBlock;
 
+        vector<pair<string, string>> attributes = *root->getAttributes();
+        for (pair<string, string> attribute:attributes) {
+            string key = attribute.first;
+            string value = attribute.second;
+            if (key.compare("align") == 0) {
+                if (value.compare("left") == 0) {
+                    block->params.align = Params::ALIGN_LEFT;
+                } else if (value.compare("right") == 0) {
+                    block->params.align = Params::ALIGN_RIGHT;
+                } else if (value.compare("center") == 0) {
+                    block->params.align = Params::ALIGN_CENTER;
+                } else if (value.compare("justify") == 0) {
+                    block->params.align = Params::ALIGN_JUSTIFY;
+                } else {
+                    block->params.align = Params::ALIGN_LEFT;
+                }
+            } else if (strContains(key, "padding")) {
+                int paddingValue = atoi(value.c_str());
+
+                if (strContains(key, "left")) {
+                    block->params.padding.left = paddingValue;
+                } else if (strContains(key, "top")) {
+                    block->params.padding.top = paddingValue;
+                } else if (strContains(key, "right")) {
+                    block->params.padding.right = paddingValue;
+                } else if (strContains(key, "bottom")) {
+                    block->params.padding.bottom = paddingValue;
+                } else {
+                    block->params.padding.base = paddingValue;
+                }
+            } else if (strContains(key, "margin")) {
+                int marginValue = atoi(value.c_str());
+
+                if (strContains(key, "left")) {
+                    block->params.margin.left = marginValue;
+                } else if (strContains(key, "top")) {
+                    block->params.margin.top = marginValue;
+                } else if (strContains(key, "right")) {
+                    block->params.margin.right = marginValue;
+                } else if (strContains(key, "bottom")) {
+                    block->params.margin.bottom = marginValue;
+                } else {
+                    block->params.margin.base = marginValue;
+                }
+            } else if (strContains(key, "border")) {
+                bool borderValue = atoi(value.c_str()) > 0;
+
+                if (strContains(key, "left")) {
+                    block->params.border.left = borderValue;
+                } else if (strContains(key, "top")) {
+                    block->params.border.top = borderValue;
+                } else if (strContains(key, "right")) {
+                    block->params.border.right = borderValue;
+                } else if (strContains(key, "bottom")) {
+                    block->params.border.bottom = borderValue;
+                } else {
+                    block->params.border.base = borderValue;
+                }
+            }
+        }
+        if (block->parent != NULL) {
+            if (block->params.align < block->parent->params.align) {
+                block->params.align = block->parent->params.align;
+            }
+        }
+        cout << "ALIGN " << block->params.align << " : " << (block->parent == NULL ? -1 : block->parent->params.align)
+             << endl;
         block->setText(root->getText());
         block->setAfterText(root->getAfterText());
 
-
+        for (Element *element:root->getElements()) {
+            Block *newBlock = transformToBlock(element, block);
+            block->addBlock(*newBlock);
+        }
         return block;
+    }
+
+    bool strContains(string s1, string s2) {
+        return s1.find(s2) != string::npos;
     }
 
 };

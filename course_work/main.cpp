@@ -37,7 +37,6 @@ void printRows(vector<string> rows) {
 }
 
 int main() {
-
     string htmlSource = readFile("test4.html");
     Parser *parser = new Parser();
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
@@ -53,7 +52,7 @@ int main() {
     cout << root->html() << endl;
 
     ConsoleView consoleView;
-    Block * block = consoleView.transformToBlock(root);
+    Block * block = consoleView.transformToBlock(root, NULL);
     block->availColumns = 60;
     consoleView.printBlockRecurse(*block);
     printRows(block->rows);

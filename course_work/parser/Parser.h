@@ -25,7 +25,8 @@ public:
     }
 
     Element *parse(string html) {
-        Element *root = new Element("html");
+        Element *root = new Element("#document");
+        root->setLevel(-1);
         vector<Element *> openedTags;
         vector<string> errorTags;
         Element *lastOpened = NULL;
@@ -81,6 +82,7 @@ public:
 
                 //Уровень вложенности элемента. Совпадает с кол-вом открытых тегов
                 newElement->setLevel((int) openedTags.size());
+                cout << "CREATE NED ELEM " << newElement->getTagName() << " : " << newElement->getLevel() << endl;
 
                 if (lastOpened != NULL) {
                     //Устанавливается родитель элемента.
@@ -91,8 +93,7 @@ public:
                     //  <div></div>
                     //  <div></div>
                     //</div>
-                    newElement->setParent(
-                            lastOpened->getLevel() == openedTags.size() ? lastOpened->getParent() : lastOpened);
+                    newElement->setParent(lastOpened->getLevel() == openedTags.size() ? lastOpened->getParent() : lastOpened);
                 }
 
                 this->add(root, newElement);
@@ -198,6 +199,7 @@ public:
                     lastClosed->addAfterText(afterText);
 
                     //Удаляем/"закрываем" тег
+                    cout << "CLOSE ELEM " << openedTags.at(openedTags.size() - 1)->getTagName() << endl;
                     openedTags.erase(openedTags.begin() + openedTags.size() - 1);
                     closeTagsCount++;
                 }
@@ -222,18 +224,16 @@ public:
     }
 
     void findToAdd(Element *root, Element *children) {
-        if (children->getLevel() - 1 == root->getLevel()) {
+        if (children->getLevel() == 0 || children->getLevel() - 1 == root->getLevel()) {
             root->add(children);
+            children->setParent(root);
+            cout << "SUKA FINAL ADD " << children->getTagName() << " TO " << root->getTagName()<<endl;
         } else {
             findToAdd(root->getLast(), children);
         }
     }
 
     void add(Element *root, Element *children) {
-        if (children->getLevel() == 0) {
-            root = children;
-            return;
-        }
         findToAdd(root, children);
     }
 };
