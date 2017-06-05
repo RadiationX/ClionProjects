@@ -92,7 +92,6 @@ void alignJustify(string &rowString, int availColumns, bool isIndented, int inde
 
 
 vector<string> printString(string s, int availColumns, int align, int indent) {
-    cout << "PRINT: " << s << endl << endl;
     if (indent > availColumns) {
         indent = availColumns;
     }
@@ -247,108 +246,207 @@ struct Border {
     }
 };
 
-void printBlock(string &text, int availColumns, Padding padding, Margin margin, Border border) {
-    int contentColumns = availColumns - (margin.getLeft() + padding.getRight() + padding.getLeft() + margin.getRight() +
-                                         border.getLeft() + border.getRight());
-    cout << "INSET COLUMNS " << contentColumns << endl;
-    vector<string> rows = printString(text, contentColumns, ALIGN_JUSTIFY, 4);
+struct Block {
+    vector<Block *> blocks;
 
-    int insetColumns = contentColumns + (padding.getLeft() + padding.getRight());
-    int boxColumns = insetColumns + (border.getLeft() + border.getRight());
+    void addBlock(Block &block) {
+        blocks.push_back(&block);
+    }
+
+    vector<string> rows;
+    vector<string> textRows;
+
+
+    int availColumns = 0;
+    int contentColumns = 0;
+    int insetColumns = 0;
+    int boxColumns = 0;
+
+    Padding padding;
+    Margin margin;
+    Border border;
+};
+
+Block generateBlock(int availColumns, Padding padding, Margin margin, Border border) {
+    Block block = Block();
+    block.availColumns = availColumns;
+    block.contentColumns =
+            availColumns - (margin.getLeft() + padding.getRight() + padding.getLeft() + margin.getRight() +
+                            border.getLeft() + border.getRight());
+    block.insetColumns = block.contentColumns + (padding.getLeft() + padding.getRight());
+    block.boxColumns = block.insetColumns + (border.getLeft() + border.getRight());
+    block.padding = padding;
+    block.margin = margin;
+    block.border = border;
+    return block;
+}
+
+Block printBlock(Block &block, Padding padding, Margin margin, Border border) {
+
+    /*Block result = Block();
+    result.contentColumns = block.contentColumns;
+    result.insetColumns = block.insetColumns;
+    result.boxColumns = block.boxColumns;*/
+
+    Block result = generateBlock(block.contentColumns, padding, margin, border);
+
+
+
     //margins string
     string ml(margin.getLeft(), ' ');
     string mr(margin.getRight(), ' ');
-    string mt(availColumns, ' ');
-    string mb(availColumns, ' ');
+    string mt(block.availColumns, ' ');
+    string mb(block.availColumns, ' ');
 
 
     //paddings string
     string pl(padding.getLeft(), ' ');
     string pr(padding.getRight(), ' ');
-    string pt(insetColumns, ' ');
-    string pb(insetColumns, ' ');
+    string pt(block.insetColumns, ' ');
+    string pb(block.insetColumns, ' ');
 
     //borders string
     string bl(border.getLeft(), '|');
     string br(border.getRight(), '|');
-    string bt(insetColumns, '-');
-    string bb(insetColumns, '-');
+    string bt(block.insetColumns, '-');
+    string bb(block.insetColumns, '-');
+
 
     for (int i = 0; i < margin.getTop(); i++) {
-        cout << mt << endl;
+        result.rows.push_back(mt);
     }
-
     if (border.getTop()) {
-        cout << ml;
-
-        cout << " ";
-        cout << bt;
-        cout << " ";
-
-        cout << mr;
-
-        cout << endl;
-    }
-
-    if (padding.getTop()) {
-
+        string row;
+        row.append(ml).append(" ").append(bt).append(" ").append(mr);
+        result.rows.push_back(row);
     }
     for (int i = 0; i < padding.getTop(); i++) {
-        cout << ml;
-        cout << bl;
-
-        cout << pt;
-
-        cout << br;
-        cout << mr;
-
-        cout << endl;
+        string row;
+        row.append(ml).append(bl).append(pt).append(br).append(mr);
+        result.rows.push_back(row);
     }
 
 
-    for (string row:rows) {
-        cout << ml;
-        cout << bl;
-        cout << pl;
-
-        cout << row;
-
-        cout << pr;
-        cout << br;
-        cout << mr;
-
-        cout << endl;
+    for (string row:block.rows) {
+        string newRow;
+        newRow.append(ml).append(bl).append(pl).append(row).append(pr).append(br).append(mr);
+        result.rows.push_back(newRow);
     }
 
 
     for (int i = 0; i < padding.getBottom(); i++) {
-        cout << ml;
-        cout << bl;
-
-        cout << pb;
-
-        cout << br;
-        cout << mr;
-
-        cout << endl;
+        string row;
+        row.append(ml).append(bl).append(pb).append(br).append(mr);
+        result.rows.push_back(row);
     }
     if (border.getBottom()) {
-        cout << ml;
+        string row;
+        row.append(ml).append(" ").append(bb).append(" ").append(mr);
+        result.rows.push_back(row);
+    }
+    for (int i = 0; i < margin.getBottom(); i++) {
+        result.rows.push_back(mb);
+    }
+    return result;
+}
 
-        cout << " ";
-        cout << bb;
-        cout << " ";
+Block printBlockRecurse(Block &block) {
+    cout << &block << " printBlockRecurse " << block.blocks.size() << " : " << block.rows.size() << endl;
+    cout << &block << " params " << block.padding.base << " : " << block.margin.base << " : " << block.border.base
+         << " | "
+         << block.availColumns << " : " << block.boxColumns << " : " << block.insetColumns << " : "
+         << block.contentColumns << endl;
+    for (Block *child:block.blocks) {
+        Block returned = printBlockRecurse(*child);
+        cout << "RETURNED CHILD " << &returned << endl;
+    }
 
-        cout << mr;
+    //margins string
+    string ml(block.margin.getLeft(), ' ');
+    string mr(block.margin.getRight(), ' ');
+    string mt(block.availColumns, ' ');
+    string mb(block.availColumns, ' ');
 
+
+    //paddings string
+    string pl(block.padding.getLeft(), ' ');
+    string pr(block.padding.getRight(), ' ');
+    string pt(block.insetColumns, ' ');
+    string pb(block.insetColumns, ' ');
+
+    //borders string
+    string bl(block.border.getLeft(), '|');
+    string br(block.border.getRight(), '|');
+    string bt(block.insetColumns, '-');
+    string bb(block.insetColumns, '-');
+
+
+    for (int i = 0; i < block.margin.getTop(); i++) {
+        block.rows.push_back(mt);
+    }
+    if (block.border.getTop()) {
+        string row;
+        row.append(ml).append(" ").append(bt).append(" ").append(mr);
+        block.rows.push_back(row);
+    }
+    for (int i = 0; i < block.padding.getTop(); i++) {
+        string row;
+        row.append(ml).append(bl).append(pt).append(br).append(mr);
+        block.rows.push_back(row);
+    }
+
+    for (string row:block.textRows) {
+        string newRow;
+        newRow.append(ml).append(bl).append(pl).append(row).append(pr).append(br).append(mr);
+        block.rows.push_back(newRow);
+        cout << &block << " print this row" << newRow << endl;
+    }
+    for (Block *child:block.blocks) {
+        cout << &block << " try print child " << &child << " : " << (*child).rows.size() << endl;
+        for (string childRow:(*child).rows) {
+            cout << "print child row" << childRow << endl;
+            string newRow;
+            newRow.append(ml).append(bl).append(pl).append(childRow).append(pr).append(br).append(mr);
+            block.rows.push_back(newRow);
+        }
+    }
+
+
+    for (int i = 0; i < block.padding.getBottom(); i++) {
+        string row;
+        row.append(ml).append(bl).append(pb).append(br).append(mr);
+        block.rows.push_back(row);
+    }
+    if (block.border.getBottom()) {
+        string row;
+        row.append(ml).append(" ").append(bb).append(" ").append(mr);
+        block.rows.push_back(row);
+    }
+    for (int i = 0; i < block.margin.getBottom(); i++) {
+        block.rows.push_back(mb);
+    }
+    cout << "after printBlockRecurse " << block.blocks.size() << " : " << block.rows.size() << endl;
+    return block;
+}
+
+Block printBlock(string &text, int availColumns, Padding padding, Margin margin, Border border) {
+    Block block = generateBlock(availColumns, padding, margin, border);
+    vector<string> rows = printString(text, block.contentColumns, ALIGN_JUSTIFY, 4);
+    block.rows = rows;
+    return printBlock(block, padding, margin, border);
+}
+
+Block generateTextBlock(string &text, int availColumns, Padding padding, Margin margin, Border border) {
+    Block block = generateBlock(availColumns, padding, margin, border);
+    block.textRows = printString(text, block.contentColumns, ALIGN_JUSTIFY, 4);
+    return block;
+}
+
+void printRows(vector<string> rows) {
+    for (string row:rows) {
+        cout << row;
         cout << endl;
     }
-
-
-    for (int i = 0; i < margin.getBottom(); i++) {
-        cout << mb << endl;
-    }
-    cout << endl;
 }
 
 int main() {
@@ -370,9 +468,19 @@ int main() {
     //cout << document->html() << endl;
     string suka = "";
     suka = readFile("test3.txt");
-    padding.base = 3;
-    margin.base = 3;
+    padding.base = 1;
+    margin.base = 1;
     border.base = true;
-    printBlock(suka, 60, padding, margin, border);
+    for (int i = 0; i < (60 /*+ padding.base * 2 + margin.base * 2 + border.base * 2*/); i++) {
+        cout << '_';
+    }
+    cout << endl;
+    Block block = generateBlock(60, padding, margin, border);
+    Block textBlock = generateTextBlock(suka, block.contentColumns, padding, margin, border);
+    Block textBlock2 = generateTextBlock(suka, textBlock.contentColumns, padding, margin, border);
+    block.addBlock(textBlock);
+    textBlock.addBlock(textBlock2);
+    Block finalBLock = printBlockRecurse(block);
+    printRows(finalBLock.rows);
     return 0;
 }
