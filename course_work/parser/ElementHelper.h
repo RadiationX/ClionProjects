@@ -13,6 +13,7 @@ using namespace std;
 
 class ElementHelper {
 private:
+    regex *spaceRemover = new regex(" {2,}");
     regex *attrPattern;
     string uTags[17] = {"area", "area", "br", "col", "colgroup", "command", "embed", "hr", "img", "input", "keygen",
                         "link", "meta", "param", "source", "track", "wbr"};
@@ -49,6 +50,11 @@ public:
         for (string uTag : ElementHelper::Instance().uTags)
             if (uTag.compare(tag) == 0) return true;
         return false;
+    }
+
+
+    string removeSpaces(string s) {
+        return regex_replace(s, *spaceRemover, " ");
     }
 };
 

@@ -3,5 +3,5 @@ project(course_work)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp parser/Element.h parser/ElementHelper.h parser/Parser.h)
+set(SOURCE_FILES main.cpp parser/Element.h parser/ElementHelper.h parser/Parser.h ui/Params.h ui/Block.h ui/ConsoleView.h)
 add_executable(course_work ${SOURCE_FILES})
