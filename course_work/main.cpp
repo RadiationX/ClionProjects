@@ -49,7 +49,7 @@ int main() {
     auto duration = duration_cast<microseconds>(t2 - t1).count() / 1000;
     cout << endl << "End parsing" << endl;
     cout << "Parsing time: " << duration << "ms" << endl;
-    cout << root->html() << endl;
+    //cout << root->html() << endl;
 
     ConsoleView consoleView;
     Block * block = consoleView.transformToBlock(root, NULL);

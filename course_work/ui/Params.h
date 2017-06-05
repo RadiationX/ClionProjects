@@ -17,7 +17,7 @@ struct Padding {
     }
 
     int getTop() {
-        return top == 0 ? base : top;
+        return (top == 0 ? base : top) / 2;
     }
 
     int getRight() {
@@ -25,7 +25,7 @@ struct Padding {
     }
 
     int getBottom() {
-        return bottom == 0 ? base : bottom;
+        return (bottom == 0 ? base : bottom) / 2;
     }
 };
 
@@ -41,7 +41,7 @@ struct Margin {
     }
 
     int getTop() {
-        return top == 0 ? base : top;
+        return (top == 0 ? base : top) / 2;
     }
 
     int getRight() {
@@ -49,7 +49,7 @@ struct Margin {
     }
 
     int getBottom() {
-        return bottom == 0 ? base : bottom;
+        return (bottom == 0 ? base : bottom) / 2;
     }
 };
 

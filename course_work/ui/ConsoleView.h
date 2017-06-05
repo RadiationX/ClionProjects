@@ -254,8 +254,7 @@ public:
             block.rows.push_back(mb);
         }
         Block basic = block.parent == NULL ? block : *block.parent;
-        vector<string> afterTextRows = printString(block.afterText, basic.contentColumns, basic.params.align,
-                                                   basic.params.indent);
+        vector<string> afterTextRows = printString(block.afterText, basic.contentColumns, basic.params.align, 0);
         for (string row:afterTextRows) {
             string newRow;
             //newRow.append(ml).append(bl).append(pl).append(row).append(pr).append(br).append(mr);
@@ -266,7 +265,6 @@ public:
     }
 
     Block *transformToBlock(Element *root, Block *parentBlock) {
-        cout << "TRANSFORM " << root->getTagName() << endl;
         Block *block = new Block();
         block->parent = parentBlock;
 
@@ -274,7 +272,10 @@ public:
         for (pair<string, string> attribute:attributes) {
             string key = attribute.first;
             string value = attribute.second;
-            if (key.compare("align") == 0) {
+            if (key.compare("indent") == 0) {
+                int indentValue = atoi(value.c_str());
+                block->params.indent = indentValue;
+            } else if (key.compare("align") == 0) {
                 if (value.compare("left") == 0) {
                     block->params.align = Params::ALIGN_LEFT;
                 } else if (value.compare("right") == 0) {
@@ -330,13 +331,9 @@ public:
                 }
             }
         }
-        if (block->parent != NULL) {
-            if (block->params.align < block->parent->params.align) {
-                block->params.align = block->parent->params.align;
-            }
+        if (block->parent != NULL && block->params.align < block->parent->params.align) {
+            block->params.align = block->parent->params.align;
         }
-        cout << "ALIGN " << block->params.align << " : " << (block->parent == NULL ? -1 : block->parent->params.align)
-             << endl;
         block->setText(root->getText());
         block->setAfterText(root->getAfterText());
 

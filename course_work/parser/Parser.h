@@ -82,7 +82,6 @@ public:
 
                 //Уровень вложенности элемента. Совпадает с кол-вом открытых тегов
                 newElement->setLevel((int) openedTags.size());
-                cout << "CREATE NED ELEM " << newElement->getTagName() << " : " << newElement->getLevel() << endl;
 
                 if (lastOpened != NULL) {
                     //Устанавливается родитель элемента.
@@ -199,7 +198,6 @@ public:
                     lastClosed->addAfterText(afterText);
 
                     //Удаляем/"закрываем" тег
-                    cout << "CLOSE ELEM " << openedTags.at(openedTags.size() - 1)->getTagName() << endl;
                     openedTags.erase(openedTags.begin() + openedTags.size() - 1);
                     closeTagsCount++;
                 }
@@ -227,7 +225,6 @@ public:
         if (children->getLevel() == 0 || children->getLevel() - 1 == root->getLevel()) {
             root->add(children);
             children->setParent(root);
-            cout << "SUKA FINAL ADD " << children->getTagName() << " TO " << root->getTagName()<<endl;
         } else {
             findToAdd(root->getLast(), children);
         }

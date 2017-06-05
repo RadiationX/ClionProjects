@@ -6,8 +6,8 @@
 #define COURSE_WORK_ELEMENT_H
 
 #include <vector>
-#include "iostream"
-#include "string"
+#include <iostream>
+#include <string>
 #include "ElementHelper.h"
 
 using namespace std;
@@ -84,12 +84,17 @@ public:
     void addAfterText(string afterText) {
         if (afterText.length() == 0) return;
         afterText = ElementHelper::Instance().removeSpaces(afterText);
+        if (afterText.length() == 1 && isspace(afterText[0]))
+            return;
+        cout << "addAfterText '" << afterText << "'" << endl;
         this->afterText = this->afterText.append(afterText);
     }
 
     void addText(string text) {
         if (text.length() == 0) return;
         text = ElementHelper::Instance().removeSpaces(text);
+        if (text.length() == 1 && isspace(text[0]))
+            return;
         this->text = this->text.append(text);
     }
 
