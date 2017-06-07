@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <thread>
-#include <unistd.h>
 #include "parser/Parser.h"
 #include "ui/ConsoleView.h"
 #include <fstream>
@@ -10,7 +9,20 @@
 using namespace std;
 using namespace std::chrono;
 
+string readFile(string fileName);
+
+void initMenu();
+
 static string basePath = "/Users/radiationx/ClionProjects/ClionProjects/course_work/";
+Parser parser;
+ConsoleView consoleView;
+Element *rootDom = NULL;
+Block *rootBlock = NULL;
+
+int main() {
+    initMenu();
+    return 0;
+}
 
 string readFile(string fileName) {
     string result = "";
@@ -21,6 +33,7 @@ string readFile(string fileName) {
         while (getline(inputStream, temp)) {
             result.append(temp);
         }
+        cout << "File successfully opened" << endl;
     } else {
         cout << "Error: file not open" << endl;
     }
@@ -28,34 +41,55 @@ string readFile(string fileName) {
     return result;
 }
 
+void createData(string &htmlSource) {
+    rootDom = parser.parse(htmlSource);
+    cout << "DOM successfully created" << endl;
+    rootBlock = consoleView.transformToBlock(rootDom, NULL);
+    cout << "Tree of formatted rows was successfully created" << endl;
+}
 
-void printRows(vector<string> rows) {
-    for (string row:rows) {
-        cout << row;
+void initMenu() {
+    cout << endl;
+    int action = -1;
+    for (; action != 0;) {
+        cout << "---------- MENU ----------" << endl;
+        cout << "1 - Open file" << endl
+             << "2 - Edit available columns (current " << consoleView.getAvailColumns() << ")" << endl
+             << "3 - Print text" << endl
+             << "0 - Exit" << endl << endl;
+        cout << "Choice action: ";
+        cin >> action;
+        switch (action) {
+            case 1: {
+                string fileName;
+                cout << "Enter file name: ";
+                cin >> fileName;
+                string htmlSource = readFile(fileName);
+                createData(htmlSource);
+                break;
+            }
+            case 2: {
+                int newAvailColumns = 0;
+                cout << "Enter available columns: ";
+                cin >> newAvailColumns;
+                consoleView.setAvailColumns(newAvailColumns);
+                break;
+            }
+            case 3: {
+                if (rootBlock == NULL) {
+                    cout << "Error: Please open file first." << endl;
+                    break;
+                }
+                consoleView.createBlockRows(*rootBlock);
+                consoleView.printBlock(*rootBlock);
+                break;
+            }
+            case 0:
+                return;
+            default:
+                continue;
+        }
         cout << endl;
     }
 }
 
-int main() {
-    string htmlSource = readFile("test4.html");
-    Parser *parser = new Parser();
-    high_resolution_clock::time_point t1 = high_resolution_clock::now();
-    cout << "Start parsing" << endl;
-    //usleep(750 * 1000);
-
-    //cout<<htmlSource;
-    Element *root = parser->parse(htmlSource);
-    high_resolution_clock::time_point t2 = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(t2 - t1).count() / 1000;
-    cout << endl << "End parsing" << endl;
-    cout << "Parsing time: " << duration << "ms" << endl;
-    //cout << root->html() << endl;
-
-    ConsoleView consoleView;
-    Block * block = consoleView.transformToBlock(root, NULL);
-    block->availColumns = 60;
-    consoleView.printBlockRecurse(*block);
-    printRows(block->rows);
-
-    return 0;
-}

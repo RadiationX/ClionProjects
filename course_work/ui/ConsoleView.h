@@ -12,6 +12,8 @@
 using namespace std;
 
 class ConsoleView {
+private:
+    int availColumns = 60;
 public:
     unsigned long *getSpaceIndices(string &S, int *length) {
         for (int i = 0; i < S.length(); i++) {
@@ -183,10 +185,18 @@ public:
         return block;
     }
 
-    Block printBlockRecurse(Block &block) {
+    Block createBlockRows(Block &block) {
+        if (block.parent == NULL) {
+            if (block.availColumns != this->availColumns) {
+                block.availColumns = this->availColumns;
+            }
+            if (block.rows.size() > 0) {
+                block.rows.clear();
+            }
+        }
         measureColumns(block);
         for (Block *child:block.blocks) {
-            printBlockRecurse(*child);
+            createBlockRows(*child);
         }
 
         //margins string
@@ -342,6 +352,20 @@ public:
             block->addBlock(*newBlock);
         }
         return block;
+    }
+
+    void printBlock(Block &block) {
+        for (string row:block.rows) {
+            cout << row << endl;
+        }
+    }
+
+    int getAvailColumns() const {
+        return availColumns;
+    }
+
+    void setAvailColumns(int availColumns) {
+        ConsoleView::availColumns = availColumns;
     }
 
     bool strContains(string s1, string s2) {

@@ -41,7 +41,6 @@ public:
         string temp = html;
 
         while (regex_search(temp, m, *mainPattern)) {
-            //cout<<m[0]<<endl;
             tags++;
             //Более удобное обращение к последнему открытому тегу
             if (openedTags.size() > 0)
@@ -205,13 +204,13 @@ public:
             temp = m.suffix().str();
         }
 
-        cout << endl;
+        /*cout << endl;
         cout << "QualityControl: "
              << "Main Info {AllTags: " << tags << "; ErrorTags: " << errorTags.size() << "; ResolvedErrors : " <<
              resolvedErrors << "; UnclosedTags: " << openedTags.size() << "}" << endl;
         cout << "QualityControl: " <<
              "More Info {Comments: " << comments << "; OpenedTags: " << openTagsCount << "; ClosedTags: " <<
-             closeTagsCount << "}" << endl;
+             closeTagsCount << "}" << endl;*/
         /*for (Element el : openedTags.toArray()) {
             Log.e("QualityControl", "Unclosed Tag: " << el.getTagName());
         }

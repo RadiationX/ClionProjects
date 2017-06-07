@@ -86,7 +86,6 @@ public:
         afterText = ElementHelper::Instance().removeSpaces(afterText);
         if (afterText.length() == 1 && isspace(afterText[0]))
             return;
-        cout << "addAfterText '" << afterText << "'" << endl;
         this->afterText = this->afterText.append(afterText);
     }
 
