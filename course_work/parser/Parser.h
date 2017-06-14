@@ -203,20 +203,6 @@ public:
             }
             temp = m.suffix().str();
         }
-
-        /*cout << endl;
-        cout << "QualityControl: "
-             << "Main Info {AllTags: " << tags << "; ErrorTags: " << errorTags.size() << "; ResolvedErrors : " <<
-             resolvedErrors << "; UnclosedTags: " << openedTags.size() << "}" << endl;
-        cout << "QualityControl: " <<
-             "More Info {Comments: " << comments << "; OpenedTags: " << openTagsCount << "; ClosedTags: " <<
-             closeTagsCount << "}" << endl;*/
-        /*for (Element el : openedTags.toArray()) {
-            Log.e("QualityControl", "Unclosed Tag: " << el.getTagName());
-        }
-        for (string el : errorTags) {
-            Log.e("QualityControl", "Error Tag: " << el);
-        }*/
         return root;
     }
 

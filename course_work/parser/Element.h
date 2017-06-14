@@ -148,8 +148,8 @@ public:
         }
 
         for (int i = 0; i < element->getElements().size(); i++) {
-            string suka = getHtml(element->getElements().at(i), true);
-            resultHtml.append(suka);
+            string s = getHtml(element->getElements().at(i), true);
+            resultHtml.append(s);
         }
 
 

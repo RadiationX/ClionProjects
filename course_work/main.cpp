@@ -48,6 +48,7 @@ void createData(string &htmlSource) {
     cout << "Tree of formatted rows was successfully created" << endl;
 }
 
+//todo сделать обработку ошибок
 void initMenu() {
     cout << endl;
     int action = -1;
@@ -58,12 +59,20 @@ void initMenu() {
              << "3 - Print text" << endl
              << "0 - Exit" << endl << endl;
         cout << "Choice action: ";
-        cin >> action;
+        while (!(cin >> action)) {
+            cout << "Error. Retry choice action: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
         switch (action) {
             case 1: {
                 string fileName;
                 cout << "Enter file name: ";
-                cin >> fileName;
+                while (!(cin >> fileName)) {
+                    cout << "Error. Retry enter file name: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
                 string htmlSource = readFile(fileName);
                 createData(htmlSource);
                 break;
@@ -71,7 +80,11 @@ void initMenu() {
             case 2: {
                 int newAvailColumns = 0;
                 cout << "Enter available columns: ";
-                cin >> newAvailColumns;
+                while (!(cin >> newAvailColumns)) {
+                    cout << "Error. Retry enter available columns: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
                 consoleView.setAvailColumns(newAvailColumns);
                 break;
             }
